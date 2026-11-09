@@ -2,8 +2,8 @@ import N from "./narration.json";
 
 /**
  * All timing is derived from the generated narration (voiceover/make_voice.py → narration.json,
- * word timings from Whisper via voiceover/align.py). Sentence starts come from the generator
- * (exact); in-sentence beats come from Whisper word timestamps (checked against the waveform).
+ * word timings from Whisper via voiceover/align.py). Sentence starts/ends come from the generator
+ * (exact); in-sentence beats come from Whisper word timestamps. Re-voicing re-syncs everything.
  */
 export const FPS = 30;
 export const W = 1920;
@@ -23,58 +23,78 @@ const word = (w: string, after = 0) => {
   return x.start;
 };
 
+const L = {
+  hook: line("hook"),
+  compare: line("compare"),
+  value: line("value"),
+  reality1: line("reality1"),
+  reality2: line("reality2"),
+  end1: line("end1"),
+  end2: line("end2"),
+};
+
 /** Cue points in seconds. */
 export const CUE = {
-  hook: line("hook").start,
+  hook: L.hook.start,
   hundreds: word("hundreds"),
   when: word("when"),
-  compare: line("compare").start,
+  compare: L.compare.start,
   more: word("more"),
   logo: word("logo"),
   marketing: word("marketing"),
   prestige: word("prestige"),
-  notNecessarily: word("not", line("compare").start),
+  notNecessarily: word("not", L.compare.start),
   performance: word("performance"),
-  value: line("value").start,
+  value: L.value.start,
   impressive: word("impressive"),
   functionality: word("functionality"),
   without: word("without"),
-  reality1: line("reality1").start,
+  reality1: L.reality1.start,
   counterfeits: word("counterfeits"),
-  reality2: line("reality2").start,
+  reality2: L.reality2.start,
   safer: word("safer"),
   warranties: word("warranties"),
-  qualityControl: word("quality", line("reality2").start),
+  qualityControl: word("quality", L.reality2.start),
   control: word("control"),
-  end1: line("end1").start,
-  end2: line("end2").start,
-  notExpensive: word("not", line("end2").start),
-  speechEnd: line("end2").end,
+  end1: L.end1.start,
+  end2: L.end2.start,
+  notExpensive: word("not", L.end2.start),
+  speechEnd: L.end2.end,
   audioDuration: N.duration,
 };
 
-/** Scene windows (frames). Neighbouring scenes overlap during camera moves. */
-export const SCENES = {
-  hook: { from: 0, to: f(5.5) },
-  compare: { from: f(5.5), to: f(12.6) },
-  value: { from: f(12.2), to: f(19.0) },
-  reality: { from: f(18.6), to: f(26.9) },
-  end: { from: f(26.4), to: f(31.5) },
+/** Scene boundaries sit in the pauses between narration lines. */
+const mid = (a: { end: number }, b: { start: number }) => (a.end + b.start) / 2;
+const B = {
+  b1: mid(L.hook, L.compare),
+  b2: mid(L.compare, L.value),
+  b3: mid(L.value, L.reality1),
+  b4: mid(L.reality2, L.end1),
 };
-export const TOTAL_FRAMES = f(31.5);
+const X = 0.45; // cross-dissolve half-length (s)
+
+export const SCENES = {
+  hook: { from: 0, to: f(B.b1) },
+  compare: { from: f(B.b1), to: f(B.b2 + X) },
+  value: { from: f(B.b2 - X), to: f(B.b3 + X) },
+  reality: { from: f(B.b3 - X), to: f(B.b4 + X) },
+  end: { from: f(B.b4 - X), to: f(L.end2.end + 1.1) },
+};
+export const TOTAL_FRAMES = SCENES.end.to;
+export const XFADE = f(2 * X);
 
 /** Camera moves (global). Scenes are laid out on one continuous canvas. */
 export const CAMERA_MOVES = [
-  { at: f(12.0), dur: 26, dx: 360, dy: 0 }, // compare → value: glide right
-  { at: f(16.0), dur: 24, dx: 0, dy: 420 }, // value: tilt down to the shopper
-  { at: f(18.4), dur: 26, dx: 360, dy: 0 }, // value → reality
-  { at: f(26.3), dur: 26, dx: 360, dy: 0 }, // reality → ending
+  { at: f(B.b2 - X), dur: f(2 * X) + 2, dx: 420, dy: 0 }, // compare → value: glide right
+  { at: f(CUE.without - 0.5), dur: 22, dx: 0, dy: 440 }, // value: tilt down to the shopper
+  { at: f(B.b3 - X), dur: f(2 * X) + 2, dx: 420, dy: 0 }, // value → reality
+  { at: f(B.b4 - X), dur: f(2 * X) + 2, dx: 420, dy: 0 }, // reality → ending
 ];
 /** Where each scene sits on the canvas (camera position when it is centred). */
 export const ORIGIN = {
   hook: { x: 0, y: 0 },
   compare: { x: 0, y: 0 },
-  value: { x: 360, y: 0 },
-  reality: { x: 720, y: 420 },
-  end: { x: 1080, y: 420 },
+  value: { x: 420, y: 0 },
+  reality: { x: 840, y: 440 },
+  end: { x: 1260, y: 440 },
 };

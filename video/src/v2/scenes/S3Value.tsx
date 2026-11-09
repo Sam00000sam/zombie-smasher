@@ -2,114 +2,101 @@ import React from "react";
 import { useCurrentFrame } from "remotion";
 import { lerp, prog } from "../anim";
 import { LineArt } from "../components/Draw";
-import { PRODUCTS } from "../components/Products";
-import { Icon } from "../components/Icon";
-import { PriceTag } from "../components/PriceTag";
-import { StickFigure } from "../components/StickFigure";
-import { At, GlowText, Label } from "../components/Text";
-import { Kicker, SceneLayer } from "../components/SceneLayer";
-import { CAMERA_MOVES, CUE, f, ORIGIN, SCENES } from "../timing";
+import { PRODUCTS, ICONS } from "../components/Products";
+import { PriceCard } from "../components/Card";
+import { Floor, Halo } from "../components/Glow";
+import { Pawn } from "../components/Pawn";
+import { At, GlowText, Label, Pill } from "../components/Text";
+import { SceneLayer } from "../components/SceneLayer";
+import { CAMERA_MOVES, CUE, f, ORIGIN, SCENES, XFADE } from "../timing";
 import { FONT, INK } from "../theme";
 
 const ITEMS = [
   { kind: "headphones", x: 560, cat: "Audio", feats: ["Clear sound", "All-day comfort"] },
   { kind: "sneaker", x: 960, cat: "Footwear", feats: ["Durable sole", "Supportive fit"] },
-  { kind: "phone", x: 1360, cat: "Electronics", feats: ["Fast performance", "Great camera"] },
+  { kind: "phone", x: 1360, cat: "Electronics", feats: ["Fast", "Great camera"] },
 ] as const;
 
-const TILT = CAMERA_MOVES[1]; // camera tilts down to the shopper
-const DY = 420; // shopper beat sits one camera-tilt below
+const TILT = CAMERA_MOVES[1];
+const DY = 440;
 
-const Feature: React.FC<{ x: number; y: number; text: string; start: number }> = ({ x, y, text, start }) => {
+/** Circled check + tiny label, like the reference's "✓ WORKS". */
+const Works: React.FC<{ x: number; y: number; text: string; start: number }> = ({ x, y, text, start }) => {
   const fr = useCurrentFrame();
   const p = prog(fr, start, 14);
   return (
-    <>
-      <Icon name="check" x={x - 112} y={y + 11} p={p} size={24} width={2.4} />
-      <div
-        style={{
-          position: "absolute",
-          left: x - 92,
-          top: y,
-          fontFamily: FONT,
-          fontSize: 17,
-          fontWeight: 500,
-          letterSpacing: "0.14em",
-          textTransform: "uppercase",
-          color: INK,
-          whiteSpace: "nowrap",
-          opacity: prog(fr, start + 4, 12),
-        }}
-      >
-        {text}
+    <div style={{ position: "absolute", left: x, top: y, display: "flex", alignItems: "center", gap: 10, opacity: Math.min(1, p * 2) }}>
+      <div style={{ position: "relative", width: 22, height: 22 }}>
+        <LineArt parts={[{ t: "circle", cx: 12, cy: 12, r: 10 }, ...ICONS.check]} p={p} x={11} y={11} size={22} viewBox={24} width={1.6} spread={0.4} />
       </div>
-    </>
+      <div style={{ fontFamily: FONT, fontSize: 13, fontWeight: 600, letterSpacing: "0.24em", color: INK, textTransform: "uppercase", whiteSpace: "nowrap" }}>{text}</div>
+    </div>
   );
 };
 
 export const S3Value: React.FC = () => {
   const fr = useCurrentFrame();
   const v = f(CUE.value);
-  const beatA = 1 - prog(fr, TILT.at - 2, 20);
+  const beatA = 1 - prog(fr, TILT.at - 2, 18);
 
-  // beat B — the shopper chooses
-  const b0 = TILT.at + 4;
-  const fig = prog(fr, b0, 22);
-  const look = lerp(lerp(0, -1, prog(fr, b0 + 24, 8)), 1, prog(fr, b0 + 34, 8));
-  const point = prog(fr, b0 + 40, 12);
-  const ring = prog(fr, b0 + 46, 16);
-  const chosen = prog(fr, b0 + 58, 12);
-  const leftDim = lerp(1, 0.35, prog(fr, b0 + 52, 14));
+  // beat B — the shopper decides
+  const b0 = TILT.at + 2;
+  const lean = lerp(lerp(0, -1, prog(fr, b0 + 18, 8)), 1, prog(fr, b0 + 28, 8));
+  const pick = prog(fr, b0 + 40, 14);
+  const leftDim = lerp(1, 0.3, pick);
+  const q = prog(fr, b0 + 10, 10) * (1 - prog(fr, b0 + 38, 8));
 
   return (
     <SceneLayer
       win={SCENES.value}
       origin={ORIGIN.value}
-      fadeIn={24}
-      fadeOut={24}
+      fadeIn={XFADE}
+      fadeOut={XFADE}
       world={
         <>
-          {/* beat A — three everyday categories */}
+          {/* beat A — three everyday categories that do the job */}
           <div style={{ position: "absolute", inset: 0, opacity: beatA }}>
             {ITEMS.map((it, i) => {
-              const st = v + 4 + i * 9;
+              const st = v + 2 + i * 8;
               return (
                 <React.Fragment key={it.kind}>
-                  <LineArt parts={PRODUCTS[it.kind]} p={prog(fr, st, 40)} x={it.x} y={380} size={220} />
-                  <At x={it.x} y={488} w={360}>
-                    <Label text={it.cat} start={st + 18} size={15} />
+                  <At x={it.x} y={236} w={300}>
+                    <Label text={`0${i + 1}`} start={st} size={11} color="#9a9a9a" />
                   </At>
-                  <Feature x={it.x} y={540} text={it.feats[0]} start={f(CUE.impressive) + i * 5} />
-                  <Feature x={it.x} y={584} text={it.feats[1]} start={f(CUE.functionality) - 6 + i * 5} />
+                  <At x={it.x} y={256} w={300}>
+                    <Label text={it.cat} start={st + 4} size={14} />
+                  </At>
+                  <Halo x={it.x} y={420} r={190} o={prog(fr, st, 30)} />
+                  <LineArt parts={PRODUCTS[it.kind]} p={prog(fr, st, 38)} x={it.x} y={420} size={210} />
+                  <Floor x={it.x} y={530} w={240} p={prog(fr, st + 10, 20)} o={0.35} />
+                  <Works x={it.x - 88} y={566} text={it.feats[0]} start={f(CUE.impressive) + i * 5} />
+                  <Works x={it.x - 88} y={604} text={it.feats[1]} start={f(CUE.functionality) - 8 + i * 5} />
                 </React.Fragment>
               );
             })}
           </div>
 
           {/* beat B — a shopper choosing between two similar products */}
-          <StickFigure x={960} y={DY + 470} height={290} p={fig} look={look} point={point} />
-          <LineArt parts={PRODUCTS.sneaker} p={prog(fr, b0 + 2, 30)} x={620} y={DY + 520} size={240} opacity={leftDim} />
-          <LineArt parts={PRODUCTS.sneaker} p={prog(fr, b0 + 8, 30)} x={1300} y={DY + 520} size={240} />
-          <PriceTag x={620} y={DY + 400} start={b0 + 12} value={180} opacity={leftDim} />
-          <PriceTag x={1300} y={DY + 400} start={b0 + 18} value={45} />
-          <LineArt parts={[{ t: "path", d: "M10 100 A90 44 0 1 1 190 100 A90 44 0 1 1 10 100" }]} p={ring} x={1300} y={DY + 532} size={300} width={1.6} />
-          <div style={{ position: "absolute", left: 1300 + 112, top: DY + 532 - 92, opacity: chosen }}>
-            <div style={{ position: "relative", width: 44, height: 44, borderRadius: 22, background: "#000", border: `1.5px solid ${INK}`, boxShadow: "0 0 16px rgba(255,255,255,0.45)" }}>
-              <Icon name="check" x={22} y={22} p={chosen} size={28} width={2.6} />
-            </div>
-          </div>
+          <Floor x={960} y={DY + 640} w={1100} p={prog(fr, b0, 24)} o={0.4} />
+          <Pawn x={960} y={DY + 640} h={150} frame={fr} start={b0 + 2} lean={lean * (1 - pick) + pick * 0.6} />
+          <div style={{ position: "absolute", left: 960 - 20, top: DY + 440, width: 40, textAlign: "center", fontFamily: FONT, fontWeight: 700, fontSize: 40, color: INK, opacity: q, textShadow: "0 0 16px rgba(255,255,255,0.7)", transform: `translateY(${(1 - Math.min(1, q * 1.5)) * 10}px)` }}>?</div>
+          <Halo x={1320} y={DY + 600} r={220} o={pick} />
+          <LineArt parts={PRODUCTS.sneaker} p={prog(fr, b0 + 4, 26)} x={600} y={DY + 600} size={240} opacity={leftDim} />
+          <LineArt parts={PRODUCTS.sneaker} p={prog(fr, b0 + 8, 26)} x={1320} y={DY + 600} size={240} />
+          <PriceCard x={600} y={DY + 455} start={b0 + 8} label="Brand" value={180} w={170} big={36} opacity={leftDim} />
+          <PriceCard x={1320} y={DY + 455} start={b0 + 14} label="Alternative" value={45} w={170} big={36} />
+          <At x={1320} y={DY + 382} w={300}>
+            <Pill text="Smart pick" start={b0 + 44} size={13} />
+          </At>
         </>
       }
       screen={
-        <>
-          <Kicker n="03" title="The value" start={SCENES.value.from + 10} out={SCENES.value.to - 24} />
-          <At x={960} y={120} w={1600}>
-            <div style={{ display: "flex", gap: 26 }}>
-              <GlowText text="SAME PURPOSE." start={f(CUE.functionality)} size={54} />
-              <GlowText text="LESS MONEY." start={f(CUE.without)} size={54} />
-            </div>
-          </At>
-        </>
+        <At x={960} y={108} w={1700}>
+          <div style={{ display: "flex", gap: 30 }}>
+            <GlowText text="SAME PURPOSE." start={f(CUE.functionality) - 2} size={38} />
+            <GlowText text="LESS MONEY." start={f(CUE.without)} size={38} />
+          </div>
+        </At>
       }
     />
   );

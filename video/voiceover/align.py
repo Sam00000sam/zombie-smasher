@@ -23,6 +23,12 @@ for s in segments:
     for w in s.words:
         words.append({"w": w.word.strip(), "start": round(w.start, 3), "end": round(w.end, 3), "p": round(w.probability, 3)})
 
+# Whisper can hallucinate text in trailing silence; keep only words inside the spoken lines.
+last_end = meta["lines"][-1]["end"] + 0.25
+dropped = [w["w"] for w in words if w["start"] > last_end]
+if dropped:
+    print("dropped hallucinated trailing words:", dropped)
+words = [w for w in words if w["start"] <= last_end]
 heard = " ".join(w["w"] for w in words)
 expected = " ".join(l["text"] for l in meta["lines"])
 norm = lambda s: re.sub(r"[^a-z' ]", "", s.lower().replace("-", " ")).split()

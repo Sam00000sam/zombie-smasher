@@ -7,7 +7,7 @@ export const DotGrid: React.FC<{ camX: number; camY: number; opacity: number; sp
   camX,
   camY,
   opacity,
-  spacing = 40,
+  spacing = 30,
 }) => {
   const ox = ((-camX % spacing) + spacing) % spacing;
   const oy = ((-camY % spacing) + spacing) % spacing;
@@ -16,7 +16,7 @@ export const DotGrid: React.FC<{ camX: number; camY: number; opacity: number; sp
       <svg width={W} height={H} style={{ position: "absolute", inset: 0, opacity }}>
         <defs>
           <pattern id="dot-grid" width={spacing} height={spacing} patternUnits="userSpaceOnUse" x={ox} y={oy}>
-            <circle cx={spacing / 2} cy={spacing / 2} r={1.5} fill={GRID} />
+            <circle cx={spacing / 2} cy={spacing / 2} r={1.15} fill={GRID} />
           </pattern>
         </defs>
         <rect width={W} height={H} fill="url(#dot-grid)" />

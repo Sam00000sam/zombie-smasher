@@ -15,7 +15,7 @@ export const ValueExplainer: React.FC = () => {
   const fr = useCurrentFrame();
   const cam = cameraAt(fr);
   const gridIn = prog(fr, 4, 40);
-  const fadeToBlack = prog(fr, TOTAL_FRAMES - 24, 22);
+  const fadeToBlack = prog(fr, TOTAL_FRAMES - 22, 20);
   return (
     <AbsoluteFill style={{ background: "#000" }}>
       <DotGrid camX={cam.x} camY={cam.y} opacity={gridIn} />

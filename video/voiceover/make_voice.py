@@ -21,15 +21,15 @@ OUT_DIR = Path(sys.argv[3]) if len(sys.argv) > 3 else HERE.parent / "public" / "
 # Each line is synthesised separately so pauses are exact and timings are known.
 # pause = silence AFTER the line (seconds).
 LINES = [
-    ("hook", "Why pay hundreds for a brand name, when a cheaper alternative might do the same job?", 0.55),
-    ("compare", "Sometimes, you're paying more for the logo, the marketing, and the prestige. Not necessarily better performance.", 0.55),
-    ("value", "Affordable alternatives can offer impressive quality and functionality, without the premium price tag.", 0.55),
-    ("reality1", "Of course, counterfeits aren't always better.", 0.35),
-    ("reality2", "Genuine products can offer safer materials, warranties, and better quality control.", 0.55),
-    ("end1", "Think about what you're actually paying for.", 0.45),
+    ("hook", "Why pay hundreds for a brand name, when a cheaper alternative might do the same job?", 0.45),
+    ("compare", "Sometimes, you're paying more for the logo, the marketing, and the prestige. Not necessarily better performance.", 0.45),
+    ("value", "Affordable alternatives can offer impressive quality and functionality, without the premium price tag.", 0.45),
+    ("reality1", "Of course, counterfeits aren't always better.", 0.3),
+    ("reality2", "Genuine products can offer safer materials, warranties, and better quality control.", 0.45),
+    ("end1", "Think about what you're actually paying for.", 0.35),
     ("end2", "Buy smart. Not expensive.", 0.0),
 ]
-LEAD_IN = 0.5  # silence before the first word (scene 1 opens on black)
+LEAD_IN = 0.4  # silence before the first word (scene 1 opens on black)
 
 # Kokoro-onnx wants an npz of voice-style tensors; build one from the raw .bin voice packs.
 voices_npz = MODELS / "voices.npz"

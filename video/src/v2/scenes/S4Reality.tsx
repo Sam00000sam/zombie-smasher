@@ -2,45 +2,29 @@ import React from "react";
 import { useCurrentFrame } from "remotion";
 import { prog } from "../anim";
 import { LineArt } from "../components/Draw";
-import { PRODUCTS } from "../components/Products";
-import { Icon } from "../components/Icon";
-import { Hairline, Panel } from "../components/Panel";
-import { At, GlowText, Label } from "../components/Text";
-import { Kicker, SceneLayer } from "../components/SceneLayer";
-import { CUE, f, ORIGIN, SCENES } from "../timing";
-import { FONT, INK, WARN } from "../theme";
+import { PRODUCTS, ICONS } from "../components/Products";
+import { Card, Checkbox } from "../components/Card";
+import { Floor, Halo } from "../components/Glow";
+import { At, GlowText, Label, Pill } from "../components/Text";
+import { SceneLayer } from "../components/SceneLayer";
+import { CUE, f, ORIGIN, SCENES, XFADE } from "../timing";
+import { FONT } from "../theme";
 
-const PX = 700;
-const PY = 280;
-const PW = 1060;
-const PH = 470;
-const COL_X = [1110, 1365, 1620];
-const HEAD_Y = 322;
-const ROW_Y0 = 432;
-const ROW_STEP = 80;
+const CX = 790;
+const CY = 300;
+const CW = 920;
+const CH = 420;
+const COL_X = [1210, 1420, 1610];
+const ROW_Y0 = 446;
+const ROW_STEP = 74;
 
-type Cell = "check" | "varies" | "warn";
-const ROWS: { label: string; cue: () => number; cells: [Cell, Cell, Cell] }[] = [
+type Mark = "check" | "varies" | "warn";
+const ROWS: { label: string; cue: () => number; cells: [Mark, Mark, Mark] }[] = [
   { label: "Safety", cue: () => CUE.safer, cells: ["check", "check", "warn"] },
   { label: "Warranty", cue: () => CUE.warranties, cells: ["check", "check", "warn"] },
   { label: "Quality", cue: () => CUE.qualityControl, cells: ["check", "varies", "warn"] },
   { label: "Reliability", cue: () => CUE.control, cells: ["check", "varies", "warn"] },
 ];
-
-const CellView: React.FC<{ kind: Cell; x: number; y: number; start: number }> = ({ kind, x, y, start }) => {
-  const fr = useCurrentFrame();
-  const p = prog(fr, start, 14);
-  if (kind === "check") return <Icon name="check" x={x} y={y} p={p} size={30} width={2.4} />;
-  if (kind === "warn") return <Icon name="warn" x={x} y={y} p={p} size={28} width={2} color={WARN} />;
-  return (
-    <>
-      <Icon name="varies" x={x - 42} y={y} p={p} size={26} width={2.2} />
-      <div style={{ position: "absolute", left: x - 22, top: y - 10, fontFamily: FONT, fontSize: 15, letterSpacing: "0.2em", color: "#bdbdbd", opacity: prog(fr, start + 4, 10) }}>
-        VARIES
-      </div>
-    </>
-  );
-};
 
 export const S4Reality: React.FC = () => {
   const fr = useCurrentFrame();
@@ -52,40 +36,49 @@ export const S4Reality: React.FC = () => {
     <SceneLayer
       win={SCENES.reality}
       origin={ORIGIN.reality}
-      fadeIn={24}
-      fadeOut={24}
+      fadeIn={XFADE}
+      fadeOut={XFADE}
       world={
         <>
-          {/* the counterfeit: dashed, unreliable copy */}
-          <LineArt parts={PRODUCTS.headphones} p={prog(fr, cf - 4, 30)} x={380} y={500} size={250} dashed width={2.2} opacity={0.9} />
-          <Icon name="warn" x={492} y={384} p={prog(fr, cf + 16, 16)} size={44} width={2.2} color={WARN} />
-          <At x={380} y={624} w={420}>
-            <Label text="Counterfeit" start={cf + 10} color={INK} size={18} weight={600} />
+          {/* the counterfeit: a dashed, unverified copy */}
+          <Halo x={440} y={520} r={230} o={prog(fr, cf - 6, 24) * 0.8} />
+          <LineArt parts={PRODUCTS.headphones} p={prog(fr, cf - 6, 28)} x={440} y={520} size={250} dashed width={2} />
+          <Floor x={440} y={632} w={300} p={prog(fr, cf, 20)} o={0.35} />
+          <At x={440} y={352} w={300}>
+            <Pill text="Counterfeit" start={cf + 8} size={13} />
           </At>
-          <At x={380} y={656} w={420}>
-            <Label text="Copies a brand's logo" start={cf + 18} size={14} spacing="0.22em" />
+          <LineArt parts={ICONS.warn} p={prog(fr, cf + 14, 16)} x={440} y={670} size={34} viewBox={24} width={2} spread={0.3} />
+          <At x={440} y={700} w={360}>
+            <Label text="Unverified copy" start={cf + 18} size={12} color="#9a9a9a" />
           </At>
 
-          {/* checklist panel */}
-          <Panel x={PX} y={PY} w={PW} h={PH} p={prog(fr, r2 - 8, 26)} />
-          {["Genuine", "Legit alternative", "Counterfeit"].map((h, i) => (
-            <At key={h} x={COL_X[i]} y={HEAD_Y} w={250}>
-              <Label text={h} start={r2 + 4 + i * 5} size={14} spacing="0.22em" color={i === 2 ? WARN : INK} weight={600} />
+          {/* checklist clipboard */}
+          <Card x={CX} y={CY} w={CW} h={CH} start={r2 - 10} clip title="CHECKLIST" />
+          {["Genuine", "Legit alt.", "Counterfeit"].map((h, i) => (
+            <At key={h} x={COL_X[i]} y={CY + 34} w={200}>
+              <Label text={h} start={r2 + 2 + i * 4} size={12} color={i === 2 ? "#bdbdbd" : "#ffffff"} />
             </At>
           ))}
-          <Hairline x={PX + 40} y={HEAD_Y + 48} w={PW - 80} p={prog(fr, r2 + 6, 20)} opacity={0.25} />
+          <div style={{ position: "absolute", left: CX + 28, top: CY + 74, width: (CW - 56) * prog(fr, r2 + 6, 18), height: 1, background: "rgba(255,255,255,0.25)" }} />
           {ROWS.map((r, i) => {
             const c = f(r.cue());
             const y = ROW_Y0 + i * ROW_STEP;
             return (
               <React.Fragment key={r.label}>
-                <div style={{ position: "absolute", left: PX + 44, top: y - 12 }}>
-                  <Label text={r.label} start={c} color={INK} size={18} weight={600} spacing="0.24em" />
+                <div style={{ position: "absolute", left: CX + 28, top: y - 9 }}>
+                  <Label text={r.label} start={c - 2} size={14} />
                 </div>
-                {r.cells.map((cell, ci) => (
-                  <CellView key={ci} kind={cell} x={COL_X[ci]} y={y} start={c + 3 + ci * 4} />
+                {r.cells.map((m, ci) => (
+                  <Checkbox key={ci} x={COL_X[ci]} y={y} start={c + ci * 4} mark={m} />
                 ))}
-                {i < ROWS.length - 1 && <Hairline x={PX + 40} y={y + ROW_STEP / 2} w={PW - 80} p={prog(fr, c + 6, 16)} opacity={0.1} />}
+                {r.cells[1] === "varies" && (
+                  <div style={{ position: "absolute", left: COL_X[1] + 22, top: y - 7, fontFamily: FONT, fontSize: 10, fontWeight: 600, letterSpacing: "0.24em", color: "#9a9a9a", opacity: prog(fr, c + 10, 10) }}>
+                    VARIES
+                  </div>
+                )}
+                {i < ROWS.length - 1 && (
+                  <div style={{ position: "absolute", left: CX + 28, top: y + ROW_STEP / 2, width: (CW - 56) * prog(fr, c + 4, 14), height: 1, background: "rgba(255,255,255,0.08)" }} />
+                )}
               </React.Fragment>
             );
           })}
@@ -93,12 +86,11 @@ export const S4Reality: React.FC = () => {
       }
       screen={
         <>
-          <Kicker n="04" title="The reality check" start={SCENES.reality.from + 10} out={SCENES.reality.to - 24} />
-          <At x={960} y={110} w={1700}>
-            <GlowText text="COUNTERFEITS AREN'T ALWAYS BETTER." start={r1 + 2} size={46} stagger={0.7} />
+          <At x={960} y={104} w={1700}>
+            <GlowText text="COUNTERFEITS AREN'T ALWAYS BETTER." start={r1 + 2} size={34} stagger={0.55} />
           </At>
-          <At x={960} y={182} w={1600}>
-            <Label text="A legitimate affordable alternative is not a counterfeit" start={cf + 22} size={16} />
+          <At x={960} y={162} w={1600}>
+            <Label text="A legitimate alternative is not a counterfeit" start={cf + 20} size={13} color="#a0a0a0" />
           </At>
         </>
       }
