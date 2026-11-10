@@ -63,7 +63,7 @@ export const TOTAL_FRAMES = SCENES.end.to;
 export const XFADE = f(2 * X);
 export const FINAL_TITLE = f(CUE.speechEnd - 0.1);
 
-const mv = (t: number, dx: number, dy: number) => ({ at: f(t - X), dur: f(2 * X) + 2, dx, dy });
+const mv = (t: number, dx: number, dy: number) => ({ at: f(t - X) - 3, dur: f(2 * X) + 8, dx, dy });
 export const CAMERA_MOVES = [mv(B.b1, 0, 500), mv(B.b3, 480, 0), mv(B.b4, 0, 500), mv(B.b5, -480, 0)];
 export const ORIGIN = {
   hook: { x: 0, y: 0 },
