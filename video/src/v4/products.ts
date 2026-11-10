@@ -4,6 +4,19 @@ import { P as V3 } from "../v3/products";
 /** Extra line art for the "label" video (200×200 boxes). */
 export const P: Record<string, Part[]> = {
   ...V3,
+  handbag: [
+    { t: "path", d: "M40 92 Q38 86 44 86 L156 86 Q162 86 160 92 L169 166 Q170 178 158 178 L42 178 Q30 178 31 166 Z" },
+    { t: "path", d: "M68 86 C68 32 132 32 132 86" },
+    { t: "path", d: "M79 86 C79 46 121 46 121 86" },
+    { t: "path", d: "M44 89 Q100 136 156 89" },
+    { t: "path", d: "M53 96 Q100 128 147 96" },
+    { t: "rect", x: 91, y: 112, w: 18, h: 16, rx: 3 },
+    { t: "circle", cx: 100, cy: 120, r: 2.6 },
+    { t: "line", x1: 50, y1: 104, x2: 44, y2: 166 },
+    { t: "line", x1: 150, y1: 104, x2: 156, y2: 166 },
+    { t: "line", x1: 54, y1: 183, x2: 64, y2: 183 },
+    { t: "line", x1: 136, y1: 183, x2: 146, y2: 183 },
+  ],
   tote: [
     { t: "path", d: "M50 82 L150 82 L162 178 L38 178 Z" },
     { t: "path", d: "M72 82 C72 34 94 34 94 82" },

@@ -64,13 +64,13 @@ export const XFADE = f(2 * X);
 export const FINAL_TITLE = f(CUE.speechEnd - 0.1);
 
 const mv = (t: number, dx: number, dy: number) => ({ at: f(t - X) - 3, dur: f(2 * X) + 8, dx, dy });
-export const CAMERA_MOVES = [mv(B.b1, 0, 500), mv(B.b3, 480, 0), mv(B.b4, 0, 500), mv(B.b5, -480, 0)];
+export const CAMERA_MOVES = [mv(B.b1, 0, 510), mv(B.b3, 480, 0), mv(B.b4, 0, 510), mv(B.b5, -480, 0)];
 export const ORIGIN = {
   hook: { x: 0, y: 0 },
-  tower: { x: 0, y: 500 },
-  trend: { x: 480, y: 500 },
-  save: { x: 480, y: 1000 },
-  end: { x: 0, y: 1000 },
+  tower: { x: 0, y: 510 },
+  trend: { x: 480, y: 510 },
+  save: { x: 480, y: 1020 },
+  end: { x: 0, y: 1020 },
 };
 
 /** Camera punch-ins on key words (seconds). */

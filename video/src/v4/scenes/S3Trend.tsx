@@ -53,11 +53,11 @@ export const S3Trend: React.FC = () => {
         <>
           {/* trends rise and fall */}
           <div style={{ position: "absolute", inset: 0, opacity: 1 - chartOut }}>
-            <Card x={KX} y={KY} w={KW} h={KH} start={SCENES.trend.from + 6} title="TREND" />
+            <Card x={KX} y={KY} w={KW} h={KH} start={SCENES.trend.from + 6} title="TREND" titleSize={16} />
             <div style={{ position: "absolute", left: KX + 50, top: KY + 60, width: PW, height: PH }}>
               <ChartLine d={path} at={hype} w={PW} h={PH} start={t0} dur={f(1.6)} />
             </div>
-            <div style={{ position: "absolute", left: KX + 50, top: KY + 60 + PH + 20, width: PW, display: "flex", justifyContent: "space-between", fontFamily: FONT, fontSize: 11, fontWeight: 600, letterSpacing: "0.1em", color: "#8f8f8f", opacity: p01(fr, t0, 14) }}>
+            <div style={{ position: "absolute", left: KX + 50, top: KY + 60 + PH + 20, width: PW, display: "flex", justifyContent: "space-between", fontFamily: FONT, fontSize: 14, fontWeight: 600, letterSpacing: "0.1em", color: "#9a9a9a", opacity: p01(fr, t0, 14) }}>
               {MONTHS.map((m, i) => (
                 <span key={i}>{m}</span>
               ))}
@@ -67,7 +67,7 @@ export const S3Trend: React.FC = () => {
           {/* a month's rent = one bag */}
           <div style={{ position: "absolute", inset: 0, opacity: 1 - rentOut }}>
             <Rise at={rent} dur={20}>
-              <Card x={640} y={300} w={240} h={260} start={rent} title="RENT" />
+              <Card x={640} y={300} w={240} h={260} start={rent} title="RENT" titleSize={16} />
               <LineArt parts={P.house} p={p01(fr, rent + 4, 24)} x={760} y={410} size={120} width={2.2} />
               <Place x={760} y={480} w={240}>
                 <div style={{ fontFamily: FONT, fontSize: 32, fontWeight: 700, color: INK }}>$1,200</div>
@@ -79,7 +79,7 @@ export const S3Trend: React.FC = () => {
               </Place>
             </Rise>
             <Rise at={rent + 6} dur={20}>
-              <Card x={1040} y={300} w={240} h={260} start={rent + 6} title="ONE BAG" />
+              <Card x={1040} y={300} w={240} h={260} start={rent + 6} title="ONE BAG" titleSize={16} />
               <Place x={1160} y={480} w={240}>
                 <div style={{ fontFamily: FONT, fontSize: 32, fontWeight: 700, color: INK }}>$1,200</div>
               </Place>

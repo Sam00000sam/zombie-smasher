@@ -15,8 +15,9 @@ export const Card: React.FC<{
   clip?: boolean;
   radius?: number;
   opacity?: number;
+  titleSize?: number;
   children?: React.ReactNode;
-}> = ({ x, y, w, h, start, title, clip = false, radius = 18, opacity = 1, children }) => {
+}> = ({ x, y, w, h, start, title, clip = false, radius = 18, opacity = 1, titleSize = 13, children }) => {
   const frame = useCurrentFrame();
   const p = prog(frame, start, 24);
   if (p <= 0) return null;
@@ -38,7 +39,7 @@ export const Card: React.FC<{
             left: 28,
             top: clip ? 34 : 20,
             fontFamily: FONT,
-            fontSize: 13,
+            fontSize: titleSize,
             fontWeight: 600,
             letterSpacing: "0.26em",
             color: INK,

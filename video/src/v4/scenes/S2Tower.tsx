@@ -14,7 +14,7 @@ const GX = 640;
 const CX = 1260; // price stack, later the copy
 const Y = 520;
 const BASE = 720;
-const TW = 280;
+const TW = 300;
 const BLOCKS = [
   { k: "product", label: "Product", amt: 90, h: 52, icon: "handbag", cue: () => CUE.product },
   { k: "logo", label: "Logo", amt: 520, h: 120, icon: "crest", cue: () => CUE.logo },
@@ -103,15 +103,15 @@ export const S2Tower: React.FC = () => {
                       <LineArt parts={P[b.icon]} p={p01(fr, c, 18)} x={22} y={22} size={44} width={1.8} glow={false} />
                     </div>
                   )}
-                  <span style={{ fontSize: 14, fontWeight: 700, letterSpacing: "0.24em" }}>{b.label.toUpperCase()}</span>
+                  <span style={{ fontSize: 17, fontWeight: 700, letterSpacing: "0.22em" }}>{b.label.toUpperCase()}</span>
                 </div>
-                <span style={{ fontSize: 20, fontWeight: 700 }}>${b.amt}</span>
+                <span style={{ fontSize: 24, fontWeight: 700 }}>${b.amt}</span>
               </div>
             );
           })}
           <div style={{ position: "absolute", left: CX - TW / 2, top: BASE + 2, width: TW, height: 2, background: INK, opacity: p01(fr, f(CUE.product) - 6, 12) * (1 - productOut) }} />
           <div style={{ position: "absolute", left: CX - 150, top: stack[3].top - 70, width: 300, textAlign: "center", opacity: total, fontFamily: FONT, color: INK }}>
-            <Tiny text="Total" size={12} />
+            <Tiny text="Total" size={15} />
             <div style={{ fontSize: 38, fontWeight: 700, textShadow: "0 0 14px rgba(255,255,255,0.5)" }}>$1,200</div>
           </div>
 
@@ -136,7 +136,7 @@ export const S2Tower: React.FC = () => {
               <div style={{ textAlign: "center", fontFamily: FONT, color: INK }}>
                 <div style={{ fontSize: 64, fontWeight: 300, lineHeight: 1, textShadow: "0 0 18px rgba(255,255,255,0.6)" }}>≈</div>
                 <div style={{ marginTop: 10 }}>
-                  <Tiny text="Almost identical" size={12} />
+                  <Tiny text="Almost identical" size={16} />
                 </div>
               </div>
             </Place>
@@ -150,10 +150,10 @@ export const S2Tower: React.FC = () => {
             ].map((b, i) => (
               <div key={b.label} style={{ position: "absolute", left: 650, top: b.y, display: "flex", alignItems: "center", gap: 18 }}>
                 <div style={{ width: 110, textAlign: "right" }}>
-                  <Tiny text={b.label} size={12} />
+                  <Tiny text={b.label} size={15} />
                 </div>
                 <div style={{ width: b.w * p01(fr, frac + i * 6, 24), height: 10, borderRadius: 5, background: INK, boxShadow: "0 0 12px rgba(255,255,255,0.6)" }} />
-                <div style={{ fontFamily: FONT, fontSize: 20, fontWeight: 700, color: INK, opacity: p01(fr, frac + 14 + i * 6, 12) }}>${b.v.toLocaleString("en-US")}</div>
+                <div style={{ fontFamily: FONT, fontSize: 24, fontWeight: 700, color: INK, opacity: p01(fr, frac + 14 + i * 6, 12) }}>${b.v.toLocaleString("en-US")}</div>
               </div>
             ))}
           </Rise>

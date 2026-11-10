@@ -38,7 +38,7 @@ export const S4Save: React.FC = () => {
       world={
         <>
           <Rise at={s0 + 6} dur={20}>
-            <Card x={830} y={180} w={260} h={120} start={s0 + 6} title="YOU SAVED" />
+            <Card x={830} y={180} w={260} h={120} start={s0 + 6} title="YOU SAVED" titleSize={16} />
             <div style={{ position: "absolute", left: 856, top: 222, fontFamily: FONT, fontSize: 44, fontWeight: 700, color: INK, textShadow: "0 0 14px rgba(255,255,255,0.5)" }}>
               ${Math.round(1110 * p01(fr, sv - 6, 24)).toLocaleString("en-US")}
             </div>
@@ -46,7 +46,7 @@ export const S4Save: React.FC = () => {
 
           {/* one real bag … */}
           <div style={{ position: "absolute", inset: 0, opacity: lerp(1, 0.4, dimReal) }}>
-            <Card x={420} y={SY} w={SW + 20} h={SH} start={s0 + 10} title="REAL" />
+            <Card x={420} y={SY} w={SW + 20} h={SH} start={s0 + 10} title="REAL" titleSize={16} />
             <LineArt parts={P.handbag} p={p01(fr, s0 + 14, 24)} x={510} y={SY + 112} size={120} width={2.2} />
           </div>
           <Rise at={inst}>
@@ -67,8 +67,8 @@ export const S4Save: React.FC = () => {
             return (
               <React.Fragment key={k}>
                 <div style={{ position: "absolute", left: x, top: SY, width: SW, height: SH, borderRadius: 16, border: `2px solid ${INK}`, background: "#000", opacity: lerp(0.22, 1, on) * p01(fr, s0 + 12 + i * 2, 16), boxShadow: `0 0 ${8 + on * 16}px rgba(255,255,255,${0.12 + on * 0.35})` }}>
-                  <div style={{ position: "absolute", left: 14, top: 12, fontFamily: FONT, fontSize: 11, fontWeight: 700, letterSpacing: "0.26em", color: INK }}>{`COPY 0${i + 1}`}</div>
-                  <div style={{ position: "absolute", right: 14, bottom: 12, fontFamily: FONT, fontSize: 15, fontWeight: 700, color: INK, opacity: on }}>$90</div>
+                  <div style={{ position: "absolute", left: 14, top: 12, fontFamily: FONT, fontSize: 14, fontWeight: 700, letterSpacing: "0.22em", color: INK }}>{`COPY 0${i + 1}`}</div>
+                  <div style={{ position: "absolute", right: 14, bottom: 12, fontFamily: FONT, fontSize: 19, fontWeight: 700, color: INK, opacity: on }}>$90</div>
                 </div>
                 <Halo x={x + SW / 2} y={SY + SH / 2} r={130} o={on * 0.6} />
                 <LineArt parts={P[k]} p={on} x={x + SW / 2} y={SY + 108} size={112} width={2.2} />

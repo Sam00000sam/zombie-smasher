@@ -10,11 +10,12 @@ import { S2Tower } from "./scenes/S2Tower";
 import { S3Trend } from "./scenes/S3Trend";
 import { S4Save } from "./scenes/S4Save";
 import { S5End } from "./scenes/S5End";
-import { EMPHASIS, FPS, PHRASES, TOTAL_FRAMES, WORDS } from "./timing";
+import { CUE, EMPHASIS, f, FPS, PHRASES, WORDS } from "./timing";
+import { FONT } from "../v2/theme";
 
 const CUES = buildCues(WORDS, PHRASES, EMPHASIS, FPS);
 
-/** "Product or Label?" — calm, smooth version. Narration is the only audio (no music, no SFX). */
+/** "Product or Label?" — calm, smooth version; the last frame matches the first so it loops. Narration is the only audio (no music, no SFX). */
 export const LabelOrProduct: React.FC = () => {
   const fr = useCurrentFrame();
   const cam = cameraAt(fr);
@@ -34,7 +35,10 @@ export const LabelOrProduct: React.FC = () => {
       </AbsoluteFill>
       <AbsoluteFill style={{ background: "radial-gradient(ellipse 72% 68% at 50% 48%, transparent 55%, rgba(0,0,0,0.8) 100%)", pointerEvents: "none" }} />
       <Captions cues={CUES} fps={FPS} />
-      <AbsoluteFill style={{ background: "#000", opacity: prog(fr, TOTAL_FRAMES - 30, 28) }} />
+      {/* small, honest note: the prices are examples */}
+      <div style={{ position: "absolute", right: 48, top: 40, fontFamily: FONT, fontSize: 14, fontWeight: 600, letterSpacing: "0.24em", color: "#8a8a8a", opacity: prog(fr, f(CUE.price) - 4, 16) * (1 - prog(fr, f(CUE.speechEnd) + 6, 14)) }}>
+        ILLUSTRATIVE PRICES
+      </div>
       <Audio src={staticFile("voice/label-narration.wav")} />
     </AbsoluteFill>
   );
