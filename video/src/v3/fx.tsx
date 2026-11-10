@@ -323,7 +323,7 @@ export const Counter: React.FC<{ value: number; start: number; dur?: number; pre
   return (
     <span style={{ fontFamily: FONT, fontWeight: 700, fontSize: size, color: INK, fontVariantNumeric: "tabular-nums", textShadow: glowText, opacity: clamp01((fr - start) / 4) }}>
       {prefix}
-      {n}
+      {n.toLocaleString("en-US")}
       {suffix}
     </span>
   );

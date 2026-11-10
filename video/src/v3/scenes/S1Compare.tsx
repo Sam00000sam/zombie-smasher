@@ -9,6 +9,7 @@ import { SceneLayer } from "../../v2/components/SceneLayer";
 import { FONT, INK } from "../../v2/theme";
 import { cameraAt } from "../camera";
 import { ArmsPawn, BrowserWindow, CheckPill, Cursor, Notice, Ripple, Spark, Spotlight, Stars } from "../fx2";
+import { Counter } from "../fx";
 import { P } from "../products";
 import { CUE, f, ORIGIN, SCENES, XFADE } from "../timing";
 
@@ -120,6 +121,15 @@ export const S1Compare: React.FC = () => {
           <BrowserWindow x={WOFF.x} y={WOFF.y} w={WW} h={WH} start={but} url="official-store.com">
             <ShopBody kind="sneakerGenuine" price={240} priceFrom={but + 8} pulseAt={price} stars={5} starsAt={but + 10} />
           </BrowserWindow>
+
+          {/* opening mid-action: orders racing in, like the reference's "+$1,000 NEW SALE" stack */}
+          <div style={{ position: "absolute", left: WFAKE.x + 24, top: WFAKE.y - 58, display: "flex", alignItems: "baseline", gap: 12, opacity: 1 - prog(fr, but + 4, 10) }}>
+            <Label text="Sold today" start={-20} size={12} />
+            <Counter value={12480} start={-30} dur={f(2.6)} size={34} />
+          </div>
+          {[0, 1, 2, 3].map((i) => (
+            <Notice key={i} x={1386} y={262 + i * 64} text={`+1 order · ${["London", "Paris", "Dubai", "Berlin"][i]}`} start={-8 + i * 13} out={but - 2 + i} w={262} />
+          ))}
 
           {/* the viewer */}
           <Floor x={PAWN.x} y={PAWN.floor} w={260} p={prog(fr, but, 16)} o={0.45} />
