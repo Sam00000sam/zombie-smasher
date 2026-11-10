@@ -14,12 +14,14 @@ export const SceneLayer: React.FC<{
   fadeIn?: number;
   fadeOut?: number;
   push?: number;
+  /** camera path; defaults to the v2 explainer's */
+  camera?: (frame: number) => { x: number; y: number };
   world: React.ReactNode;
   screen?: React.ReactNode;
-}> = ({ win, origin, fadeIn = 0, fadeOut = 0, push = 0.035, world, screen }) => {
+}> = ({ win, origin, fadeIn = 0, fadeOut = 0, push = 0.035, camera = cameraAt, world, screen }) => {
   const frame = useCurrentFrame();
   if (frame < win.from || frame >= win.to) return null;
-  const cam = cameraAt(frame);
+  const cam = camera(frame);
   const fi = fadeIn ? prog(frame, win.from, fadeIn) : 1;
   const fo = fadeOut ? 1 - prog(frame, win.to - fadeOut, fadeOut) : 1;
   const o = Math.min(fi, fo);

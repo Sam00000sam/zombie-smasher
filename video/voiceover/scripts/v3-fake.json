@@ -1,0 +1,13 @@
+{
+  "wav": "public/voice/fake-narration.wav",
+  "json": "src/v3/narration.json",
+  "lead_in": 0.35,
+  "tail": 2.2,
+  "lines": [
+    ["hook", "Fake products might not be perfect, but sometimes they offer surprising advantages over the real thing.", 0.4],
+    ["price", "The biggest advantage is price. You can often get a similar look and basic function, without spending nearly as much.", 0.4],
+    ["choice", "Fake products can also give you access to styles and designs that might otherwise be too expensive, or difficult to find.", 0.4],
+    ["everyday", "For some everyday items, the cheaper alternative may do the job well enough, especially when premium features aren't important.", 0.4],
+    ["end", "Of course, quality and safety still matter. But when the risks are low, and the price difference is huge, fake can sometimes make more sense.", 0.0]
+  ]
+}

@@ -1,13 +1,15 @@
 """Transcribe the narration back with Whisper (QA) and add word-level timings to narration.json."""
-import json, re
+import json, re, sys
 from pathlib import Path
 import numpy as np
 import soundfile as sf
 from faster_whisper import WhisperModel
 
+# Usage: .venv/bin/python align.py <script.json>   (same script file passed to make_voice.py)
 HERE = Path(__file__).parent
-wav = HERE.parent / "public" / "voice" / "narration.wav"
-meta_path = HERE.parent / "src" / "v2" / "narration.json"
+cfg = json.loads(Path(sys.argv[1]).read_text())
+wav = HERE.parent / cfg["wav"]
+meta_path = HERE.parent / cfg["json"]
 meta = json.loads(meta_path.read_text())
 
 model = WhisperModel("small.en", device="cpu", compute_type="int8")
