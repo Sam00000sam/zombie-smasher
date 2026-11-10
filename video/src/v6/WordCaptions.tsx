@@ -9,7 +9,8 @@ const clean = (w: string) => w.replace(/[.,!?;:]+$/g, "").toUpperCase();
 
 /** One-word-at-a-time captions (the reference style): big, bold, a quick pop on each word, gold on key words. */
 type Word = { w: string; start: number; end: number };
-export const WordCaptions: React.FC<{ words?: Word[]; emphasis?: string[] }> = ({ words: WORDS = WORDS60, emphasis: EMPHASIS = EMPH60 }) => {
+/** top: caption line position; cx: horizontal centre (shift left to clear TikTok's side buttons). */
+export const WordCaptions: React.FC<{ words?: Word[]; emphasis?: string[]; top?: number; cx?: number }> = ({ words: WORDS = WORDS60, emphasis: EMPHASIS = EMPH60, top = 1430, cx = 540 }) => {
   const fr = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = fr / fps;
@@ -32,7 +33,7 @@ export const WordCaptions: React.FC<{ words?: Word[]; emphasis?: string[] }> = (
   const txt = clean(w.w);
   const size = txt.length > 9 ? 104 : 124;
   return (
-    <div style={{ position: "absolute", left: 0, right: 0, top: 1430, display: "flex", justifyContent: "center", pointerEvents: "none" }}>
+    <div style={{ position: "absolute", left: 0, right: 0, top, paddingRight: Math.max(0, (540 - cx) * 2), paddingLeft: Math.max(0, (cx - 540) * 2), display: "flex", justifyContent: "center", pointerEvents: "none" }}>
       <div
         style={{
           fontFamily: FONT,

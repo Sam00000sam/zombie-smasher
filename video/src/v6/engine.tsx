@@ -10,9 +10,17 @@ import { FONT } from "../v2/theme";
  */
 export const W = 1080;
 export const H = 1920;
-export const F = 1180; // focal length (px)
-export const CX = W / 2;
-export const CY = 880; // horizon sits a little above centre
+/**
+ * The lens: focal length (px) and the screen point the camera looks through. Each composition sets it
+ * at the top of its render (setView) — e.g. a wider, left-shifted lens keeps a TikTok cut clear of the
+ * app's buttons and caption overlay. Defaults are the original framing.
+ */
+export const VIEW = { f: 1180, cx: W / 2, cy: 880 };
+export const setView = (v: Partial<typeof VIEW>) => {
+  VIEW.f = v.f ?? 1180;
+  VIEW.cx = v.cx ?? W / 2;
+  VIEW.cy = v.cy ?? 880;
+};
 
 export const GOLD = "#ffd04d";
 export const RED = "#ff4a5a";
@@ -39,7 +47,7 @@ export const toCam = (c: Cam, p: V3): V3 => {
 export const NEAR = 40;
 export const proj = (c: Cam, p: V3) => {
   const [x, y, z] = toCam(c, p);
-  return { x: CX + (F * x) / z, y: CY - (F * y) / z, s: F / z, z };
+  return { x: VIEW.cx + (VIEW.f * x) / z, y: VIEW.cy - (VIEW.f * y) / z, s: VIEW.f / z, z };
 };
 /** Depth-of-field blur (screen px) for something at camera depth z. */
 /** Things the camera flies past fade out before they can fill the lens. */
@@ -57,7 +65,7 @@ const camSeg = (c: Cam, a: V3, b: V3) => {
     const t = (NEAR - B[2]) / (A[2] - B[2]);
     B = [B[0] + (A[0] - B[0]) * t, B[1] + (A[1] - B[1]) * t, NEAR];
   }
-  const s = (q: V3) => ({ x: CX + (F * q[0]) / q[2], y: CY - (F * q[1]) / q[2], z: q[2] });
+  const s = (q: V3) => ({ x: VIEW.cx + (VIEW.f * q[0]) / q[2], y: VIEW.cy - (VIEW.f * q[1]) / q[2], z: q[2] });
   return [s(A), s(B)] as const;
 };
 
@@ -98,7 +106,7 @@ export const floor = (c: Cam, circles: V3[] = []): Item => {
         ok = false;
         break;
       }
-      pts.push({ x: CX + (F * q[0]) / q[2], y: CY - (F * q[1]) / q[2] });
+      pts.push({ x: VIEW.cx + (VIEW.f * q[0]) / q[2], y: VIEW.cy - (VIEW.f * q[1]) / q[2] });
     }
     // fade with distance like the grid, so far-off rings don't sit on the horizon
     const fadeA = Math.max(0, Math.min(1, 1.25 - toCam(c, cc)[2] / 4800));
@@ -361,7 +369,7 @@ export const spot = (c: Cam, key: string, o: { p: V3; r: number; color?: string;
   op *= nearFade(zc);
   const apex = toCam(c, [o.p[0], o.top ?? 1500, o.p[2]]);
   if (apex[2] < NEAR) return null;
-  const s = (q: V3) => ({ x: CX + (F * q[0]) / q[2], y: CY - (F * q[1]) / q[2] });
+  const s = (q: V3) => ({ x: VIEW.cx + (VIEW.f * q[0]) / q[2], y: VIEW.cy - (VIEW.f * q[1]) / q[2] });
   const ring: { x: number; y: number }[] = [];
   for (let i = 0; i < 36; i++) {
     const t = (i / 36) * Math.PI * 2;
@@ -412,8 +420,8 @@ export const burst = (c: Cam, key: string, o: { p: V3; t: number; color?: string
     const q = toCam(c, [o.p[0] + d[0] * len * e, o.p[1] + d[1] * len * e - 160 * o.t * o.t, o.p[2] + d[2] * len * e]);
     if (q[2] < NEAR) continue;
     zSum += q[2];
-    const r = Math.max(1.2, (F / q[2]) * 7 * (1 - o.t));
-    dots.push(<circle key={i} cx={CX + (F * q[0]) / q[2]} cy={CY - (F * q[1]) / q[2]} r={r} fill={i % 3 ? col : "#fff"} />);
+    const r = Math.max(1.2, (VIEW.f / q[2]) * 7 * (1 - o.t));
+    dots.push(<circle key={i} cx={VIEW.cx + (VIEW.f * q[0]) / q[2]} cy={VIEW.cy - (VIEW.f * q[1]) / q[2]} r={r} fill={i % 3 ? col : "#fff"} />);
   }
   if (!dots.length) return null;
   return {

@@ -6,7 +6,7 @@ import { io, p01 } from "../v5/smooth";
 import { P } from "../v5/products";
 import { CUE, f } from "../v5/timing";
 import { camAt, LOOP_Z } from "./camera";
-import { card, Cam, floor, GOLD, GREEN, INK, Item, line3, motes, neon, pawn, RED, V3, wireBox } from "./engine";
+import { setView, card, Cam, floor, GOLD, GREEN, INK, Item, line3, motes, neon, pawn, RED, V3, wireBox } from "./engine";
 import { WordCaptions } from "./WordCaptions";
 import { FONT } from "../v2/theme";
 
@@ -451,6 +451,7 @@ const world = (c: Cam, fr: number): (Item | null)[] => {
 /** "Product or Label?" — 60 s vertical cut in the neon-3D style of the supplied TikTok references. */
 export const NeonLabel: React.FC = () => {
   const fr = useCurrentFrame();
+  setView({}); // original framing
   const c = camAt(fr);
   const items = [floor(c, [[0, 380, ZC], [0, 380, ZG]]), ...motes(c, fr), ...(world(c, fr).filter(Boolean) as Item[])];
   items.sort((a, b) => b.z - a.z);

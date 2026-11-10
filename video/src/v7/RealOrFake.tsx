@@ -4,7 +4,7 @@ import { lerp } from "../v2/anim";
 import { LineArt } from "../v2/components/Draw";
 import { FONT } from "../v2/theme";
 import { io, p01 } from "../v5/smooth";
-import { burst, Cam, card, floor, GOLD, GREEN, INK, Item, line3, motes, neon, Panel, pawn, RED, spot, V3, wireBox } from "../v6/engine";
+import { burst, Cam, card, setView, floor, GOLD, GREEN, INK, Item, line3, motes, neon, Panel, pawn, RED, spot, V3, wireBox } from "../v6/engine";
 import { WordCaptions } from "../v6/WordCaptions";
 import { camAt, camMotion, LOOP_Z, Z } from "./camera";
 import { ART } from "./icons";
@@ -50,7 +50,7 @@ const opening = (c: Cam, fr: number, dz: number, op: number, win: number, pulse:
   const dim = lerp(1, 0.4, win);
   it.push(
     card(c, key + "title", {
-      p: [0, 850, z],
+      p: [0, 815, z],
       w: 760,
       h: 130,
       opacity: op,
@@ -138,7 +138,7 @@ const world = (c: Cam, fr: number): (Item | null)[] => {
     const sc = p01(fr, f(CUE.scared), 6) * (1 - p01(fr, f(CUE.scared) + 18, 8));
     const jit = Math.sin(fr * 2.2) * 7 * sc;
     it.push(card(c, "C-bag", { p: [jit, 300, z], w: 260, h: 260, opacity: CO, children: <Center gap={0}><Art kind="handbag" color={INK} size={220} p={p01(fr, f(9.0), 22)} /><T s={22} c={RED} ls="0.2em">$3,000</T></Center> }));
-    it.push(card(c, "C-scared", { p: [0, 900, z - 160], w: 470, h: 70, opacity: CO * p01(fr, f(CUE.scared) - 2, 10), children: <Chip text="TOO NICE TO USE" col={RED} /> }));
+    it.push(card(c, "C-scared", { p: [0, 790, z - 160], w: 470, h: 70, opacity: CO * p01(fr, f(CUE.scared) - 2, 10), children: <Chip text="TOO NICE TO USE" col={RED} /> }));
     // the doors swing shut on "closet"
     const shut = io(p01(fr, f(CUE.closet) - 10, 18));
     const a = lerp(1.25, 0, shut);
@@ -156,11 +156,11 @@ const world = (c: Cam, fr: number): (Item | null)[] => {
   const DO = fade(fr, f(11.3), f(17.35), 14, 9);
   if (DO > 0) {
     const z = Z.D;
-    it.push(card(c, "D-title", { p: [0, 960, z], w: 680, h: 96, opacity: DO * lerp(0.35, 1, p01(fr, f(CUE.cost) - 4, 10)), children: <Center><T s={58} c={GOLD} w={800} ls="0.14em" glow>COST PER WEAR</T></Center> }));
+    it.push(card(c, "D-title", { p: [0, 885, z], w: 680, h: 96, opacity: DO * lerp(0.35, 1, p01(fr, f(CUE.cost) - 4, 10)) * (1 - p01(fr, f(CUE.less) - 6, 10)), children: <Center><T s={58} c={GOLD} w={800} ls="0.14em" glow>COST PER WEAR</T></Center> }));
     const n = Math.round(365 * p01(fr, f(CUE.every), f(CUE.year + 0.45) - f(CUE.every)));
     it.push(
       card(c, "D-cal", {
-        p: [0, 640, z],
+        p: [0, 600, z],
         w: 600,
         h: 450,
         opacity: DO,
@@ -408,7 +408,7 @@ const world = (c: Cam, fr: number): (Item | null)[] => {
     it.push(card(c, "H-inv", { p: [210, 900, z], w: 380, h: 70, opacity: HO * p01(fr, inv + 14, 10) * lerp(1, 0.35, p01(fr, rs, 10)), children: <Center><T s={40} c={GOLD} ls="0.12em" glow>"INVESTMENT"</T></Center> }));
     it.push(line3(c, "H-down", { pts: down, p: p01(fr, rs, 26), color: RED, width: 7, opacity: HO, dot: true }));
     it.push(card(c, "H-resale", { p: [250, 100, z - 10], w: 260, h: 60, opacity: HO * p01(fr, rs + 20, 10), children: <Center><T s={30} c={RED} ls="0.2em" glow>RESALE ↓</T></Center> }));
-    it.push(card(c, "H-less", { p: [0, 1010, z - 80], w: 520, h: 80, opacity: HO * p01(fr, f(CUE.less2) - 4, 10), children: <Pill text="LESS THAN YOU PAID" bg={RED} fg="#fff" s={30} /> }));
+    it.push(card(c, "H-less", { p: [-150, 30, z - 80], w: 460, h: 76, opacity: HO * p01(fr, f(CUE.less2) - 4, 10), children: <Pill text="LESS THAN YOU PAID" bg={RED} fg="#fff" s={30} /> }));
   }
 
   /* ---- I: nobody sees the receipt ---------------------------------------- */
@@ -484,9 +484,18 @@ const world = (c: Cam, fr: number): (Item | null)[] => {
   return it;
 };
 
+/**
+ * TikTok safe area: the app covers ~150 px at the top (tabs), ~140 px on the right (like / comment /
+ * share) and ~460 px at the bottom (username, caption, sound). A wider lens centred in what's left keeps
+ * every card, figure and caption clear of the overlay.
+ */
+const TIKTOK_VIEW = { f: 1010, cx: 500, cy: 770 };
+const SAFE_CX = 500;
+
 /** "Real or Fake?" — vertical neon-3D explainer, narration-led, loops seamlessly. */
 export const RealOrFake: React.FC = () => {
   const fr = useCurrentFrame();
+  setView(TIKTOK_VIEW);
   const c = camAt(fr);
   const { roll, speed } = camMotion(fr);
   const items = [floor(c, [[0, 380, Z.F], [0, 300, Z.I]]), ...motes(c, fr, LOOP_Z, TOTAL_FRAMES), ...(world(c, fr).filter(Boolean) as Item[])];
@@ -496,9 +505,9 @@ export const RealOrFake: React.FC = () => {
     <AbsoluteFill style={{ background: "#000", overflow: "hidden" }}>
       <AbsoluteFill style={{ background: "radial-gradient(ellipse 85% 60% at 50% 42%, #0e0e14 0%, #000 72%)" }} />
       <AbsoluteFill style={{ transform: `rotate(${roll}rad) scale(${1 + Math.abs(roll) * 0.9})`, filter: mb > 0.2 ? `blur(${mb.toFixed(2)}px)` : undefined }}>{items.map((i) => i.node)}</AbsoluteFill>
-      <AbsoluteFill style={{ background: "radial-gradient(ellipse 78% 70% at 50% 45%, transparent 55%, rgba(0,0,0,0.78) 100%)", pointerEvents: "none" }} />
-      <WordCaptions words={WORDS} emphasis={EMPHASIS} />
-      <div style={{ position: "absolute", left: 0, right: 0, top: 70, textAlign: "center", fontFamily: FONT, fontSize: 22, fontWeight: 600, letterSpacing: "0.26em", color: "rgba(255,255,255,0.45)", opacity: p01(fr, f(4.2), 14) * (1 - p01(fr, f(CUE.speechEnd) - 30, 14)) }}>ILLUSTRATIVE PRICES</div>
+      <AbsoluteFill style={{ background: "radial-gradient(ellipse 78% 70% at 46% 41%, transparent 55%, rgba(0,0,0,0.78) 100%)", pointerEvents: "none" }} />
+      <WordCaptions words={WORDS} emphasis={EMPHASIS} top={1255} cx={SAFE_CX} />
+      <div style={{ position: "absolute", left: 0, right: (540 - SAFE_CX) * 2, top: 172, textAlign: "center", fontFamily: FONT, fontSize: 22, fontWeight: 600, letterSpacing: "0.26em", color: "rgba(255,255,255,0.45)", opacity: p01(fr, f(4.2), 14) * (1 - p01(fr, f(CUE.speechEnd) - 30, 14)) }}>ILLUSTRATIVE PRICES</div>
       <Audio src={staticFile("voice/realorfake-narration.wav")} />
     </AbsoluteFill>
   );
