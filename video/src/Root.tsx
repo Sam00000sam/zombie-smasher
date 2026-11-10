@@ -10,6 +10,7 @@ import { LabelOrProduct } from "./v4/Explainer";
 import { TOTAL_FRAMES as LABEL_FRAMES } from "./v4/timing";
 import { LabelOrProduct60 } from "./v5/Explainer";
 import { TOTAL_FRAMES as LABEL60_FRAMES } from "./v5/timing";
+import { NeonLabel } from "./v6/Neon";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -54,6 +55,7 @@ export const RemotionRoot: React.FC = () => {
         width={WIDTH}
         height={HEIGHT}
       />
+      <Composition id="NeonLabel60" component={NeonLabel} durationInFrames={LABEL60_FRAMES} fps={FPS} width={1080} height={1920} />
     </>
   );
 };
