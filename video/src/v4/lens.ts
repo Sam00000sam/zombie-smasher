@@ -33,9 +33,16 @@ const KEYS: K[] = [
   { at: f(CUE.speechEnd) + 40, x: 960, y: 430, m: 1.0, dur: 40 },
 ];
 
+/** Reframes are softened: half the drift, 60% of the zoom change, slower moves (opening/closing frame unchanged). */
+const SOFT = KEYS.map((k, i) =>
+  i === 0 || i === KEYS.length - 1
+    ? k
+    : { ...k, x: 960 + (k.x - 960) * 0.5, y: 480 + (k.y - 480) * 0.6, m: 1 + (k.m - 1) * 0.6, dur: Math.max(k.dur ?? 30, 40) },
+);
+
 export const lensAt = (frame: number) => {
-  let { x, y, m } = KEYS[0];
-  for (const k of KEYS) {
+  let { x, y, m } = SOFT[0];
+  for (const k of SOFT) {
     const d = k.dur ?? 30;
     const p = interpolate(frame, [k.at - d, k.at], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: io });
     x += (k.x - x) * p;
