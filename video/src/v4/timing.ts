@@ -74,7 +74,7 @@ export const ORIGIN = {
 };
 
 /** Camera punch-ins on key words (seconds). */
-export const PUNCHES = [CUE.smarter, CUE.store, CUE.copy, CUE.fraction, CUE.rent, CUE.five, CUE.label, CUE.speechEnd];
+export const PUNCHES = [CUE.smarter, CUE.store, CUE.copy, CUE.fraction, CUE.rent, CUE.five, CUE.label];
 
 export const PHRASES = [
   "Unpopular opinion:",

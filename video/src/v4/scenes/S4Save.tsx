@@ -10,6 +10,7 @@ import { FONT, INK } from "../../v2/theme";
 import { Counter } from "../../v3/fx";
 import { ArmsPawn, Ripple, Spark, Spotlight } from "../../v3/fx2";
 import { cameraAt } from "../camera";
+import { Orbit } from "../depth";
 import { P } from "../products";
 import { CUE, f, ORIGIN, SCENES, XFADE } from "../timing";
 
@@ -38,6 +39,7 @@ export const S4Save: React.FC = () => {
       world={
         <>
           <Spotlight keys={[{ at: s0, x: 960, y: 260, r: 320 }, { at: five, x: 1120, y: 520, r: 620 }, { at: inst, x: 380, y: 520, r: 300 }]} />
+          <Orbit x={960} y={230} r={170} start={s0 + 4} ticks />
           <Card x={830} y={170} w={260} h={120} start={s0 + 2} title="YOU SAVED" />
           <div style={{ position: "absolute", left: 856, top: 214 }}>{fr >= sv - 4 && <Counter value={1110} start={sv - 4} dur={16} prefix="$" size={44} />}</div>
 

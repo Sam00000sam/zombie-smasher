@@ -9,6 +9,7 @@ import { FONT, GLOW, INK } from "../../v2/theme";
 import { Counter, HangingTag, Scanner } from "../../v3/fx";
 import { Ripple, Spark, Spotlight } from "../../v3/fx2";
 import { cameraAt } from "../camera";
+import { Orbit } from "../depth";
 import { P } from "../products";
 import { CUE, f, ORIGIN, SCENES, XFADE } from "../timing";
 
@@ -73,6 +74,7 @@ export const S2Tower: React.FC = () => {
           />
           {/* the genuine bag and its price */}
           <Halo x={GX} y={BY} r={250} o={prog(fr, s0, 20)} />
+          <Orbit x={GX} y={BY} r={200} start={s0 + 6} ticks o={1 - prog(fr, take, 10) * 0.6} />
           <LineArt parts={P.handbag} p={prog(fr, s0 + 4, 26)} x={GX} y={BY} size={300} width={2.6} />
           <Floor x={GX} y={BY + 100} w={320} p={prog(fr, s0 + 10, 18)} />
           <At x={GX} y={BY + 118} w={300}>
@@ -167,6 +169,7 @@ export const S2Tower: React.FC = () => {
             <Label text="Of the price" start={frac + 10} size={12} />
           </div>
           <Ripple x={TX + 30} y={400} at={frac + 4} r={130} />
+          <Orbit x={TX} y={480} r={160} start={frac - 6} speed={1.6} ticks />
         </>
       }
     />

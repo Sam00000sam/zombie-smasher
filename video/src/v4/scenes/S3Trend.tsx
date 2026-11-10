@@ -10,6 +10,7 @@ import { FONT, INK } from "../../v2/theme";
 import { Counter } from "../../v3/fx";
 import { Ripple, Spotlight } from "../../v3/fx2";
 import { cameraAt } from "../camera";
+import { Orbit } from "../depth";
 import { P } from "../products";
 import { CUE, f, ORIGIN, SCENES, XFADE } from "../timing";
 
@@ -86,6 +87,8 @@ export const S3Trend: React.FC = () => {
             <div style={{ position: "absolute", left: -6, top: 20, width: 192, height: 4, background: INK, transformOrigin: "0 2px", transform: `rotate(${lerp(-62, 0, lid)}deg)`, boxShadow: "0 0 10px rgba(255,255,255,0.7)" }} />
           </div>
           <Ripple x={1520} y={690} at={f(CUE.season) + 8} r={120} />
+          <Orbit x={1520} y={690} r={130} start={stop} speed={1.5} ticks />
+          <Orbit x={KX + 40 + PW * 0.42} y={KY + 72} r={46} start={t0 + 14} speed={2.4} />
         </>
       }
     />

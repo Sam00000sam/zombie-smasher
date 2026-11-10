@@ -6,10 +6,10 @@ import { Halo } from "../../v2/components/Glow";
 import { SceneLayer } from "../../v2/components/SceneLayer";
 import { FONT, INK } from "../../v2/theme";
 import { ArmsPawn, BrowserWindow, Cursor, Ripple, Spark, Spotlight } from "../../v3/fx2";
-import { SlamTitle } from "../../v3/scenes/S1Compare";
 import { cameraAt } from "../camera";
+import { Orbit } from "../depth";
 import { P } from "../products";
-import { CUE, f, FINAL_TITLE, ORIGIN, SCENES, XFADE } from "../timing";
+import { CUE, f, ORIGIN, SCENES, XFADE } from "../timing";
 
 const WX = 560;
 const WY = 240;
@@ -39,8 +39,6 @@ export const S5End: React.FC = () => {
   const ask = f(CUE.ask);
   const pq = f(CUE.productQ);
   const lb = f(CUE.label);
-  const stage = 1 - prog(fr, FINAL_TITLE - 10, 12);
-  const ul = prog(fr, FINAL_TITLE + 14, 18);
 
   return (
     <SceneLayer
@@ -50,7 +48,7 @@ export const S5End: React.FC = () => {
       push={0.02}
       camera={cameraAt}
       world={
-        <div style={{ position: "absolute", inset: 0, opacity: stage }}>
+        <div style={{ position: "absolute", inset: 0 }}>
           <Spotlight keys={[{ at: s0, x: 840, y: 430, r: 480 }, { at: ask, x: 330, y: 600, r: 300 }, { at: pq, x: 1430, y: 430, r: 460 }]} />
           <BrowserWindow x={WX} y={WY} w={WW} h={WH} start={s0 + 2} url="checkout">
             <div style={{ position: "absolute", left: 30, top: 26, fontFamily: FONT, fontSize: 13, fontWeight: 700, letterSpacing: "0.28em", color: INK }}>YOUR ORDER</div>
@@ -73,14 +71,9 @@ export const S5End: React.FC = () => {
           <Ripple x={1460} y={300} at={pq + 2} r={140} />
           <Ripple x={1460} y={490} at={lb + 2} r={160} />
           <Halo x={1460} y={490} r={260} o={prog(fr, lb + 4, 10)} />
+          <Orbit x={1460} y={490} r={230} start={lb + 2} speed={1.2} ticks />
+          <Orbit x={WX + WW / 2} y={WY + WH / 2} r={300} start={s0 + 8} speed={0.6} o={1 - prog(fr, pq, 12) * 0.5} />
         </div>
-      }
-      screen={
-        <>
-          <Halo x={960} y={500} r={430} o={prog(fr, FINAL_TITLE, 20, easeOut) * 0.9} />
-          <SlamTitle text="PRODUCT OR LABEL?" start={FINAL_TITLE} size={68} y={458} />
-          <div style={{ position: "absolute", left: 960 - 90 * ul, top: 556, width: 180 * ul, height: 2, background: INK, boxShadow: "0 0 10px rgba(255,255,255,0.8)" }} />
-        </>
       }
     />
   );

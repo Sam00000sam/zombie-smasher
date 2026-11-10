@@ -7,6 +7,7 @@ import { ArmsPawn, Cursor, Ripple, Spotlight } from "../../v3/fx2";
 import { Pill } from "../../v2/components/Text";
 import { SlamTitle } from "../../v3/scenes/S1Compare";
 import { cameraAt } from "../camera";
+import { Orbit } from "../depth";
 import { CUE, f, ORIGIN, SCENES, XFADE } from "../timing";
 
 const CX = 620;
@@ -66,6 +67,8 @@ export const S1Hook: React.FC = () => {
               </div>
             );
           })}
+          <Orbit x={420} y={620} r={120} start={4} ticks />
+          <Orbit x={CX + 140} y={CY + 152} r={70} start={sm - 4} speed={2} />
           <ArmsPawn x={420} y={700} h={160} raise={prog(fr, sm + 2, 8, easeOut)} hop={prog(fr, sm + 2, 8) * 8} />
           <div style={{ position: "absolute", left: 300, top: 700, width: 240, height: 0, borderTop: "1.5px dashed rgba(255,255,255,0.45)" }} />
           <Cursor path={[{ at: 0, x: 1200, y: 560 }, { at: f(1.6), x: 900, y: 470 }, { at: sm - 8, x: 760, y: 420 }, { at: sm + 20, x: 820, y: 520 }]} clicks={[sm - 6]} o={1 - prog(fr, sm + 16, 8)} />
