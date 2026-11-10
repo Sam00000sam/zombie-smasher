@@ -100,7 +100,9 @@ export const floor = (c: Cam, circles: V3[] = []): Item => {
       }
       pts.push({ x: CX + (F * q[0]) / q[2], y: CY - (F * q[1]) / q[2] });
     }
-    if (ok) lines.push(<polyline key={k++} points={pts.map((p) => `${p.x},${p.y}`).join(" ")} fill="none" stroke={INK} strokeOpacity={0.28} strokeWidth={1.6} />);
+    // fade with distance like the grid, so far-off rings don't sit on the horizon
+    const fadeA = Math.max(0, Math.min(1, 1.25 - toCam(c, cc)[2] / 4800));
+    if (ok && fadeA > 0.01) lines.push(<polyline key={k++} points={pts.map((p) => `${p.x},${p.y}`).join(" ")} fill="none" stroke={INK} strokeOpacity={0.28 * fadeA} strokeWidth={1.6} />);
   });
   return {
     z: 1e9,
@@ -124,7 +126,7 @@ export const neon = (col: string, strength = 1): React.CSSProperties => ({
 export const card = (
   c: Cam,
   key: string,
-  o: { p: V3; w: number; h: number; yaw?: number; opacity?: number; string?: boolean; children: React.ReactNode; noBlur?: boolean },
+  o: { p: V3; w: number; h: number; yaw?: number; opacity?: number; string?: boolean; children: React.ReactNode; noBlur?: boolean; reflect?: number },
 ): Item | null => {
   let op = o.opacity ?? 1;
   if (op <= 0.001) return null;
@@ -141,6 +143,29 @@ export const card = (
         <svg key={key + "-s"} width={W} height={H} style={{ position: "absolute", inset: 0, opacity: op, filter: blur > 0.5 ? `blur(${blur}px)` : undefined }}>
           <line x1={s[0].x} y1={s[0].y} x2={s[1].x} y2={s[1].y} stroke={INK} strokeOpacity={0.55} strokeWidth={1.5} />
         </svg>,
+      );
+  }
+  if (o.reflect) {
+    // mirror image in the glossy floor (y = 0), strongest where it meets the floor
+    const rp = proj(c, [o.p[0], -o.p[1], o.p[2]]);
+    if (rp.z > NEAR + 20)
+      nodes.push(
+        <div
+          key={key + "-r"}
+          style={{
+            position: "absolute",
+            left: rp.x,
+            top: rp.y,
+            width: o.w,
+            height: o.h,
+            transform: `translate(-50%, -50%) scale(${rp.s}) perspective(1600px) rotateY(${tilt}deg) scaleY(-1)`,
+            opacity: op * o.reflect,
+            filter: `blur(${((blur + 2.5) / rp.s).toFixed(2)}px)`,
+            WebkitMaskImage: "linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0) 65%)",
+          }}
+        >
+          {o.children}
+        </div>,
       );
   }
   nodes.push(
@@ -292,9 +317,15 @@ const MOTES = Array.from({ length: 140 }, (_, i) => ({
   gold: random(`m3g${i}`) > 0.6,
 }));
 /** Floating specks in 3D; out-of-focus ones become soft bokeh. */
-export const motes = (c: Cam, fr: number): Item[] =>
+export const motes = (c: Cam, fr: number, period?: number, loopFrames?: number): Item[] =>
   MOTES.map((m, i) => {
-    const p = proj(c, [m.x + Math.sin(fr / 70 + i) * 30, m.y + Math.sin(fr / 50 + i * 2) * 20, m.z]);
+    // with a period, the field repeats along z so a looping camera sees the same specks at both ends
+    const z0 = period ? m.z % period : m.z;
+    const zz = period ? z0 + period * Math.ceil((c.z - 100 - z0) / period) : m.z;
+    // with loopFrames, the drift completes whole cycles over the video so the last frame matches the first
+    const w1 = loopFrames ? (2 * Math.PI * Math.round(loopFrames / 440)) / loopFrames : 1 / 70;
+    const w2 = loopFrames ? (2 * Math.PI * Math.round(loopFrames / 314)) / loopFrames : 1 / 50;
+    const p = proj(c, [m.x + Math.sin(fr * w1 + i) * 30, m.y + Math.sin(fr * w2 + i * 2) * 20, zz]);
     if (p.z < NEAR + 10 || p.z > 5000 || p.x < -100 || p.x > W + 100 || p.y < -100 || p.y > H + 100) return null;
     const blur = dof(c, p.z);
     const r = Math.max(1.5, m.r * p.s) + blur * 1.6;
@@ -303,3 +334,110 @@ export const motes = (c: Cam, fr: number): Item[] =>
       node: <div key={`mote${i}`} style={{ position: "absolute", left: p.x - r, top: p.y - r, width: r * 2, height: r * 2, borderRadius: "50%", background: m.gold ? GOLD : INK, opacity: Math.min(0.55, 0.9 / (1 + blur * 0.6)) * (1 - p.z / 5000), filter: blur > 0.5 ? `blur(${blur * 0.8}px)` : undefined }} />,
     };
   }).filter(Boolean) as Item[];
+
+/* ---------------------------------------------------------------- spotlight */
+const hull = (pts: { x: number; y: number }[]) => {
+  const P = [...pts].sort((a, b) => a.x - b.x || a.y - b.y);
+  const cr = (o: { x: number; y: number }, a: { x: number; y: number }, b: { x: number; y: number }) => (a.x - o.x) * (b.y - o.y) - (a.y - o.y) * (b.x - o.x);
+  const lo: typeof P = [];
+  for (const p of P) {
+    while (lo.length >= 2 && cr(lo[lo.length - 2], lo[lo.length - 1], p) <= 0) lo.pop();
+    lo.push(p);
+  }
+  const up: typeof P = [];
+  for (const p of [...P].reverse()) {
+    while (up.length >= 2 && cr(up[up.length - 2], up[up.length - 1], p) <= 0) up.pop();
+    up.push(p);
+  }
+  return [...lo.slice(0, -1), ...up.slice(0, -1)];
+};
+/** Volumetric light cone from high above down onto a floor disc, plus the lit pool on the floor. */
+export const spot = (c: Cam, key: string, o: { p: V3; r: number; color?: string; opacity?: number; top?: number }): Item | null => {
+  let op = o.opacity ?? 1;
+  if (op <= 0.001) return null;
+  const col = o.color ?? INK;
+  const zc = toCam(c, o.p)[2];
+  if (zc < NEAR + 60) return null;
+  op *= nearFade(zc);
+  const apex = toCam(c, [o.p[0], o.top ?? 1500, o.p[2]]);
+  if (apex[2] < NEAR) return null;
+  const s = (q: V3) => ({ x: CX + (F * q[0]) / q[2], y: CY - (F * q[1]) / q[2] });
+  const ring: { x: number; y: number }[] = [];
+  for (let i = 0; i < 36; i++) {
+    const t = (i / 36) * Math.PI * 2;
+    const q = toCam(c, [o.p[0] + Math.cos(t) * o.r, 0, o.p[2] + Math.sin(t) * o.r]);
+    if (q[2] < NEAR) return null;
+    ring.push(s(q));
+  }
+  const A = s(apex);
+  const cone = hull([A, ...ring]);
+  const baseY = Math.max(...ring.map((q) => q.y));
+  const id = `spot-${key}`;
+  return {
+    z: zc + 2,
+    node: (
+      <svg key={key} width={W} height={H} style={{ position: "absolute", inset: 0, opacity: op, mixBlendMode: "screen" }}>
+        <defs>
+          <linearGradient id={id} gradientUnits="userSpaceOnUse" x1={0} y1={A.y} x2={0} y2={baseY}>
+            <stop offset="0" stopColor={col} stopOpacity={0} />
+            <stop offset="1" stopColor={col} stopOpacity={0.2} />
+          </linearGradient>
+          <radialGradient id={id + "-f"}>
+            <stop offset="0" stopColor={col} stopOpacity={0.4} />
+            <stop offset="1" stopColor={col} stopOpacity={0} />
+          </radialGradient>
+        </defs>
+        <polygon points={cone.map((q) => `${q.x},${q.y}`).join(" ")} fill={`url(#${id})`} style={{ filter: "blur(6px)" }} />
+        <polygon points={ring.map((q) => `${q.x},${q.y}`).join(" ")} fill={`url(#${id}-f)`} />
+      </svg>
+    ),
+  };
+};
+
+/* ------------------------------------------------------------------- bursts */
+/** Spark burst radiating in 3D from p as t goes 0→1 (falls slightly, shrinks and fades). */
+export const burst = (c: Cam, key: string, o: { p: V3; t: number; color?: string; n?: number; spread?: number }): Item | null => {
+  if (o.t <= 0 || o.t >= 1) return null;
+  const col = o.color ?? GOLD;
+  const n = o.n ?? 22;
+  const sp = o.spread ?? 280;
+  const e = 1 - Math.pow(1 - o.t, 3);
+  const dots: React.ReactNode[] = [];
+  let zSum = 0;
+  for (let i = 0; i < n; i++) {
+    const th = random(`${key}a${i}`) * Math.PI * 2;
+    const ph = (random(`${key}b${i}`) - 0.5) * Math.PI;
+    const len = sp * (0.45 + 0.55 * random(`${key}c${i}`));
+    const d: V3 = [Math.cos(th) * Math.cos(ph), Math.sin(ph) * 0.8 + 0.25, Math.sin(th) * Math.cos(ph) * 0.6];
+    const q = toCam(c, [o.p[0] + d[0] * len * e, o.p[1] + d[1] * len * e - 160 * o.t * o.t, o.p[2] + d[2] * len * e]);
+    if (q[2] < NEAR) continue;
+    zSum += q[2];
+    const r = Math.max(1.2, (F / q[2]) * 7 * (1 - o.t));
+    dots.push(<circle key={i} cx={CX + (F * q[0]) / q[2]} cy={CY - (F * q[1]) / q[2]} r={r} fill={i % 3 ? col : "#fff"} />);
+  }
+  if (!dots.length) return null;
+  return {
+    z: zSum / dots.length - 5,
+    node: (
+      <svg key={key} width={W} height={H} style={{ position: "absolute", inset: 0, opacity: Math.min(1, (1 - o.t) * 2.2), filter: `drop-shadow(0 0 8px ${col})` }}>
+        {dots}
+      </svg>
+    ),
+  };
+};
+
+/* ----------------------------------------------------- neon panel + shine */
+/** A light sweep across a panel (t: 0→1 while it passes). */
+export const Shine: React.FC<{ t: number }> = ({ t }) =>
+  t <= 0 || t >= 1 ? null : (
+    <div style={{ position: "absolute", inset: 0, overflow: "hidden", borderRadius: "inherit", pointerEvents: "none" }}>
+      <div style={{ position: "absolute", top: "-30%", bottom: "-30%", width: "38%", left: `${-50 + t * 170}%`, transform: "rotate(18deg)", background: "linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.32), rgba(255,255,255,0))" }} />
+    </div>
+  );
+/** Neon-outlined glass panel that fills its card, with an optional light sweep. */
+export const Panel: React.FC<{ col: string; s?: number; shine?: number; radius?: number; children?: React.ReactNode }> = ({ col, s = 1, shine = 0, radius = 16, children }) => (
+  <div style={{ position: "absolute", inset: 0, ...neon(col, s), borderRadius: radius, overflow: "hidden" }}>
+    {children}
+    <Shine t={shine} />
+  </div>
+);

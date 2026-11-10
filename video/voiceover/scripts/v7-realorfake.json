@@ -1,0 +1,18 @@
+{
+  "wav": "public/voice/realorfake-narration.wav",
+  "json": "src/v7/narration.json",
+  "lead_in": 0.35,
+  "tail": 2.2,
+  "lines": [
+    ["hook", "Real or fake? Here's why the fake might actually win.", 0.55],
+    ["price", "A designer bag can cost three thousand dollars. A good replica? About a hundred.", 0.55],
+    ["closet", "But a bag you're scared to use just sits in the closet.", 0.5],
+    ["wear", "Think cost per wear. Carry the replica every day for a year, and it's less than thirty cents a wear.", 0.55],
+    ["fearless", "Concerts. Airports. Rainy days. It goes everywhere, with zero stress.", 0.55],
+    ["test", "It's also the cheapest way to test a style. Try the look for a hundred, before you ever commit three thousand.", 0.55],
+    ["lost", "And if it's stolen, or lost on a trip? You're out a hundred dollars, not a month's pay.", 0.55],
+    ["resale", "People call designer bags an investment. But most resell for less than you paid.", 0.55],
+    ["seen", "And at the end of the day, nobody sees the receipt. They just see how you carry it.", 0.6],
+    ["end", "So keep the look, and keep the money. Real or fake: which would you pick?", 0.0]
+  ]
+}

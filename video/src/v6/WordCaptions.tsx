@@ -1,14 +1,15 @@
 import React from "react";
 import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { FONT } from "../v2/theme";
-import { EMPHASIS, WORDS } from "../v5/timing";
+import { EMPHASIS as EMPH60, WORDS as WORDS60 } from "../v5/timing";
 import { GOLD } from "./engine";
 
 const norm = (w: string) => w.toLowerCase().replace(/[^a-z0-9']/g, "");
 const clean = (w: string) => w.replace(/[.,!?;:]+$/g, "").toUpperCase();
 
 /** One-word-at-a-time captions (the reference style): big, bold, a quick pop on each word, gold on key words. */
-export const WordCaptions: React.FC = () => {
+type Word = { w: string; start: number; end: number };
+export const WordCaptions: React.FC<{ words?: Word[]; emphasis?: string[] }> = ({ words: WORDS = WORDS60, emphasis: EMPHASIS = EMPH60 }) => {
   const fr = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = fr / fps;
