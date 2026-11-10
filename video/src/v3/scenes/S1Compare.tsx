@@ -2,19 +2,21 @@ import React from "react";
 import { useCurrentFrame } from "remotion";
 import { easeOut, lerp, prog } from "../../v2/anim";
 import { LineArt } from "../../v2/components/Draw";
-import { Floor, Halo } from "../../v2/components/Glow";
-import { At, Label, Pill } from "../../v2/components/Text";
+import { Card } from "../../v2/components/Card";
+import { Floor } from "../../v2/components/Glow";
+import { At, Label } from "../../v2/components/Text";
 import { SceneLayer } from "../../v2/components/SceneLayer";
 import { FONT, INK } from "../../v2/theme";
 import { cameraAt } from "../camera";
-import { Callout, Counter, FlyingCoin, HangingTag, Magnifier, Scanner, TagBody, Wallet } from "../fx";
+import { ArmsPawn, BrowserWindow, CheckPill, Cursor, Notice, Ripple, Spark, Spotlight, Stars } from "../fx2";
 import { P } from "../products";
 import { CUE, f, ORIGIN, SCENES, XFADE } from "../timing";
 
-const GX = 620;
-const FX = 1300;
-const PY = 460;
-const PS = 300;
+const WOFF = { x: 470, y: 250 };
+const WFAKE = { x: 950, y: 250 };
+const WW = 420;
+const WH = 350;
+const PAWN = { x: 250, floor: 690, h: 180 };
 
 /** Slammed-in title (scale down + unblur). */
 export const SlamTitle: React.FC<{ text: string; start: number; out?: number; size?: number; y: number }> = ({ text, start, out, size = 42, y }) => {
@@ -44,39 +46,51 @@ export const SlamTitle: React.FC<{ text: string; start: number; out?: number; si
   );
 };
 
-/** A match bar that fills to a percentage with a counting readout. */
-const MatchRow: React.FC<{ y: number; label: string; pct: number; start: number }> = ({ y, label, pct, start }) => {
+/** Shop window content: product, price (counting), rating, BUY button. */
+const ShopBody: React.FC<{ kind: string; price: number; priceFrom: number; pulseAt: number; stars: number; starsAt: number; buyAt?: number; flaw?: number }> = ({
+  kind,
+  price,
+  priceFrom,
+  pulseAt,
+  stars,
+  starsAt,
+  buyAt,
+  flaw,
+}) => {
   const fr = useCurrentFrame();
-  const p = prog(fr, start, 22, easeOut);
-  if (p <= 0) return null;
+  const n = Math.round(price * prog(fr, priceFrom, 16, easeOut));
+  const pulse = fr >= pulseAt ? lerp(1.3, 1, prog(fr, pulseAt, 10, easeOut)) : 1;
+  const press = buyAt !== undefined && fr >= buyAt && fr < buyAt + 6 ? 0.9 : 1;
   return (
-    <div style={{ position: "absolute", left: 720, top: y, width: 480 }}>
-      <Label text={label} start={start} size={12} />
-      <div style={{ position: "absolute", left: 0, top: 26, width: 380, height: 0, borderTop: "1px dashed rgba(255,255,255,0.25)" }} />
-      <div style={{ position: "absolute", left: 0, top: 23, width: 380 * (pct / 100) * p, height: 6, borderRadius: 3, background: INK, boxShadow: "0 0 12px rgba(255,255,255,0.7)" }} />
-      <div style={{ position: "absolute", left: 400, top: 4 }}>
-        <Counter value={pct} start={start} dur={22} suffix="%" size={28} />
+    <>
+      <LineArt parts={P[kind]} p={prog(fr, priceFrom - 6, 26)} x={130} y={140} size={220} width={2.4} />
+      <div style={{ position: "absolute", left: 262, top: 62 }}>
+        <Label text="Price" start={priceFrom - 4} size={11} color="#9a9a9a" />
       </div>
-    </div>
+      <div style={{ position: "absolute", left: 258, top: 80, fontFamily: FONT, fontWeight: 700, fontSize: 46, color: INK, fontVariantNumeric: "tabular-nums", textShadow: "0 0 14px rgba(255,255,255,0.55)", transform: `scale(${pulse})`, transformOrigin: "0 50%" }}>${n}</div>
+      <Stars x={262} y={150} start={starsAt} value={stars} size={20} />
+      {flaw !== undefined && (
+        <div style={{ position: "absolute", left: 262, top: 184, padding: "3px 10px", border: "1.4px dashed rgba(255,255,255,0.8)", borderRadius: 999, fontFamily: FONT, fontSize: 10, fontWeight: 700, letterSpacing: "0.22em", color: INK, opacity: prog(fr, flaw, 8), transform: `scale(${lerp(1.4, 1, prog(fr, flaw, 8, easeOut))})`, transformOrigin: "0 50%" }}>
+          NOT PERFECT
+        </div>
+      )}
+      <div style={{ position: "absolute", left: 300, top: 236, width: 92, height: 34, borderRadius: 999, background: INK, color: "#000", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: FONT, fontSize: 13, fontWeight: 800, letterSpacing: "0.22em", transform: `scale(${press})`, boxShadow: "0 0 16px rgba(255,255,255,0.55)" }}>BUY</div>
+    </>
   );
 };
 
-/** Scenes 1–2: inspect the fake, reveal the matchup, swing in the prices, scan, and count the savings. */
+/** Scenes 1–2: start mid-action in the replica shop, pull back to the matchup, then prices and a purchase. */
 export const S1Compare: React.FC = () => {
   const fr = useCurrentFrame();
-  const h = f(CUE.hook);
   const but = f(2.5);
-  const reveal = prog(fr, but, 20); // pull back to the matchup
-  const fx = lerp(960, FX, reveal);
-  const fs = lerp(400, PS, reveal);
-  const fy = lerp(430, PY, reveal);
-  const magX = lerp(760, 1080, prog(fr, f(0.9), f(1.5)));
-  const magO = prog(fr, f(0.75), 8) * (1 - prog(fr, but - 4, 8));
-  const vsO = prog(fr, f(2.9), 12) * (1 - prog(fr, f(CUE.without) - 6, 10));
-  const scan0 = f(CUE.similar) - 8;
-  const matchO = 1 - prog(fr, f(CUE.without) - 6, 8);
+  const zoom = lerp(1.45, 1, prog(fr, but, 20));
+  const price = f(CUE.priceWord);
   const w0 = f(CUE.without);
-  const advOut = f(5.5);
+  const buy = w0 + 8;
+  const arrive = buy + 18;
+  const raise = Math.max(prog(fr, f(4.7), 8, easeOut) * (1 - prog(fr, f(5.7), 8)), prog(fr, f(CUE.much), 8, easeOut));
+  const q = prog(fr, but + 8, 8) * (1 - prog(fr, f(4.5), 6));
+  const balance = Math.round(lerp(300, 265, prog(fr, arrive, 12, easeOut)));
 
   return (
     <SceneLayer
@@ -86,67 +100,70 @@ export const S1Compare: React.FC = () => {
       push={0}
       camera={cameraAt}
       world={
-        <>
-          {/* cold open: the fake under the magnifying glass */}
-          <Halo x={fx} y={fy + 20} r={lerp(330, 250, reveal)} o={prog(fr, h, 30)} />
-          <LineArt parts={P.sneakerFake} p={prog(fr, h, 34)} x={fx} y={fy} size={fs} width={2.6} />
-          <Magnifier x={magX} y={455} o={magO} />
-          <Callout px={890} py={470} lx={720} ly={330} text="UNEVEN STITCHING" start={f(CUE.hook) + 22} out={but - 6} />
-          <Callout px={1016} py={455} lx={1170} ly={330} text="LOGO SLIGHTLY OFF" start={f(1.7)} out={but - 6} />
+        <div style={{ position: "absolute", inset: 0, transform: `scale(${zoom})`, transformOrigin: "1160px 425px" }}>
+          <Spotlight
+            keys={[
+              { at: 0, x: 1160, y: 425, r: 380 },
+              { at: but + 14, x: 820, y: 440, r: 620 },
+              { at: f(CUE.surprising) + 2, x: 1500, y: 360, r: 380 },
+              { at: price - 6, x: 920, y: 360, r: 560 },
+              { at: f(CUE.similar), x: 920, y: 620, r: 560 },
+              { at: w0, x: 760, y: 400, r: 700 },
+            ]}
+          />
 
-          {/* the matchup */}
-          <Halo x={GX} y={PY + 20} r={250} o={reveal} />
-          <LineArt parts={P.sneakerGenuine} p={prog(fr, but + 4, 30)} x={GX} y={PY} size={PS} width={2.6} />
-          <Floor x={GX} y={PY + 78} w={360} p={prog(fr, but + 10, 20)} />
-          <Floor x={FX} y={PY + 78} w={360} p={prog(fr, but + 10, 20)} />
-          <At x={GX} y={PY + 98} w={300}>
-            <Label text="Genuine" start={but + 14} size={14} />
-          </At>
-          <At x={FX} y={PY + 98} w={300}>
-            <Label text="Fake" start={but + 18} size={14} />
-          </At>
-          <div style={{ position: "absolute", left: 959, top: 330, width: 2, height: 260 * prog(fr, f(2.9), 16), background: INK, opacity: vsO, boxShadow: "0 0 10px rgba(255,255,255,0.9), 0 0 26px rgba(255,255,255,0.4)" }} />
-          <div style={{ position: "absolute", left: 936, top: 436, width: 48, height: 48, borderRadius: 24, background: "#000", border: `1.5px solid ${INK}`, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: FONT, fontSize: 13, fontWeight: 700, letterSpacing: "0.12em", color: INK, opacity: prog(fr, f(3.1), 8) * vsO, boxShadow: "0 0 16px rgba(255,255,255,0.5)" }}>VS</div>
+          {/* replica shop — already live at frame 0 */}
+          <BrowserWindow x={WFAKE.x} y={WFAKE.y} w={WW} h={WH} start={-24} url="replica-shop.com">
+            <ShopBody kind="sneakerFake" price={35} priceFrom={-6} pulseAt={price} stars={3} starsAt={f(0.5)} flaw={f(CUE.hook) + 36} buyAt={buy} />
+          </BrowserWindow>
+          {/* official store appears on the pull-back */}
+          <BrowserWindow x={WOFF.x} y={WOFF.y} w={WW} h={WH} start={but} url="official-store.com">
+            <ShopBody kind="sneakerGenuine" price={240} priceFrom={but + 8} pulseAt={price} stars={5} starsAt={but + 10} />
+          </BrowserWindow>
 
-          {/* "surprising advantages" pop around the fake */}
-          {[
-            { t: "Lower price", x: FX, y: 312, at: f(CUE.surprising) + 2 },
-            { t: "More styles", x: FX + 250, y: 418, at: f(CUE.surprising) + 10 },
-            { t: "Easy to get", x: FX + 250, y: 510, at: f(CUE.surprising) + 18 },
-          ].map((a, i) => (
-            <div key={a.t} style={{ position: "absolute", left: 0, top: Math.sin((fr + i * 17) / 9) * 4 }}>
-              <At x={a.x} y={a.y} w={260}>
-                <Pill text={a.t} start={a.at} size={13} out={advOut} />
-              </At>
-            </div>
-          ))}
+          {/* the viewer */}
+          <Floor x={PAWN.x} y={PAWN.floor} w={260} p={prog(fr, but, 16)} o={0.45} />
+          <ArmsPawn x={PAWN.x} y={PAWN.floor} h={PAWN.h} o={prog(fr, but + 2, 10)} raise={raise} hop={raise * 10} q={q} />
 
-          {/* price tags drop in and swing */}
-          <HangingTag x={GX} top={46} len={60} start={f(CUE.price) + 6} swing={18}>
-            <TagBody label="Genuine" value={240} start={f(CUE.price) + 6} big={60} w={230} />
-          </HangingTag>
-          <HangingTag x={FX} top={46} len={60} start={f(CUE.priceWord) - 6} swing={-12}>
-            <TagBody label="Fake" value={35} start={f(CUE.priceWord) - 6} big={44} w={180} />
-          </HangingTag>
+          {/* "surprising advantages" stack in like sale notifications */}
+          <Notice x={1420} y={270} text="Lower price" start={f(CUE.surprising)} out={f(5.85)} w={300} />
+          <Notice x={1420} y={334} text="More styles" start={f(CUE.advantages)} out={f(5.9)} w={300} />
+          <Notice x={1420} y={398} text="Easy to get" start={f(CUE.advantages) + 14} out={f(5.95)} w={300} />
 
-          {/* scan: similar look + basic function */}
-          <Scanner x0={430} x1={1490} y={360} h={200} start={scan0} dur={26} />
-          <div style={{ position: "absolute", inset: 0, opacity: matchO }}>
-            <MatchRow y={628} label="Look match" pct={92} start={f(CUE.similar)} />
-            <MatchRow y={698} label="Basic function" pct={90} start={f(CUE.basic)} />
+          {/* price: ≠ slams between the windows */}
+          <div style={{ position: "absolute", left: 896, top: 395, width: 48, textAlign: "center", fontFamily: FONT, fontWeight: 700, fontSize: 48, color: INK, opacity: prog(fr, price, 6), transform: `scale(${lerp(1.8, 1, prog(fr, price, 8, easeOut))})`, textShadow: "0 0 18px rgba(255,255,255,0.8)" }}>≠</div>
+          <Ripple x={920} y={425} at={price} r={90} />
+
+          {/* similar look + basic function, on both */}
+          <CheckPill x={600} y={622} text="Look" start={f(CUE.similar)} />
+          <CheckPill x={1080} y={622} text="Look" start={f(CUE.similar) + 3} />
+          <CheckPill x={760} y={622} text="Function" start={f(CUE.basic)} />
+          <CheckPill x={1240} y={622} text="Function" start={f(CUE.basic) + 3} />
+          <div style={{ position: "absolute", left: 896, top: 612, width: 48, textAlign: "center", fontFamily: FONT, fontWeight: 700, fontSize: 34, color: INK, opacity: prog(fr, f(CUE.function), 6), textShadow: "0 0 14px rgba(255,255,255,0.8)" }}>=</div>
+
+          {/* the purchase: click BUY on the replica, money travels, wallet barely moves */}
+          <Card x={130} y={244} w={240} h={110} start={w0 - 6} title="WALLET" />
+          {fr >= w0 && (
+            <div style={{ position: "absolute", left: 158, top: 288, fontFamily: FONT, fontWeight: 700, fontSize: 40, color: INK, fontVariantNumeric: "tabular-nums", textShadow: "0 0 14px rgba(255,255,255,0.55)", opacity: prog(fr, w0, 8) }}>${balance}</div>
+          )}
+          <div style={{ position: "absolute", left: 140, top: 366 }}>
+            <Label text="Genuine would leave $60" start={arrive + 10} size={10} color="#8f8f8f" spacing="0.2em" />
           </div>
-
-          {/* savings: coins fly from the wallet */}
-          <Wallet x={960} y={712} p={prog(fr, w0, 14)} open={prog(fr, w0 + 6, 8)} />
-          {Array.from({ length: 7 }, (_, i) => (
-            <FlyingCoin key={i} from={[960, 690]} to={[GX, 200]} start={w0 + 10 + i * 3} dur={18} lift={180} />
-          ))}
-          <FlyingCoin from={[960, 690]} to={[FX, 190]} start={w0 + 22} dur={18} lift={180} />
-          <div style={{ position: "absolute", left: 1090, top: 676, opacity: prog(fr, w0 + 30, 10), display: "flex", flexDirection: "column", gap: 2 }}>
-            <Label text="You keep" start={w0 + 30} size={12} />
-            <Counter value={205} start={w0 + 30} dur={22} prefix="$" size={46} />
-          </div>
-        </>
+          <Spark pts={[[1300, 540], [1300, 214], [250, 214], [250, 244]]} start={buy + 4} dur={16} dashed wireStart={buy} />
+          <Ripple x={250} y={300} at={arrive} r={110} />
+          <Cursor
+            o={prog(fr, -10, 4) * (1 - prog(fr, but - 6, 6)) + prog(fr, w0 - 6, 6)}
+            path={[
+              { at: 0, x: 1320, y: 600 },
+              { at: f(0.8), x: 1060, y: 400 },
+              { at: f(1.4), x: 1250, y: 420 },
+              { at: but, x: 1250, y: 430 },
+              { at: w0 - 6, x: 1330, y: 680 },
+              { at: buy, x: 1300, y: 545 },
+            ]}
+            clicks={[f(1.1), buy]}
+          />
+        </div>
       }
       screen={<SlamTitle text="WHY FAKE CAN BE BETTER" start={but + 2} out={f(CUE.price) - 6} y={92} />}
     />

@@ -19,7 +19,7 @@ export const FakeBetter: React.FC = () => {
   const zoom = 1 + PUNCHES.reduce((z, t) => z + 0.05 * bump(fr - f(t)), 0);
   return (
     <AbsoluteFill style={{ background: "#000" }}>
-      <DotGrid camX={cam.x} camY={cam.y} opacity={prog(fr, 2, 30)} />
+      <DotGrid camX={cam.x} camY={cam.y} opacity={1} />
       <AbsoluteFill style={{ transform: `scale(${zoom})` }}>
         <S1Compare />
         <S2Choice />

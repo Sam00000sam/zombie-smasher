@@ -8,6 +8,7 @@ import { SceneLayer } from "../../v2/components/SceneLayer";
 import { FONT, GLOW, INK } from "../../v2/theme";
 import { cameraAt } from "../camera";
 import { damp, Gauge } from "../fx";
+import { Ripple } from "../fx2";
 import { P } from "../products";
 import { CUE, f, FINAL_TITLE, ORIGIN, SCENES, XFADE } from "../timing";
 import { SlamTitle } from "./S1Compare";
@@ -101,6 +102,8 @@ export const S4End: React.FC = () => {
           <div style={{ position: "absolute", left: panR.x - CX, top: panR.y - PIVOT_Y - STRING, width: 1920, height: 1080 }}>
             <Weight x={CX} y={PIVOT_Y + STRING - 112} text="SAVE $205" start={dropAt} w={190} />
           </div>
+          <Ripple x={panR.x} y={panR.y - 60} at={dropAt + 12} r={190} />
+          <Ripple x={panL.x} y={panL.y - 60} at={qAt + 10} r={120} />
           <At x={panR.x} y={panR.y - 206} w={260}>
             <Pill text="Cheaper" start={f(CUE.fakeCan)} size={13} />
           </At>

@@ -54,6 +54,9 @@ export const CUE = {
   priceDiff: word("difference"),
   huge: word("huge"),
   fakeCan: word("fake", L.end.start),
+  advantages: word("advantages"),
+  function: word("function"),
+  find: word("find"),
   speechEnd: L.end.end,
 };
 

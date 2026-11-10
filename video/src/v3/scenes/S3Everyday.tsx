@@ -10,6 +10,7 @@ import { SceneLayer } from "../../v2/components/SceneLayer";
 import { FONT, GLOW, INK } from "../../v2/theme";
 import { cameraAt } from "../camera";
 import { Skyline, Stamp } from "../fx";
+import { Ripple } from "../fx2";
 import { CUE, f, ORIGIN, SCENES, XFADE } from "../timing";
 
 const PX = 520;
@@ -105,6 +106,18 @@ export const S3Everyday: React.FC = () => {
             );
           })}
 
+          {posts.map((p) => (
+            <Ripple key={p.t} x={PX + 110 + 58} y={FLOOR - 318} at={p.at} r={60} />
+          ))}
+          <div style={{ position: "absolute", left: PX - 70, top: 250, display: "flex", alignItems: "center", gap: 12, opacity: prog(fr, s0 + 6, 10) }}>
+            <svg width={30} height={30} viewBox="0 0 30 30" style={{ filter: GLOW }}>
+              <circle cx={15} cy={15} r={12} fill="none" stroke={INK} strokeWidth={2.2} />
+              <line x1={15} y1={15} x2={15 + Math.sin(fr / 4) * 8} y2={15 - Math.cos(fr / 4) * 8} stroke={INK} strokeWidth={2.2} strokeLinecap="round" />
+            </svg>
+            <div style={{ fontFamily: FONT, fontSize: 16, fontWeight: 700, letterSpacing: "0.24em", color: INK, fontVariantNumeric: "tabular-nums" }}>
+              DAY {Math.min(30, 1 + Math.floor(Math.max(0, fr - s0) / 6))}
+            </div>
+          </div>
           <Halo x={PX} y={FLOOR - 110} r={220} o={prog(fr, s0, 20)} />
           <div style={{ position: "absolute", left: 0, top: bob }}>
             <Pawn x={PX} y={FLOOR} h={PH} frame={fr} start={s0 + 4} lean={walking ? 0.35 + Math.sin(fr * 0.45) * 0.15 : 0} />
@@ -132,6 +145,7 @@ export const S3Everyday: React.FC = () => {
             </div>
           )}
           <Stamp x={1320} y={560} text="NOT NEEDED" start={f(CUE.important) - 2} size={26} rot={-8} />
+          <Ripple x={1320} y={560} at={f(CUE.important)} r={170} />
         </>
       }
     />
