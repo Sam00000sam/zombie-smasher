@@ -28,20 +28,24 @@ const L = { hook: line("hook"), price: line("price"), choice: line("choice"), ev
 export const CUE = {
   hook: L.hook.start,
   sometimes: word("sometimes"),
+  surprising: word("surprising"),
   realThing: word("real"),
   price: L.price.start,
   priceWord: word("price", L.price.start),
   similar: word("similar"),
   basic: word("basic"),
   without: word("without"),
+  much: word("much"),
   choice: L.choice.start,
   styles: word("styles"),
   designs: word("designs"),
   expensive: word("expensive"),
   difficult: word("difficult"),
   everyday: L.everyday.start,
+  everydayWord: word("everyday"),
   cheaper: word("cheaper"),
   job: word("job"),
+  enough: word("enough"),
   premium: word("premium"),
   important: word("important"),
   end: L.end.start,
@@ -66,6 +70,9 @@ export const SCENES = {
 export const TOTAL_FRAMES = SCENES.end.to;
 export const XFADE = f(2 * X);
 export const FINAL_TITLE = f(CUE.speechEnd - 0.2);
+
+/** Quick camera punch-ins on key words (seconds). */
+export const PUNCHES = [2.6, CUE.priceWord, CUE.much, CUE.styles, CUE.difficult, CUE.important, CUE.priceDiff + 0.35, CUE.speechEnd - 0.2];
 
 export const CAMERA_MOVES = [
   { at: f(B.b2 - X), dur: f(2 * X) + 2, dx: 420, dy: 0 },
