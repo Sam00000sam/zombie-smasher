@@ -6,6 +6,8 @@ import { ValueExplainer } from "./v2/Explainer";
 import { TOTAL_FRAMES } from "./v2/timing";
 import { FakeBetter } from "./v3/Explainer";
 import { TOTAL_FRAMES as FAKE_FRAMES } from "./v3/timing";
+import { LabelOrProduct } from "./v4/Explainer";
+import { TOTAL_FRAMES as LABEL_FRAMES } from "./v4/timing";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -30,6 +32,14 @@ export const RemotionRoot: React.FC = () => {
         id="FakeBetter"
         component={FakeBetter}
         durationInFrames={FAKE_FRAMES}
+        fps={FPS}
+        width={WIDTH}
+        height={HEIGHT}
+      />
+      <Composition
+        id="LabelOrProduct"
+        component={LabelOrProduct}
+        durationInFrames={LABEL_FRAMES}
         fps={FPS}
         width={WIDTH}
         height={HEIGHT}
