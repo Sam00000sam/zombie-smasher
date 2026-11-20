@@ -71,7 +71,7 @@ const camSeg = (c: Cam, a: V3, b: V3) => {
 
 /* ------------------------------------------------------------------ floor */
 /** Receding floor grid (y = 0) that fades with distance; optional court circles at given centres. */
-export const floor = (c: Cam, circles: V3[] = []): Item => {
+export const floor = (c: Cam, circles: V3[] = [], strength = 1): Item => {
   const lines: React.ReactNode[] = [];
   const zMin = Math.floor((c.z - 400) / 200) * 200;
   const zMax = c.z + 6000;
@@ -82,7 +82,7 @@ export const floor = (c: Cam, circles: V3[] = []): Item => {
     for (let z = zMin; z < zMax; z += 600) {
       const s = camSeg(c, [x, 0, z], [x, 0, z + 600]);
       if (!s) continue;
-      const a = Math.max(0, 1 - s[0].z / 5200) * 0.22;
+      const a = Math.max(0, 1 - s[0].z / 5200) * 0.22 * strength;
       if (a < 0.01) continue;
       lines.push(<line key={k++} x1={s[0].x} y1={s[0].y} x2={s[1].x} y2={s[1].y} stroke={INK} strokeOpacity={a} strokeWidth={1.2} />);
     }
@@ -91,7 +91,7 @@ export const floor = (c: Cam, circles: V3[] = []): Item => {
   for (let z = zMin; z < zMax; z += 200) {
     const s = camSeg(c, [xMin, 0, z], [c.x + 3200, 0, z]);
     if (!s) continue;
-    const a = Math.max(0, 1 - s[0].z / 5200) * 0.16;
+    const a = Math.max(0, 1 - s[0].z / 5200) * 0.16 * strength;
     if (a < 0.01) continue;
     lines.push(<line key={k++} x1={s[0].x} y1={s[0].y} x2={s[1].x} y2={s[1].y} stroke={INK} strokeOpacity={a} strokeWidth={1} />);
   }
@@ -344,7 +344,7 @@ export const motes = (c: Cam, fr: number, period?: number, loopFrames?: number):
   }).filter(Boolean) as Item[];
 
 /* ---------------------------------------------------------------- spotlight */
-const hull = (pts: { x: number; y: number }[]) => {
+export const hull = (pts: { x: number; y: number }[]) => {
   const P = [...pts].sort((a, b) => a.x - b.x || a.y - b.y);
   const cr = (o: { x: number; y: number }, a: { x: number; y: number }, b: { x: number; y: number }) => (a.x - o.x) * (b.y - o.y) - (a.y - o.y) * (b.x - o.x);
   const lo: typeof P = [];

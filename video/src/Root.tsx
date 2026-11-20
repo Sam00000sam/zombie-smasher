@@ -12,6 +12,7 @@ import { LabelOrProduct60 } from "./v5/Explainer";
 import { TOTAL_FRAMES as LABEL60_FRAMES } from "./v5/timing";
 import { NeonLabel } from "./v6/Neon";
 import { RealOrFake, REALFAKE_FRAMES } from "./v7/RealOrFake";
+import { Top5, TOP5_FRAMES } from "./v8/Top5";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -56,6 +57,7 @@ export const RemotionRoot: React.FC = () => {
         width={WIDTH}
         height={HEIGHT}
       />
+      <Composition id="Top5Reasons" component={Top5} durationInFrames={TOP5_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="RealOrFake" component={RealOrFake} durationInFrames={REALFAKE_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="NeonLabel60" component={NeonLabel} durationInFrames={LABEL60_FRAMES} fps={FPS} width={1080} height={1920} />
     </>

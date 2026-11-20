@@ -1,0 +1,15 @@
+{
+  "wav": "public/voice/top5-narration.wav",
+  "json": "src/v8/narration.json",
+  "lead_in": 0.35,
+  "tail": 2.0,
+  "lines": [
+    ["hook", "Five reasons the fake bag beats the real one. Stay for number one.", 0.6],
+    ["r5", "Number five: the price. Three thousand dollars, or about a hundred. Same look, thirty times cheaper.", 0.6],
+    ["r4", "Number four: you'll actually use it. No babying it, no dust bag, no panic when it rains.", 0.6],
+    ["r3", "Number three: nobody can tell. From across the room, a good replica looks just like the real thing.", 0.6],
+    ["r2", "Number two: trends move fast. When the hype dies, you've lost a hundred dollars, not three thousand.", 0.6],
+    ["r1", "And number one: the money you keep. Invest the difference, and in ten years it could grow to over five thousand dollars.", 0.6],
+    ["end", "So, real or fake? Tell me in the comments.", 0.0]
+  ]
+}
