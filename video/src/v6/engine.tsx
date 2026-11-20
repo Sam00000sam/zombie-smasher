@@ -54,7 +54,7 @@ export const proj = (c: Cam, p: V3) => {
 export const nearFade = (z: number) => Math.max(0, Math.min(1, (z - 240) / 380));
 export const dof = (c: Cam, z: number) => Math.min(10, (Math.abs(z - c.focus) / c.focus) * 8);
 
-const camSeg = (c: Cam, a: V3, b: V3) => {
+export const camSeg = (c: Cam, a: V3, b: V3) => {
   let A = toCam(c, a);
   let B = toCam(c, b);
   if (A[2] < NEAR && B[2] < NEAR) return null;

@@ -1,0 +1,16 @@
+{
+  "wav": "public/voice/journey-narration.wav",
+  "json": "src/v10/narration.json",
+  "lead_in": 0.35,
+  "tail": 2.0,
+  "lines": [
+    ["hook", "This bag costs three thousand dollars. Let's follow where that money actually goes.", 0.6],
+    ["factory", "It starts in a factory. Leather, hardware and labour come to roughly three hundred dollars.", 0.6],
+    ["logo", "Then the brand stamps on its logo, and the price jumps to twelve hundred.", 0.6],
+    ["ads", "Next come the ads. Celebrities, billboards, magazine covers. Add another six hundred.", 0.6],
+    ["store", "Then the store. Prime rent, marble floors, a guy at the door. Another twelve hundred.", 0.6],
+    ["you", "By the time it reaches you, it's three thousand dollars, and you paid for every billboard.", 0.6],
+    ["replica", "Now the replica. Similar design, cheaper materials, no logo tax, no billboards, no marble floors. It ships straight to you, for about a hundred dollars.", 0.6],
+    ["end", "Same look on your arm. The difference is everything you never see. So, which one are you paying for?", 0.0]
+  ]
+}
