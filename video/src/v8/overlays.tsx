@@ -77,7 +77,7 @@ export const Tracker: React.FC = () => {
         })}
       </div>
       <div style={{ position: "relative", height: 40, marginTop: 14 }}>
-        {CHAPTERS.map((ch, i) => {
+        {CHAPTERS.map((ch) => {
           const o = p01(fr, f(ch.from), 8) * (1 - p01(fr, f(ch.next), 8));
           if (o <= 0) return null;
           return (
