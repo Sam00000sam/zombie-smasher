@@ -1,5 +1,5 @@
 import React from "react";
-import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
+import { Easing, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { FONT } from "../v2/theme";
 import { EMPHASIS as EMPH60, WORDS as WORDS60 } from "../v5/timing";
 import { GOLD } from "./engine";
@@ -10,7 +10,8 @@ const clean = (w: string) => w.replace(/[.,!?;:]+$/g, "").toUpperCase();
 /** One-word-at-a-time captions (the reference style): big, bold, a quick pop on each word, gold on key words. */
 type Word = { w: string; start: number; end: number };
 /** top: caption line position; cx: horizontal centre (shift left to clear TikTok's side buttons). */
-export const WordCaptions: React.FC<{ words?: Word[]; emphasis?: string[]; top?: number; cx?: number }> = ({ words: WORDS = WORDS60, emphasis: EMPHASIS = EMPH60, top = 1430, cx = 540 }) => {
+/** smooth: ease-out settle with no overshoot (cleaner than the springy pop). */
+export const WordCaptions: React.FC<{ words?: Word[]; emphasis?: string[]; top?: number; cx?: number; smooth?: boolean }> = ({ words: WORDS = WORDS60, emphasis: EMPHASIS = EMPH60, top = 1430, cx = 540, smooth = false }) => {
   const fr = useCurrentFrame();
   const { fps } = useVideoConfig();
   const t = fr / fps;
@@ -27,7 +28,8 @@ export const WordCaptions: React.FC<{ words?: Word[]; emphasis?: string[]; top?:
   const w = WORDS[i];
   const local = fr - Math.round(w.start * fps);
   const pop = spring({ frame: local, fps, config: { damping: 14, stiffness: 260, mass: 0.6 } });
-  const scale = interpolate(pop, [0, 1], [0.72, 1]);
+  const settle = interpolate(local, [-1, 4], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });
+  const scale = smooth ? interpolate(settle, [0, 1], [0.9, 1]) : interpolate(pop, [0, 1], [0.72, 1]);
   const op = interpolate(local, [-1, 2], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const hot = EMPHASIS.includes(norm(w.w));
   const txt = clean(w.w);
