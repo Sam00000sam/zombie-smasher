@@ -15,11 +15,13 @@ export const H = 1920;
  * at the top of its render (setView) — e.g. a wider, left-shifted lens keeps a TikTok cut clear of the
  * app's buttons and caption overlay. Defaults are the original framing.
  */
-export const VIEW = { f: 1180, cx: W / 2, cy: 880 };
+export const VIEW = { f: 1180, cx: W / 2, cy: 880, billboard: false };
+/** billboard: cards always turn to face the camera (for orbiting shots, so text stays readable). */
 export const setView = (v: Partial<typeof VIEW>) => {
   VIEW.f = v.f ?? 1180;
   VIEW.cx = v.cx ?? W / 2;
   VIEW.cy = v.cy ?? 880;
+  VIEW.billboard = v.billboard ?? false;
 };
 
 export const GOLD = "#ffd04d";
@@ -71,12 +73,29 @@ export const camSeg = (c: Cam, a: V3, b: V3) => {
 
 /* ------------------------------------------------------------------ floor */
 /** Receding floor grid (y = 0) that fades with distance; optional court circles at given centres. */
-export const floor = (c: Cam, circles: V3[] = [], strength = 1): Item => {
+export const floor = (c: Cam, circles: V3[] = [], strength = 1, around = false): Item => {
   const lines: React.ReactNode[] = [];
+  let k = 0;
+  if (around) {
+    // grid all around the camera (for orbits): 600-unit chunks both ways, faded by depth
+    const R = 4200;
+    const x0 = Math.floor((c.x - R) / 200) * 200;
+    const z0 = Math.floor((c.z - R) / 600) * 600;
+    const xs0 = Math.floor((c.x - R) / 600) * 600;
+    const zl0 = Math.floor((c.z - R) / 200) * 200;
+    const push = (a: V3, b: V3, w: number, op: number) => {
+      const s = camSeg(c, a, b);
+      if (!s) return;
+      const al = Math.max(0, 1 - Math.min(s[0].z, s[1].z) / 5200) * op * strength;
+      if (al >= 0.01) lines.push(<line key={k++} x1={s[0].x} y1={s[0].y} x2={s[1].x} y2={s[1].y} stroke={INK} strokeOpacity={al} strokeWidth={w} />);
+    };
+    for (let x = x0; x <= c.x + R; x += 200) for (let z = z0; z < c.z + R; z += 600) push([x, 0, z], [x, 0, z + 600], 1.2, 0.2);
+    for (let z = zl0; z <= c.z + R; z += 200) for (let x = xs0; x < c.x + R; x += 600) push([x, 0, z], [x + 600, 0, z], 1.2, 0.2);
+    return { z: 1e9, node: <svg key="floor" width={W} height={H} style={{ position: "absolute", inset: 0 }}>{lines}</svg> };
+  }
   const zMin = Math.floor((c.z - 400) / 200) * 200;
   const zMax = c.z + 6000;
   const xMin = Math.floor((c.x - 3200) / 200) * 200;
-  let k = 0;
   // lines running away from camera, in chunks so they fade with distance
   for (let x = xMin; x <= c.x + 3200; x += 200) {
     for (let z = zMin; z < zMax; z += 600) {
@@ -141,7 +160,7 @@ export const card = (
   const pr = proj(c, o.p);
   if (pr.z < NEAR + 20) return null;
   op *= nearFade(pr.z);
-  const tilt = ((o.yaw ?? 0) - c.yaw) * 57.3;
+  const tilt = VIEW.billboard && o.yaw === undefined ? 0 : ((o.yaw ?? 0) - c.yaw) * 57.3;
   const blur = o.noBlur ? 0 : dof(c, pr.z);
   const nodes: React.ReactNode[] = [];
   if (o.string) {

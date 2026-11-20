@@ -7,7 +7,7 @@ import { io, p01 } from "../v5/smooth";
 import { burst, Cam, camSeg, card, floor, GOLD, GREEN, INK, Item, line3, motes, neon, pawn, RED, setView, spot, V3, W, H, wireBox } from "../v6/engine";
 import { WordCaptions } from "../v6/WordCaptions";
 import { ART } from "../v7/icons";
-import { camAt, camMotion, EX, EZ, FLIGHTS, RX, RZ, Z } from "./camera";
+import { camAt, camMotion, EX, EZ, FLIGHTS, rigAt, RX, RZ, Z } from "./camera";
 import { CUE, EMPHASIS, f, L, TOTAL_FRAMES, WORDS } from "./timing";
 
 /* TikTok-safe lens: clear of the side buttons and the caption overlay. */
@@ -62,7 +62,7 @@ const belt = (c: Cam, key: string, o: { x: number; z0: number; z1: number; col: 
     if (fadeD <= 0) return;
     els.push(<line key={n++} x1={s[0].x} y1={s[0].y} x2={s[1].x} y2={s[1].y} stroke={col} strokeOpacity={op * fadeD} strokeWidth={w} strokeLinecap="round" />);
   };
-  const zMin = Math.max(o.z0, c.z - 200);
+  const zMin = Math.max(o.z0, c.z - 5200);
   const zMax = Math.min(o.z1, c.z + 5200);
   if (zMax <= zMin) return null;
   for (let z = zMin; z < zMax; z += 300) {
@@ -149,9 +149,9 @@ const legP = (fr: number, i: number) => {
   const b = f(LEGS[i][1]);
   if (fr <= a) return 0;
   if (fr >= b) return 1;
-  const cs = camAt(a).z;
-  const ce = camAt(b).z;
-  return Math.max(0, Math.min(1, (camAt(fr).z - cs) / (ce - cs)));
+  const cs = rigAt(a).tz;
+  const ce = rigAt(b).tz;
+  return Math.max(0, Math.min(1, (rigAt(fr).tz - cs) / (ce - cs)));
 };
 const heroZ = (fr: number) => {
   let z = STOPS[0];
@@ -298,7 +298,7 @@ const world = (c: Cam, fr: number): (Item | null)[] => {
     it.push(line3(c, "A-pole3", { pts: [[120, 0, z + 300], [120, 690, z + 300]], p: bb, color: INK, width: 3, opacity: AO * 0.7 }));
     it.push(card(c, "A-bill", { p: [0, 800, z + 300], w: 420, h: 190, opacity: AO * bb, children: <Box col={ORANGE} s={1.1}><Center row gap={18} style={{ transform: settle(bb) }}><Art kind="handbag" color={ORANGE} size={110} p={bb} /><div><T s={24} ls="0.24em">THE</T><T s={44} c={ORANGE} glow>NEW SEASON</T></div></Center></Box> }));
     // magazine cover
-    it.push(card(c, "A-mag", { p: [265, 520, z + 60], w: 200, h: 270, yaw: -0.2, opacity: AO * mg, children: <Box col={INK} s={0.8}><div style={{ position: "absolute", left: 18, right: 18, top: 16, transform: settle(mg) }}><T s={30} w={900} ls="0.12em">MAGAZINE</T><div style={{ height: 2, background: "rgba(255,255,255,0.5)", margin: "8px 0 10px" }} /><Art kind="handbag" color={GOLD} size={150} p={mg} /><T s={16} ls="0.2em" style={{ marginTop: 6 }}>IT BAG OF THE YEAR</T></div></Box> }));
+    it.push(card(c, "A-mag", { p: [265, 520, z + 60], w: 200, h: 270, opacity: AO * mg, children: <Box col={INK} s={0.8}><div style={{ position: "absolute", left: 18, right: 18, top: 16, transform: settle(mg) }}><T s={30} w={900} ls="0.12em">MAGAZINE</T><div style={{ height: 2, background: "rgba(255,255,255,0.5)", margin: "8px 0 10px" }} /><Art kind="handbag" color={GOLD} size={150} p={mg} /><T s={16} ls="0.2em" style={{ marginTop: 6 }}>IT BAG OF THE YEAR</T></div></Box> }));
   }
 
   /* ---- 4: the store ---------------------------------------------------------------- */
@@ -365,37 +365,41 @@ const world = (c: Cam, fr: number): (Item | null)[] => {
     );
   }
 
-  /* ---- the replica lane ------------------------------------------------------------- */
+  /* ---- the replica lane (filmed side-on: screen-right is -z, depth is +x) ---------------- */
   const RO = p01(fr, f(FLIGHTS.rep[0]), 14) * (1 - p01(fr, f(FLIGHTS.end[0]) - 3, 8));
   if (RO > 0) {
+    /** side-on layout: sx = screen offset, d = depth (+ further away), around a point at z = base */
+    const S = (sx: number, y: number, d: number, base: number): V3 => [RX + d, y, base - sx];
     const ship = p01(fr, f(FLIGHTS.ship[0]) + 2, f(FLIGHTS.ship[1]) - f(FLIGHTS.ship[0]));
-    it.push(belt(c, "rbelt", { x: RX, z0: RZ.FA - 600, z1: RZ.YO + 200, col: GREEN, run: ship * 15, opacity: RO }));
-    it.push(sign(c, "R-sign", [RX, 880, RZ.FA + 220], "REPLICA", RO * (1 - ship), GREEN, 460));
-    it.push(wireBox(c, "R-m", { c: [RX - 300, 140, RZ.FA], size: [140, 280, 160], color: INK, opacity: RO * 0.8 * (1 - ship), width: 2.5 }));
+    const gone = 1 - ship;
+    it.push(belt(c, "rbelt", { x: RX, z0: RZ.FA - 700, z1: RZ.YO + 500, col: GREEN, run: ship * 15, opacity: RO }));
+    it.push(sign(c, "R-sign", S(0, 1010, 420, RZ.FA), "REPLICA", RO * gone, GREEN, 460));
+    it.push(wireBox(c, "R-m", { c: S(-310, 140, 260, RZ.FA), size: [160, 280, 140], color: INK, opacity: RO * 0.8 * gone, width: 2.5 }));
     const ch = inn(fr, f(CUE.cheaper) - 3);
-    it.push(card(c, "R-cheap", { p: [RX, 720, RZ.FA - 60], w: 400, h: 56, opacity: RO * ch * (1 - ship), children: <div style={{ position: "absolute", inset: 0, transform: settle(ch) }}><Chip text="CHEAPER MATERIALS" col={GREEN} s={22} /></div> }));
+    it.push(card(c, "R-cheap", { p: S(0, 700, -60, RZ.FA), w: 400, h: 56, opacity: RO * ch * gone, children: <div style={{ position: "absolute", inset: 0, transform: settle(ch) }}><Chip text="CHEAPER MATERIALS" col={GREEN} s={22} /></div> }));
     [
       { t: "LOGO TAX", at: f(CUE.no1), x: -255 },
       { t: "BILLBOARDS", at: f(CUE.no2), x: 0 },
       { t: "MARBLE", at: f(CUE.no3), x: 255 },
     ].forEach((n, i) => {
       const a = inn(fr, n.at - 3);
-      it.push(card(c, `R-no${i}`, { p: [RX + n.x, 620, RZ.FA - 60], w: 230, h: 54, opacity: RO * a * (1 - ship), children: <div style={{ position: "absolute", inset: 0, transform: settle(a) }}><Chip text={n.t} col={RED} s={20} strike={p01(fr, n.at + 4, 10)} /></div> }));
+      it.push(card(c, `R-no${i}`, { p: S(n.x, 610, -60, RZ.FA), w: 230, h: 54, opacity: RO * a * gone, children: <div style={{ position: "absolute", inset: 0, transform: settle(a) }}><Chip text={n.t} col={RED} s={20} strike={p01(fr, n.at + 4, 10)} /></div> }));
     });
-    // the replica bag, drawn, then shipped straight to you
-    const rz = lerp(RZ.FA, RZ.YO, ship);
+    // the bag rides with the camera's target as it ships, then goes into the customer's hand
+    const rz = rigAt(fr).tx > RX - 5 ? Math.max(RZ.FA, Math.min(RZ.YO, rigAt(fr).tz)) : RZ.FA;
     const hand = p01(fr, f(FLIGHTS.ship[1]) - 2, 16);
     const sc = lerp(1, 0.5, hand);
-    it.push(card(c, "R-bag", { p: [RX + lerp(0, -112, io(hand)), lerp(200, 112, io(hand)), rz], w: 270 * sc, h: 280 * sc, opacity: RO * inn(fr, f(CUE.similar) - 4), reflect: 0.18 * (1 - hand), children: <div style={{ position: "absolute", inset: 0, transform: `scale(${sc})`, transformOrigin: "0 0" }}><div style={{ position: "relative", left: 10, top: 10 }}><Art kind="handbag" color={GOLD} size={250} p={p01(fr, f(CUE.similar) - 2, 22)} /></div></div> }));
-    if (ship > 0 && ship < 1) it.push(line3(c, "R-streak", { pts: [[RX, 120, Math.max(RZ.FA, rz - 600)], [RX, 120, rz - 140]], p: 1, color: GREEN, width: 5, opacity: RO * Math.sin(ship * Math.PI) }));
-    const ry = RZ.YO;
-    it.push(spot(c, "R-ysp", { p: [RX - 200, 0, ry], r: 170, color: GREEN, opacity: RO * 0.8 }));
-    it.push(pawn(c, "R-you", { p: [RX - 200, 0, ry], h: 270, opacity: RO }));
-    it.push(card(c, "R-lbl", { p: [RX - 200, 330, ry - 10], w: 150, h: 54, opacity: RO * inn(fr, f(FLIGHTS.ship[1])), children: <Chip text="YOU" col={INK} s={24} /> }));
+    const bp = S(lerp(0, -108, io(hand)), lerp(200, 112, io(hand)), lerp(0, -160, io(hand)), rz);
+    it.push(card(c, "R-bag", { p: bp, w: 270 * sc, h: 280 * sc, opacity: RO * inn(fr, f(CUE.similar) - 4), reflect: 0.18 * (1 - hand), children: <div style={{ position: "absolute", inset: 0, transform: `scale(${sc})`, transformOrigin: "0 0" }}><div style={{ position: "relative", left: 10, top: 10 }}><Art kind="handbag" color={GOLD} size={250} p={p01(fr, f(CUE.similar) - 2, 22)} /></div></div> }));
+    if (ship > 0 && ship < 1) it.push(line3(c, "R-streak", { pts: [[RX, 120, Math.max(RZ.FA, rz - 600)], [RX, 120, rz - 150]], p: 1, color: GREEN, width: 5, opacity: RO * Math.sin(ship * Math.PI) }));
+    const you = S(-200, 0, -150, RZ.YO);
+    it.push(spot(c, "R-ysp", { p: you, r: 160, color: GREEN, opacity: RO * 0.8 }));
+    it.push(pawn(c, "R-you", { p: you, h: 270, opacity: RO }));
+    it.push(card(c, "R-lbl", { p: S(-200, 330, -160, RZ.YO), w: 150, h: 54, opacity: RO * inn(fr, f(FLIGHTS.ship[1])), children: <Chip text="YOU" col={INK} s={24} /> }));
     const hn = inn(fr, f(CUE.hundred100) - 6);
-    it.push(tag(c, "R-tag", [RX + 60, 520, ry], 100, RO * hn, GREEN));
-    it.push(card(c, "R-direct", { p: [RX + 250, 260, ry - 80], w: 240, h: 54, opacity: RO * inn(fr, f(FLIGHTS.ship[1]) + 2), children: <Chip text="DIRECT TO YOU" col={GREEN} s={18} solid /> }));
-    it.push(burst(c, "R-burst", { p: [RX + 60, 520, ry - 30], t: p01(fr, f(CUE.hundred100), 24), color: GREEN }));
+    it.push(tag(c, "R-tag", S(70, 520, 0, RZ.YO), 100, RO * hn, GREEN));
+    it.push(card(c, "R-direct", { p: S(250, 250, -80, RZ.YO), w: 240, h: 54, opacity: RO * inn(fr, f(FLIGHTS.ship[1]) + 2), children: <Chip text="DIRECT TO YOU" col={GREEN} s={18} solid /> }));
+    it.push(burst(c, "R-burst", { p: S(70, 520, -30, RZ.YO), t: p01(fr, f(CUE.hundred100), 24), color: GREEN }));
   }
 
   /* ---- the end: same look, different journey --------------------------------------- */
@@ -484,10 +488,10 @@ const Ledger: React.FC<{ fr: number }> = ({ fr }) => {
 /** "Follow the Money": where a $3,000 bag's price comes from, versus the replica's direct route. */
 export const Journey: React.FC = () => {
   const fr = useCurrentFrame();
-  setView(VIEW_TT);
+  setView({ ...VIEW_TT, billboard: true });
   const c = camAt(fr);
   const { roll, speed } = camMotion(fr);
-  const items = [floor(c), ...motes(c, fr), ...(world(c, fr).filter(Boolean) as Item[])];
+  const items = [floor(c, [], 1, true), ...motes(c, fr), ...(world(c, fr).filter(Boolean) as Item[])];
   items.sort((a, b) => b.z - a.z);
   const mb = Math.max(0, Math.min(2, (speed - 40) / 20));
   return (

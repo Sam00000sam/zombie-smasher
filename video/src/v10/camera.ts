@@ -1,7 +1,7 @@
 import { interpolate } from "remotion";
 import { io } from "../v5/smooth";
 import { Cam } from "../v6/engine";
-import { CUE, f, L, TOTAL_FRAMES } from "./timing";
+import { f, L, CUE, TOTAL_FRAMES } from "./timing";
 
 const GAP = 1400;
 /** Main lane (x = 0) stops, the replica lane (x = RX), and the ending between them. */
@@ -11,70 +11,74 @@ export const RZ = { FA: Z.YO, YO: Z.YO + GAP };
 export const EX = RX / 2;
 export const EZ = Z.YO + 2 * GAP + 600;
 
-/** Flights between stops: [leave, arrive]. The hero bag rides the conveyor on the same timing. */
+/** Flights between stops: [leave, arrive]. The hero bag rides the conveyor in step with the camera. */
 export const FLIGHTS = {
   fa: [L.hook.end + 0.05, L.factory.start + 0.3],
   lo: [L.factory.end + 0.05, L.logo.start + 0.25],
   ad: [L.logo.end + 0.05, L.ads.start + 0.25],
   st: [L.ads.end + 0.05, L.store.start + 0.25],
   yo: [L.store.end + 0.05, L.you.start + 0.25],
-  rep: [L.you.end + 0.05, L.replica.start + 0.45],
+  rep: [L.you.end + 0.05, L.replica.start + 0.55],
   ship: [CUE.ships - 0.1, CUE.ships + 0.75],
-  end: [L.replica.end + 0.05, L.end.start + 0.3],
+  end: [L.replica.end + 0.05, L.end.start + 0.35],
 } as const;
 
-type K = Cam & { at: number; dur: number };
-const k = (t: number, x: number, y: number, z: number, yaw: number, pitch: number, focus: number, dur = 30): K => ({ at: f(t), x, y, z, yaw, pitch, focus, dur });
-const fly = (fl: readonly [number, number], x: number, y: number, z: number, focus: number, side: number, hold: number): K[] => {
-  const at = f(fl[1]);
-  const dur = at - f(fl[0]);
-  const to = { x, y, z, yaw: 0, pitch: -0.04, focus };
-  return [
-    { ...to, at: at - Math.round(dur * 0.45), dur: Math.round(dur * 0.6), x: x + side * 150, y: y + 60, z: z - GAP * 0.55, yaw: -side * 0.06, pitch: -0.06 },
-    { ...to, at, dur },
-    // then one slow push for the rest of the stop
-    { ...to, at: f(hold), dur: f(hold) - at, z: z + 90, focus: focus - 90, pitch: -0.045 },
-  ];
-};
+/**
+ * An orbit rig: the camera circles a target point (tx, ty, tz) at distance R and angle th (degrees,
+ * 0 = looking down +z from in front, 90 = looking down +x from the left). Interpolating the rig's
+ * values rather than raw positions turns every move into a smooth arc around the subject.
+ */
+export type Rig = { tx: number; tz: number; ty: number; R: number; th: number; y: number };
+type K = Rig & { at: number; dur: number };
+const k = (at: number, dur: number, r: Rig): K => ({ ...r, at, dur });
+const rig = (tx: number, tz: number, th: number, R = 1040, y = 440, ty = 300): Rig => ({ tx, tz, th, R, y, ty });
 
-const KEYS: K[] = [
-  k(0, 0, 430, 180, 0, -0.04, 1020, 1),
-  k(L.hook.end, 0, 420, 330, 0, -0.045, 870, f(L.hook.end) - 1),
-  ...fly(FLIGHTS.fa, 0, 440, Z.FA - 1040, 1040, 1, FLIGHTS.lo[0]),
-  ...fly(FLIGHTS.lo, 0, 440, Z.LO - 1040, 1040, -1, FLIGHTS.ad[0]),
-  ...fly(FLIGHTS.ad, 0, 470, Z.AD - 1080, 1080, 1, FLIGHTS.st[0]),
-  ...fly(FLIGHTS.st, 0, 450, Z.ST - 1060, 1060, -1, FLIGHTS.yo[0]),
-  ...fly(FLIGHTS.yo, 0, 440, Z.YO - 1040, 1040, 1, FLIGHTS.rep[0]),
-  // truck sideways to the replica lane
-  k(FLIGHTS.rep[1], RX, 440, RZ.FA - 1040, 0, -0.04, 1040, f(FLIGHTS.rep[1] - FLIGHTS.rep[0])),
-  k(FLIGHTS.ship[0], RX, 430, RZ.FA - 960, 0, -0.045, 960, f(FLIGHTS.ship[0] - FLIGHTS.rep[1])),
-  k(FLIGHTS.ship[1], RX, 440, RZ.YO - 1040, 0, -0.04, 1040, f(FLIGHTS.ship[1] - FLIGHTS.ship[0])),
-  k(FLIGHTS.end[0], RX, 430, RZ.YO - 980, 0, -0.045, 980, f(FLIGHTS.end[0] - FLIGHTS.ship[1])),
-  ...fly(FLIGHTS.end, EX, 440, EZ - 1080, 1080, -1, TOTAL_FRAMES / 30),
+/** Arrive at a stop at angle a, then keep orbiting slowly to angle b until the next flight. */
+const stop = (fl: readonly [number, number], next: number, tx: number, tz: number, a: number, b: number, R = 1040, y = 440): K[] => [
+  k(f(fl[1]), f(fl[1]) - f(fl[0]), rig(tx, tz, a, R, y)),
+  k(f(next), f(next) - f(fl[1]), rig(tx, tz, b, R - 80, y - 10)),
 ];
 
-export const camAt = (frame: number): Cam => {
-  const c: Cam = { x: KEYS[0].x, y: KEYS[0].y, z: KEYS[0].z, yaw: KEYS[0].yaw, pitch: KEYS[0].pitch, focus: KEYS[0].focus };
+const KEYS: K[] = [
+  k(0, 1, rig(0, Z.HK, 0, 1000, 430)),
+  // a full turn around the $3,000 bag
+  k(f(L.hook.end), f(L.hook.end) - 1, rig(0, Z.HK, 360, 980, 450)),
+  ...stop(FLIGHTS.fa, FLIGHTS.lo[0], 0, Z.FA, 395, 328),
+  ...stop(FLIGHTS.lo, FLIGHTS.ad[0], 0, Z.LO, 322, 392),
+  ...stop(FLIGHTS.ad, FLIGHTS.st[0], 0, Z.AD, 396, 334, 1080, 460),
+  ...stop(FLIGHTS.st, FLIGHTS.yo[0], 0, Z.ST, 328, 396, 1060),
+  ...stop(FLIGHTS.yo, FLIGHTS.rep[0], 0, Z.YO, 392, 340),
+  // swing 90° to watch the replica lane side-on
+  ...stop(FLIGHTS.rep, FLIGHTS.ship[0], RX, RZ.FA, 450, 442),
+  k(f(FLIGHTS.ship[1]), f(FLIGHTS.ship[1]) - f(FLIGHTS.ship[0]), rig(RX, RZ.YO, 446, 1040)),
+  k(f(FLIGHTS.end[0]), f(FLIGHTS.end[0]) - f(FLIGHTS.ship[1]), rig(RX, RZ.YO, 440, 980)),
+  // round to the front of the ending, then a slow arc around the two of them
+  ...stop(FLIGHTS.end, TOTAL_FRAMES / 30, EX, EZ, 382, 335, 1100),
+];
+
+export const rigAt = (frame: number): Rig => {
+  const r: Rig = { tx: KEYS[0].tx, tz: KEYS[0].tz, ty: KEYS[0].ty, R: KEYS[0].R, th: KEYS[0].th, y: KEYS[0].y };
   for (const key of KEYS) {
     const p = interpolate(frame, [key.at - key.dur, key.at], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: io });
-    c.x += (key.x - c.x) * p;
-    c.y += (key.y - c.y) * p;
-    c.z += (key.z - c.z) * p;
-    c.yaw += (key.yaw - c.yaw) * p;
-    c.pitch += (key.pitch - c.pitch) * p;
-    c.focus += (key.focus - c.focus) * p;
+    (Object.keys(r) as (keyof Rig)[]).forEach((n) => {
+      r[n] += (key[n] - r[n]) * p;
+    });
   }
-  const t = frame / 30;
-  c.x += Math.sin(t * 0.5) * 6;
-  c.y += Math.cos(t * 0.4) * 3;
-  return c;
+  return r;
 };
 
+export const camAt = (frame: number): Cam => {
+  const r = rigAt(frame);
+  const th = (r.th * Math.PI) / 180;
+  const t = frame / 30;
+  const y = r.y + Math.cos(t * 0.4) * 3;
+  // look at the target: yaw from the orbit angle, pitch down towards the target's height
+  return { x: r.tx - r.R * Math.sin(th), y, z: r.tz - r.R * Math.cos(th), yaw: th, pitch: -Math.atan2(y - r.ty, r.R) * 0.55, focus: r.R };
+};
+
+/** Speed (units/frame) for a light motion blur; no roll (orbits read cleaner level). */
 export const camMotion = (frame: number) => {
   const a = camAt(frame - 1);
   const b = camAt(frame + 1);
-  const dx = (b.x - a.x) / 2;
-  const dz = (b.z - a.z) / 2;
-  const lateral = dx * Math.cos(a.yaw) - dz * Math.sin(a.yaw);
-  return { roll: Math.max(-0.025, Math.min(0.025, -lateral * 0.0012)), speed: Math.hypot(dx, dz, (b.y - a.y) / 2) };
+  return { roll: 0, speed: Math.hypot((b.x - a.x) / 2, (b.z - a.z) / 2, (b.y - a.y) / 2) };
 };
