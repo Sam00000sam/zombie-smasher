@@ -23,14 +23,26 @@ glossy white pawns with gold ties, one-word captions. The user's standing prefer
 3. Camera: an **orbit rig** (`src/v10/camera.ts`): target point + distance + angle; interpolate the
    rig, not positions, so moves are arcs. `setView({ f: 1010, cx: 500, cy: 770, billboard: true })`
    and `floor(c, [], 1, true)` for orbit shots (labels face the camera; grid covers all directions).
-4. Review **before** a full render: `node scripts/stills.mjs <CompId> <scratchDir> [frames…]` →
+4. **Layout check (no rendering, ~30 s):** `npx tsx scripts/layout.ts src/vN/<Comp>.tsx 2` — the
+   module exports `layoutFrame(fr)` and `<NAME>_FRAMES`; every `slab`/`mesh` from `src/v11/three.tsx`
+   registers its screen box. Fix until it prints `layout OK` (text×text, text×object, captions,
+   TikTok zones, off-frame).
+5. Review **before** a full render: `node scripts/stills.mjs <CompId> <scratchDir> [frames…]` →
    contact sheet with TikTok zones shaded red. Fix everything visible in one pass.
-5. Render: `npx remotion render src/index.ts <CompId> deliverables/<name>.mp4
+6. Render: `npx remotion render src/index.ts <CompId> deliverables/<name>.mp4
    --browser-executable=/opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell --codec=h264 --crf=17`
-6. Check: `voiceover/.venv/bin/python scripts/check.py deliverables/<name>.mp4 public/voice/<name>.wav <scratchDir>`
+7. Check: `voiceover/.venv/bin/python scripts/check.py deliverables/<name>.mp4 public/voice/<name>.wav <scratchDir>`
    Want: audio lag 0 / corr > 0.99, motion max < ~10, no long dark runs. It writes `spikes.png`
    around the worst frame — look at it before re-rendering.
-7. Copy the narration WAV into `deliverables/`, commit, push, send.
+8. Copy the narration WAV into `deliverables/`, commit, push, send.
+
+## Full 3D (src/v11/three.tsx)
+
+Use real 3D for everything: `extrude` / `box` / `cylinder` meshes (lit translucent faces + glowing
+edges, `decal` lines on the front face) and `slab` text — an HTML panel mapped onto a 3D plane with
+a homography and extruded with darker layers. Slabs face `c.yaw - 0.22` so they trail the orbit and
+show their depth; props sway around `c.yaw` instead of spinning (never edge-on). Models live in
+`src/v11/models.ts` (bag, suitcase, phone, safe, clock).
 
 ## Mistakes already made — don't repeat them
 
@@ -50,5 +62,9 @@ glossy white pawns with gold ties, one-word captions. The user's standing prefer
 - `card` billboards only when `VIEW.billboard` is on; an explicit `yaw` on a card fights an orbit.
 - For a side-on lane, lay cards out in the *screen* plane (helper `S(sx, y, depth, base)` in
   `src/v10/Journey.tsx`), or they stack in depth and overlap.
+- A big bright object (a wall of cubes) fading out in 8 frames reads as a flash: start departure fades
+  ~6 frames before the flight and run them over ~12 frames.
+- Show a faint "ghost" of anything that fills up (cube walls, stacks) from the moment the station
+  appears, so the frame isn't empty before the count starts.
 - Don't start a hook price tag counting from $0 when the narration says the full price — land it on the word.
 - The `rm` safety check blocks `rm $VAR/*`; use `"${VAR:?}"/…` or literal paths.
