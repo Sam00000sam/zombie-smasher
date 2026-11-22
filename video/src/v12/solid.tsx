@@ -161,7 +161,8 @@ const BASE = [7, 7, 11];
 const LIGHT = nrm([-0.45, 0.85, -0.5]);
 type G = { __LAYOUT?: { key: string; kind: "text" | "obj"; x0: number; y0: number; x1: number; y1: number; op: number }[] };
 
-const draw = (c: Cam, o: { m: SMesh; xf: Xf; color: string; accent?: string; width: number; mirror: boolean }) => {
+const draw = (c: Cam, o: { m: SMesh; xf: Xf; color: string; accent?: string; width: number; mirror: boolean; light?: V3; tube?: boolean }) => {
+  const LT = o.light ? nrm(o.light) : LIGHT;
   const col = hex(o.color);
   const pts = (q: V3) => {
     const w = place(o.xf, q);
@@ -186,9 +187,12 @@ const draw = (c: Cam, o: { m: SMesh; xf: Xf; color: string; accent?: string; wid
     const sp = cs.map((q) => ({ x: VIEW.cx + (VIEW.f * q[0]) / q[2], y: VIEW.cy - (VIEW.f * q[1]) / q[2] }));
     pts2.push(...sp);
     const nn = F0.f.two && dot(F0.n, F0.view) < 0 ? ([-F0.n[0], -F0.n[1], -F0.n[2]] as V3) : F0.n;
-    const diff = Math.max(0, dot(nn, LIGHT));
+    const diff = Math.max(0, dot(nn, LT));
+    // a tight specular glint where the light reflects towards the camera
+    const half = nrm([LT[0] + F0.view[0], LT[1] + F0.view[1], LT[2] + F0.view[2]]);
+    const spec = o.light ? Math.pow(Math.max(0, dot(nn, half)), 18) * 0.55 : 0;
     const rim = Math.pow(1 - Math.abs(dot(nn, F0.view)), 2);
-    const fill = mix(BASE, col, 0.08 + 0.42 * diff + 0.3 * rim);
+    const fill = mix(BASE, col, Math.min(1, 0.08 + 0.42 * diff + 0.3 * rim + spec));
     let d = "";
     F0.f.pts.forEach((_, e) => {
       const nb = F0.f.nb[e];
@@ -200,7 +204,12 @@ const draw = (c: Cam, o: { m: SMesh; xf: Xf; color: string; accent?: string; wid
       }
     });
     const el: React.ReactNode[] = [<polygon key={`p${k}`} points={sp.map((p) => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(" ")} fill={fill} stroke={fill} strokeWidth={0.6} />];
-    if (d) el.push(<path key={`s${k}`} d={d} stroke={o.color} strokeWidth={o.width} strokeLinecap="round" fill="none" />);
+    if (d && o.tube) {
+      // neon tube: soft halo, coloured tube, hot white core
+      el.push(<path key={`h${k}`} d={d} stroke={o.color} strokeOpacity={0.22} strokeWidth={o.width * 3.6} strokeLinecap="round" fill="none" />);
+      el.push(<path key={`s${k}`} d={d} stroke={o.color} strokeWidth={o.width} strokeLinecap="round" fill="none" />);
+      el.push(<path key={`c${k}`} d={d} stroke="#ffffff" strokeOpacity={0.75} strokeWidth={o.width * 0.38} strokeLinecap="round" fill="none" />);
+    } else if (d) el.push(<path key={`s${k}`} d={d} stroke={o.color} strokeWidth={o.width} strokeLinecap="round" fill="none" />);
     o.m.decals.forEach((dc, di) => {
       if (dc.face !== k) return;
       const ds = dc.pts.map((q) => toCam(c, pts(q)));
@@ -220,7 +229,7 @@ const draw = (c: Cam, o: { m: SMesh; xf: Xf; color: string; accent?: string; wid
 export const solid = (
   c: Cam,
   key: string,
-  o: { m: SMesh; xf: Xf; color: string; accent?: string; opacity: number; width?: number; shadow?: number; reflect?: number; reg?: boolean; glow?: number },
+  o: { m: SMesh; xf: Xf; color: string; accent?: string; opacity: number; width?: number; shadow?: number; reflect?: number; reg?: boolean; glow?: number; light?: V3; tube?: boolean },
 ): Item[] => {
   let op = o.opacity;
   if (op <= 0.001) return [];
@@ -228,7 +237,7 @@ export const solid = (
   if (zc < NEAR + 60) return [];
   op *= nearFade(zc);
   const w = (o.width ?? 2.4) * Math.max(0.65, Math.min(1.5, 1000 / zc));
-  const main = draw(c, { m: o.m, xf: o.xf, color: o.color, accent: o.accent, width: w, mirror: false });
+  const main = draw(c, { m: o.m, xf: o.xf, color: o.color, accent: o.accent, width: w, mirror: false, light: o.light, tube: o.tube });
   if (!main.pts2.length) return [];
   const bx = { x0: Math.min(...main.pts2.map((p) => p.x)), x1: Math.max(...main.pts2.map((p) => p.x)), y0: Math.min(...main.pts2.map((p) => p.y)), y1: Math.max(...main.pts2.map((p) => p.y)) };
   const g = globalThis as G;
@@ -245,7 +254,7 @@ export const solid = (
     },
   ];
   if ((o.reflect ?? 0.16) > 0) {
-    const mir = draw(c, { m: o.m, xf: o.xf, color: o.color, accent: o.accent, width: w * 0.7, mirror: true });
+    const mir = draw(c, { m: o.m, xf: o.xf, color: o.color, accent: o.accent, width: w * 0.7, mirror: true, light: o.light });
     items.push({ z: zc + 1, node: <svg key={key + "-r"} width={W} height={H} style={{ position: "absolute", inset: 0, opacity: op * (o.reflect ?? 0.16), filter: `blur(${(2.5 + blur).toFixed(1)}px)` }}>{mir.nodes}</svg> });
   }
   if (o.shadow) {
