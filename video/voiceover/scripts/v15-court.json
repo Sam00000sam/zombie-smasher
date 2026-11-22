@@ -1,0 +1,22 @@
+{
+  "wav": "public/voice/court-narration.wav",
+  "json": "src/v15/narration.json",
+  "lead_in": 0.35,
+  "tail": 1.8,
+  "lines": [
+    ["order", "Order in the court.", 0.4],
+    ["case", "Today's case: real versus replica.", 0.7],
+    ["a1", "Exhibit A: the sneakers.", 0.4],
+    ["a2", "The real pair costs nine hundred dollars.", 0.35],
+    ["a3", "The replica costs eighty.", 0.7],
+    ["b1", "Exhibit B: the watch.", 0.4],
+    ["b2", "It tells the exact same time.", 0.35],
+    ["b3", "One costs five thousand dollars. The other is about two hundred.", 0.7],
+    ["c1", "Exhibit C: the sunglasses.", 0.4],
+    ["c2", "They block the same sun, for a fraction of the price.", 0.7],
+    ["jury", "The jury has seen enough.", 0.6],
+    ["v1", "The verdict?", 0.45],
+    ["v2", "The replica looks the part, and your wallet wins.", 0.7],
+    ["end", "Do you agree with the verdict? Tell me in the comments.", 0.0]
+  ]
+}

@@ -1,0 +1,932 @@
+{
+  "voice": "af_heart",
+  "speed": 1.08,
+  "sampleRate": 24000,
+  "duration": 60.469,
+  "lines": [
+    {
+      "key": "hook",
+      "text": "Unpopular opinion: sometimes, the fake is the smarter buy.",
+      "start": 0.35,
+      "end": 3.973
+    },
+    {
+      "key": "price",
+      "text": "Most of a luxury price isn't the product. It's the logo, the ads, and the fancy store.",
+      "start": 4.523,
+      "end": 9.543
+    },
+    {
+      "key": "copy",
+      "text": "Take that away, and a good copy can look almost identical, for a fraction of the cost.",
+      "start": 10.043,
+      "end": 14.992
+    },
+    {
+      "key": "same",
+      "text": "Same shape. Same colour. Same everyday use.",
+      "start": 15.542,
+      "end": 18.298
+    },
+    {
+      "key": "notice",
+      "text": "And honestly, most people won't notice. Walk past a hundred strangers, and nobody is checking the stitching.",
+      "start": 18.848,
+      "end": 24.918
+    },
+    {
+      "key": "trend",
+      "text": "Trends also change fast. Why spend a month's rent on something you'll stop wearing next season?",
+      "start": 25.468,
+      "end": 30.648
+    },
+    {
+      "key": "worry",
+      "text": "A cheaper bag also takes the pressure off. Scuff it, spill on it, leave it on the bus. It's not a disaster.",
+      "start": 31.198,
+      "end": 37.47
+    },
+    {
+      "key": "save",
+      "text": "The money you save could buy five styles, instead of one.",
+      "start": 38.02,
+      "end": 40.876
+    },
+    {
+      "key": "grow",
+      "text": "Or skip the extra bags, and put that money somewhere it can actually grow.",
+      "start": 41.326,
+      "end": 45.16
+    },
+    {
+      "key": "addup",
+      "text": "Even small savings add up over time.",
+      "start": 45.71,
+      "end": 47.876
+    },
+    {
+      "key": "status",
+      "text": "Because real status isn't a logo on your arm. It's knowing you didn't overpay for one.",
+      "start": 48.425,
+      "end": 53.083
+    },
+    {
+      "key": "end",
+      "text": "So before you pay for the name, ask yourself: are you buying the product, or the label?",
+      "start": 53.683,
+      "end": 58.069
+    }
+  ],
+  "words": [
+    {
+      "w": "Unpopular",
+      "start": 0.35,
+      "end": 0.86
+    },
+    {
+      "w": "opinion:",
+      "start": 0.86,
+      "end": 1.28
+    },
+    {
+      "w": "sometimes,",
+      "start": 1.96,
+      "end": 2.34
+    },
+    {
+      "w": "the",
+      "start": 2.6,
+      "end": 2.68
+    },
+    {
+      "w": "fake",
+      "start": 2.68,
+      "end": 2.92
+    },
+    {
+      "w": "is",
+      "start": 2.92,
+      "end": 3.12
+    },
+    {
+      "w": "the",
+      "start": 3.12,
+      "end": 3.28
+    },
+    {
+      "w": "smarter",
+      "start": 3.28,
+      "end": 3.52
+    },
+    {
+      "w": "buy.",
+      "start": 3.52,
+      "end": 3.82
+    },
+    {
+      "w": "Most",
+      "start": 4.523,
+      "end": 4.74
+    },
+    {
+      "w": "of",
+      "start": 4.74,
+      "end": 4.88
+    },
+    {
+      "w": "a",
+      "start": 4.88,
+      "end": 5.0
+    },
+    {
+      "w": "luxury",
+      "start": 5.0,
+      "end": 5.28
+    },
+    {
+      "w": "price",
+      "start": 5.28,
+      "end": 5.66
+    },
+    {
+      "w": "isn't",
+      "start": 5.66,
+      "end": 5.92
+    },
+    {
+      "w": "the",
+      "start": 5.92,
+      "end": 6.06
+    },
+    {
+      "w": "product.",
+      "start": 6.06,
+      "end": 6.42
+    },
+    {
+      "w": "It's",
+      "start": 6.96,
+      "end": 7.18
+    },
+    {
+      "w": "the",
+      "start": 7.18,
+      "end": 7.34
+    },
+    {
+      "w": "logo,",
+      "start": 7.34,
+      "end": 7.62
+    },
+    {
+      "w": "the",
+      "start": 8.0,
+      "end": 8.1
+    },
+    {
+      "w": "ads,",
+      "start": 8.1,
+      "end": 8.4
+    },
+    {
+      "w": "and",
+      "start": 8.54,
+      "end": 8.62
+    },
+    {
+      "w": "the",
+      "start": 8.62,
+      "end": 8.74
+    },
+    {
+      "w": "fancy",
+      "start": 8.74,
+      "end": 9.04
+    },
+    {
+      "w": "store.",
+      "start": 9.04,
+      "end": 9.38
+    },
+    {
+      "w": "Take",
+      "start": 10.043,
+      "end": 10.24
+    },
+    {
+      "w": "that",
+      "start": 10.24,
+      "end": 10.46
+    },
+    {
+      "w": "away,",
+      "start": 10.46,
+      "end": 10.76
+    },
+    {
+      "w": "and",
+      "start": 11.16,
+      "end": 11.26
+    },
+    {
+      "w": "a",
+      "start": 11.26,
+      "end": 11.38
+    },
+    {
+      "w": "good",
+      "start": 11.38,
+      "end": 11.54
+    },
+    {
+      "w": "copy",
+      "start": 11.54,
+      "end": 11.9
+    },
+    {
+      "w": "can",
+      "start": 11.9,
+      "end": 12.12
+    },
+    {
+      "w": "look",
+      "start": 12.12,
+      "end": 12.28
+    },
+    {
+      "w": "almost",
+      "start": 12.28,
+      "end": 12.62
+    },
+    {
+      "w": "identical,",
+      "start": 12.62,
+      "end": 13.14
+    },
+    {
+      "w": "for",
+      "start": 13.14,
+      "end": 13.76
+    },
+    {
+      "w": "a",
+      "start": 13.76,
+      "end": 13.9
+    },
+    {
+      "w": "fraction",
+      "start": 13.9,
+      "end": 14.2
+    },
+    {
+      "w": "of",
+      "start": 14.2,
+      "end": 14.42
+    },
+    {
+      "w": "the",
+      "start": 14.42,
+      "end": 14.54
+    },
+    {
+      "w": "cost.",
+      "start": 14.54,
+      "end": 14.84
+    },
+    {
+      "w": "Same",
+      "start": 15.542,
+      "end": 15.8
+    },
+    {
+      "w": "shape.",
+      "start": 15.8,
+      "end": 16.08
+    },
+    {
+      "w": "Same",
+      "start": 16.44,
+      "end": 16.64
+    },
+    {
+      "w": "colour.",
+      "start": 16.64,
+      "end": 17.3
+    },
+    {
+      "w": "Same",
+      "start": 17.3,
+      "end": 17.48
+    },
+    {
+      "w": "everyday",
+      "start": 17.48,
+      "end": 17.76
+    },
+    {
+      "w": "use.",
+      "start": 17.76,
+      "end": 18.16
+    },
+    {
+      "w": "And",
+      "start": 18.848,
+      "end": 18.96
+    },
+    {
+      "w": "honestly,",
+      "start": 18.96,
+      "end": 19.36
+    },
+    {
+      "w": "most",
+      "start": 19.64,
+      "end": 19.76
+    },
+    {
+      "w": "people",
+      "start": 19.76,
+      "end": 20.08
+    },
+    {
+      "w": "won't",
+      "start": 20.08,
+      "end": 20.38
+    },
+    {
+      "w": "notice.",
+      "start": 20.38,
+      "end": 20.68
+    },
+    {
+      "w": "Walk",
+      "start": 21.32,
+      "end": 21.58
+    },
+    {
+      "w": "past",
+      "start": 21.58,
+      "end": 21.9
+    },
+    {
+      "w": "a",
+      "start": 21.9,
+      "end": 22.04
+    },
+    {
+      "w": "hundred",
+      "start": 22.04,
+      "end": 22.28
+    },
+    {
+      "w": "strangers,",
+      "start": 22.28,
+      "end": 22.82
+    },
+    {
+      "w": "and",
+      "start": 22.82,
+      "end": 23.36
+    },
+    {
+      "w": "nobody",
+      "start": 23.36,
+      "end": 23.66
+    },
+    {
+      "w": "is",
+      "start": 23.66,
+      "end": 23.94
+    },
+    {
+      "w": "checking",
+      "start": 23.94,
+      "end": 24.2
+    },
+    {
+      "w": "the",
+      "start": 24.2,
+      "end": 24.42
+    },
+    {
+      "w": "stitching.",
+      "start": 24.42,
+      "end": 24.74
+    },
+    {
+      "w": "Trends",
+      "start": 25.468,
+      "end": 25.8
+    },
+    {
+      "w": "also",
+      "start": 25.8,
+      "end": 26.22
+    },
+    {
+      "w": "change",
+      "start": 26.22,
+      "end": 26.6
+    },
+    {
+      "w": "fast.",
+      "start": 26.6,
+      "end": 27.0
+    },
+    {
+      "w": "Why",
+      "start": 27.0,
+      "end": 27.68
+    },
+    {
+      "w": "spend",
+      "start": 27.68,
+      "end": 27.96
+    },
+    {
+      "w": "a",
+      "start": 27.96,
+      "end": 28.1
+    },
+    {
+      "w": "month's",
+      "start": 28.1,
+      "end": 28.44
+    },
+    {
+      "w": "rent",
+      "start": 28.44,
+      "end": 28.6
+    },
+    {
+      "w": "on",
+      "start": 28.6,
+      "end": 28.84
+    },
+    {
+      "w": "something",
+      "start": 28.84,
+      "end": 29.12
+    },
+    {
+      "w": "you'll",
+      "start": 29.12,
+      "end": 29.34
+    },
+    {
+      "w": "stop",
+      "start": 29.34,
+      "end": 29.56
+    },
+    {
+      "w": "wearing",
+      "start": 29.56,
+      "end": 29.84
+    },
+    {
+      "w": "next",
+      "start": 29.84,
+      "end": 30.14
+    },
+    {
+      "w": "season?",
+      "start": 30.14,
+      "end": 30.52
+    },
+    {
+      "w": "A",
+      "start": 31.198,
+      "end": 31.3
+    },
+    {
+      "w": "cheaper",
+      "start": 31.3,
+      "end": 31.56
+    },
+    {
+      "w": "bag",
+      "start": 31.56,
+      "end": 31.9
+    },
+    {
+      "w": "also",
+      "start": 31.9,
+      "end": 32.18
+    },
+    {
+      "w": "takes",
+      "start": 32.18,
+      "end": 32.44
+    },
+    {
+      "w": "the",
+      "start": 32.44,
+      "end": 32.66
+    },
+    {
+      "w": "pressure",
+      "start": 32.66,
+      "end": 32.9
+    },
+    {
+      "w": "off.",
+      "start": 32.9,
+      "end": 33.2
+    },
+    {
+      "w": "Scuff",
+      "start": 33.78,
+      "end": 33.86
+    },
+    {
+      "w": "it,",
+      "start": 33.86,
+      "end": 34.06
+    },
+    {
+      "w": "spill",
+      "start": 34.18,
+      "end": 34.44
+    },
+    {
+      "w": "on",
+      "start": 34.44,
+      "end": 34.64
+    },
+    {
+      "w": "it,",
+      "start": 34.64,
+      "end": 34.8
+    },
+    {
+      "w": "leave",
+      "start": 34.94,
+      "end": 35.1
+    },
+    {
+      "w": "it",
+      "start": 35.1,
+      "end": 35.24
+    },
+    {
+      "w": "on",
+      "start": 35.24,
+      "end": 35.34
+    },
+    {
+      "w": "the",
+      "start": 35.34,
+      "end": 35.48
+    },
+    {
+      "w": "bus.",
+      "start": 35.48,
+      "end": 35.68
+    },
+    {
+      "w": "It's",
+      "start": 36.28,
+      "end": 36.46
+    },
+    {
+      "w": "not",
+      "start": 36.46,
+      "end": 36.64
+    },
+    {
+      "w": "a",
+      "start": 36.64,
+      "end": 36.78
+    },
+    {
+      "w": "disaster.",
+      "start": 36.78,
+      "end": 37.14
+    },
+    {
+      "w": "The",
+      "start": 38.02,
+      "end": 38.12
+    },
+    {
+      "w": "money",
+      "start": 38.12,
+      "end": 38.28
+    },
+    {
+      "w": "you",
+      "start": 38.28,
+      "end": 38.48
+    },
+    {
+      "w": "save",
+      "start": 38.48,
+      "end": 38.74
+    },
+    {
+      "w": "could",
+      "start": 38.74,
+      "end": 38.96
+    },
+    {
+      "w": "buy",
+      "start": 38.96,
+      "end": 39.14
+    },
+    {
+      "w": "five",
+      "start": 39.14,
+      "end": 39.48
+    },
+    {
+      "w": "styles,",
+      "start": 39.48,
+      "end": 39.9
+    },
+    {
+      "w": "instead",
+      "start": 39.9,
+      "end": 40.46
+    },
+    {
+      "w": "of",
+      "start": 40.46,
+      "end": 40.6
+    },
+    {
+      "w": "one.",
+      "start": 40.6,
+      "end": 40.86
+    },
+    {
+      "w": "Or",
+      "start": 41.326,
+      "end": 41.48
+    },
+    {
+      "w": "skip",
+      "start": 41.48,
+      "end": 41.72
+    },
+    {
+      "w": "the",
+      "start": 41.72,
+      "end": 41.92
+    },
+    {
+      "w": "extra",
+      "start": 41.92,
+      "end": 42.24
+    },
+    {
+      "w": "bags,",
+      "start": 42.24,
+      "end": 42.62
+    },
+    {
+      "w": "and",
+      "start": 42.62,
+      "end": 43.08
+    },
+    {
+      "w": "put",
+      "start": 43.08,
+      "end": 43.24
+    },
+    {
+      "w": "that",
+      "start": 43.24,
+      "end": 43.4
+    },
+    {
+      "w": "money",
+      "start": 43.4,
+      "end": 43.58
+    },
+    {
+      "w": "somewhere",
+      "start": 43.58,
+      "end": 43.94
+    },
+    {
+      "w": "it",
+      "start": 43.94,
+      "end": 44.14
+    },
+    {
+      "w": "can",
+      "start": 44.14,
+      "end": 44.26
+    },
+    {
+      "w": "actually",
+      "start": 44.26,
+      "end": 44.68
+    },
+    {
+      "w": "grow.",
+      "start": 44.68,
+      "end": 45.0
+    },
+    {
+      "w": "Even",
+      "start": 45.71,
+      "end": 45.92
+    },
+    {
+      "w": "small",
+      "start": 45.92,
+      "end": 46.22
+    },
+    {
+      "w": "savings",
+      "start": 46.22,
+      "end": 46.74
+    },
+    {
+      "w": "add",
+      "start": 46.74,
+      "end": 47.1
+    },
+    {
+      "w": "up",
+      "start": 47.1,
+      "end": 47.24
+    },
+    {
+      "w": "over",
+      "start": 47.24,
+      "end": 47.44
+    },
+    {
+      "w": "time.",
+      "start": 47.44,
+      "end": 47.76
+    },
+    {
+      "w": "Because",
+      "start": 48.425,
+      "end": 48.68
+    },
+    {
+      "w": "real",
+      "start": 48.68,
+      "end": 49.02
+    },
+    {
+      "w": "status",
+      "start": 49.02,
+      "end": 49.44
+    },
+    {
+      "w": "isn't",
+      "start": 49.44,
+      "end": 49.8
+    },
+    {
+      "w": "a",
+      "start": 49.8,
+      "end": 49.96
+    },
+    {
+      "w": "logo",
+      "start": 49.96,
+      "end": 50.24
+    },
+    {
+      "w": "on",
+      "start": 50.24,
+      "end": 50.52
+    },
+    {
+      "w": "your",
+      "start": 50.52,
+      "end": 50.66
+    },
+    {
+      "w": "arm.",
+      "start": 50.66,
+      "end": 50.96
+    },
+    {
+      "w": "It's",
+      "start": 51.34,
+      "end": 51.58
+    },
+    {
+      "w": "knowing",
+      "start": 51.58,
+      "end": 51.8
+    },
+    {
+      "w": "you",
+      "start": 51.8,
+      "end": 52.04
+    },
+    {
+      "w": "didn't",
+      "start": 52.04,
+      "end": 52.24
+    },
+    {
+      "w": "overpay",
+      "start": 52.24,
+      "end": 52.62
+    },
+    {
+      "w": "for",
+      "start": 52.62,
+      "end": 52.82
+    },
+    {
+      "w": "one.",
+      "start": 52.82,
+      "end": 53.02
+    },
+    {
+      "w": "So",
+      "start": 53.683,
+      "end": 53.84
+    },
+    {
+      "w": "before",
+      "start": 53.84,
+      "end": 54.04
+    },
+    {
+      "w": "you",
+      "start": 54.04,
+      "end": 54.22
+    },
+    {
+      "w": "pay",
+      "start": 54.22,
+      "end": 54.42
+    },
+    {
+      "w": "for",
+      "start": 54.42,
+      "end": 54.58
+    },
+    {
+      "w": "the",
+      "start": 54.58,
+      "end": 54.7
+    },
+    {
+      "w": "name,",
+      "start": 54.7,
+      "end": 54.94
+    },
+    {
+      "w": "ask",
+      "start": 55.18,
+      "end": 55.36
+    },
+    {
+      "w": "yourself:",
+      "start": 55.36,
+      "end": 55.74
+    },
+    {
+      "w": "are",
+      "start": 55.74,
+      "end": 56.34
+    },
+    {
+      "w": "you",
+      "start": 56.34,
+      "end": 56.48
+    },
+    {
+      "w": "buying",
+      "start": 56.48,
+      "end": 56.72
+    },
+    {
+      "w": "the",
+      "start": 56.72,
+      "end": 56.94
+    },
+    {
+      "w": "product,",
+      "start": 56.94,
+      "end": 57.22
+    },
+    {
+      "w": "or",
+      "start": 57.22,
+      "end": 57.54
+    },
+    {
+      "w": "the",
+      "start": 57.54,
+      "end": 57.66
+    },
+    {
+      "w": "label?",
+      "start": 57.66,
+      "end": 57.9
+    }
+  ]
+}

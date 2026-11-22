@@ -1,0 +1,15 @@
+{
+  "wav": "public/voice/narration.wav",
+  "json": "src/v2/narration.json",
+  "lead_in": 0.4,
+  "tail": 1.0,
+  "lines": [
+    ["hook", "Why pay hundreds for a brand name, when a cheaper alternative might do the same job?", 0.45],
+    ["compare", "Sometimes, you're paying more for the logo, the marketing, and the prestige. Not necessarily better performance.", 0.45],
+    ["value", "Affordable alternatives can offer impressive quality and functionality, without the premium price tag.", 0.45],
+    ["reality1", "Of course, counterfeits aren't always better.", 0.3],
+    ["reality2", "Genuine products can offer safer materials, warranties, and better quality control.", 0.45],
+    ["end1", "Think about what you're actually paying for.", 0.35],
+    ["end2", "Buy smart. Not expensive.", 0.0]
+  ]
+}

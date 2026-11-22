@@ -1,0 +1,68 @@
+{
+  "wav": "public/voice/label60-narration.wav",
+  "json": "src/v5/narration.json",
+  "lead_in": 0.35,
+  "tail": 2.4,
+  "lines": [
+    [
+      "hook",
+      "Unpopular opinion: sometimes, the fake is the smarter buy.",
+      0.55
+    ],
+    [
+      "price",
+      "Most of a luxury price isn't the product. It's the logo, the ads, and the fancy store.",
+      0.5
+    ],
+    [
+      "copy",
+      "Take that away, and a good copy can look almost identical, for a fraction of the cost.",
+      0.55
+    ],
+    [
+      "same",
+      "Same shape. Same colour. Same everyday use.",
+      0.55
+    ],
+    [
+      "notice",
+      "And honestly, most people won't notice. Walk past a hundred strangers, and nobody is checking the stitching.",
+      0.55
+    ],
+    [
+      "trend",
+      "Trends also change fast. Why spend a month's rent on something you'll stop wearing next season?",
+      0.55
+    ],
+    [
+      "worry",
+      "A cheaper bag also takes the pressure off. Scuff it, spill on it, leave it on the bus. It's not a disaster.",
+      0.55
+    ],
+    [
+      "save",
+      "The money you save could buy five styles, instead of one.",
+      0.45
+    ],
+    [
+      "grow",
+      "Or skip the extra bags, and put that money somewhere it can actually grow.",
+      0.55
+    ],
+    [
+      "addup",
+      "Even small savings add up over time.",
+      0.55
+    ],
+    [
+      "status",
+      "Because real status isn't a logo on your arm. It's knowing you didn't overpay for one.",
+      0.6
+    ],
+    [
+      "end",
+      "So before you pay for the name, ask yourself: are you buying the product, or the label?",
+      0.0
+    ]
+  ]
+}

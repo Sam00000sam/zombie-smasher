@@ -1,0 +1,703 @@
+{
+  "voice": "af_heart",
+  "speed": 1.08,
+  "sampleRate": 24000,
+  "duration": 48.638,
+  "lines": [
+    {
+      "key": "hook",
+      "text": "This bag costs three thousand dollars. Let's follow where that money actually goes.",
+      "start": 0.35,
+      "end": 4.9
+    },
+    {
+      "key": "factory",
+      "text": "It starts in a factory. Leather, hardware and labour come to roughly three hundred dollars.",
+      "start": 5.5,
+      "end": 10.43
+    },
+    {
+      "key": "logo",
+      "text": "Then the brand stamps on its logo, and the price jumps to twelve hundred.",
+      "start": 11.03,
+      "end": 14.747
+    },
+    {
+      "key": "ads",
+      "text": "Next come the ads. Celebrities, billboards, magazine covers. Add another six hundred.",
+      "start": 15.347,
+      "end": 20.218
+    },
+    {
+      "key": "store",
+      "text": "Then the store. Prime rent, marble floors, a guy at the door. Another twelve hundred.",
+      "start": 20.818,
+      "end": 25.551
+    },
+    {
+      "key": "you",
+      "text": "By the time it reaches you, it's three thousand dollars, and you paid for every billboard.",
+      "start": 26.151,
+      "end": 30.755
+    },
+    {
+      "key": "replica",
+      "text": "Now the replica. Similar design, cheaper materials, no logo tax, no billboards, no marble floors. It ships straight to you, for about a hundred dollars.",
+      "start": 31.355,
+      "end": 40.738
+    },
+    {
+      "key": "end",
+      "text": "Same look on your arm. The difference is everything you never see. So, which one are you paying for?",
+      "start": 41.338,
+      "end": 46.638
+    }
+  ],
+  "words": [
+    {
+      "w": "This",
+      "start": 0.35,
+      "end": 0.48
+    },
+    {
+      "w": "bag",
+      "start": 0.48,
+      "end": 0.78
+    },
+    {
+      "w": "costs",
+      "start": 0.78,
+      "end": 1.14
+    },
+    {
+      "w": "three",
+      "start": 1.14,
+      "end": 1.523
+    },
+    {
+      "w": "thousand",
+      "start": 1.523,
+      "end": 1.907
+    },
+    {
+      "w": "dollars.",
+      "start": 1.907,
+      "end": 2.29
+    },
+    {
+      "w": "Let's",
+      "start": 2.62,
+      "end": 2.98
+    },
+    {
+      "w": "follow",
+      "start": 2.98,
+      "end": 3.2
+    },
+    {
+      "w": "where",
+      "start": 3.2,
+      "end": 3.46
+    },
+    {
+      "w": "that",
+      "start": 3.46,
+      "end": 3.64
+    },
+    {
+      "w": "money",
+      "start": 3.64,
+      "end": 3.84
+    },
+    {
+      "w": "actually",
+      "start": 3.84,
+      "end": 4.28
+    },
+    {
+      "w": "goes.",
+      "start": 4.28,
+      "end": 4.76
+    },
+    {
+      "w": "It",
+      "start": 5.5,
+      "end": 5.62
+    },
+    {
+      "w": "starts",
+      "start": 5.62,
+      "end": 5.88
+    },
+    {
+      "w": "in",
+      "start": 5.88,
+      "end": 6.06
+    },
+    {
+      "w": "a",
+      "start": 6.06,
+      "end": 6.16
+    },
+    {
+      "w": "factory.",
+      "start": 6.16,
+      "end": 6.54
+    },
+    {
+      "w": "Leather,",
+      "start": 7.2,
+      "end": 7.38
+    },
+    {
+      "w": "hardware",
+      "start": 7.78,
+      "end": 8.04
+    },
+    {
+      "w": "and",
+      "start": 8.04,
+      "end": 8.28
+    },
+    {
+      "w": "labour",
+      "start": 8.28,
+      "end": 8.5
+    },
+    {
+      "w": "come",
+      "start": 8.5,
+      "end": 8.8
+    },
+    {
+      "w": "to",
+      "start": 8.8,
+      "end": 9.0
+    },
+    {
+      "w": "roughly",
+      "start": 9.0,
+      "end": 9.26
+    },
+    {
+      "w": "three",
+      "start": 9.26,
+      "end": 9.643
+    },
+    {
+      "w": "hundred",
+      "start": 9.643,
+      "end": 10.027
+    },
+    {
+      "w": "dollars.",
+      "start": 10.027,
+      "end": 10.41
+    },
+    {
+      "w": "Then",
+      "start": 11.03,
+      "end": 11.16
+    },
+    {
+      "w": "the",
+      "start": 11.16,
+      "end": 11.3
+    },
+    {
+      "w": "brand",
+      "start": 11.3,
+      "end": 11.54
+    },
+    {
+      "w": "stamps",
+      "start": 11.54,
+      "end": 11.9
+    },
+    {
+      "w": "on",
+      "start": 11.9,
+      "end": 12.12
+    },
+    {
+      "w": "its",
+      "start": 12.12,
+      "end": 12.24
+    },
+    {
+      "w": "logo,",
+      "start": 12.24,
+      "end": 12.52
+    },
+    {
+      "w": "and",
+      "start": 12.92,
+      "end": 13.08
+    },
+    {
+      "w": "the",
+      "start": 13.08,
+      "end": 13.18
+    },
+    {
+      "w": "price",
+      "start": 13.18,
+      "end": 13.46
+    },
+    {
+      "w": "jumps",
+      "start": 13.46,
+      "end": 13.8
+    },
+    {
+      "w": "to",
+      "start": 13.8,
+      "end": 14.04
+    },
+    {
+      "w": "twelve",
+      "start": 14.04,
+      "end": 14.43
+    },
+    {
+      "w": "hundred.",
+      "start": 14.43,
+      "end": 14.56
+    },
+    {
+      "w": "Next",
+      "start": 15.347,
+      "end": 15.58
+    },
+    {
+      "w": "come",
+      "start": 15.58,
+      "end": 15.76
+    },
+    {
+      "w": "the",
+      "start": 15.76,
+      "end": 15.9
+    },
+    {
+      "w": "ads.",
+      "start": 15.9,
+      "end": 16.22
+    },
+    {
+      "w": "Celebrities,",
+      "start": 17.2,
+      "end": 17.25
+    },
+    {
+      "w": "billboards,",
+      "start": 17.48,
+      "end": 17.74
+    },
+    {
+      "w": "magazine",
+      "start": 18.02,
+      "end": 18.26
+    },
+    {
+      "w": "covers.",
+      "start": 18.26,
+      "end": 18.68
+    },
+    {
+      "w": "Add",
+      "start": 19.12,
+      "end": 19.24
+    },
+    {
+      "w": "another",
+      "start": 19.24,
+      "end": 19.52
+    },
+    {
+      "w": "six",
+      "start": 19.52,
+      "end": 19.72
+    },
+    {
+      "w": "hundred.",
+      "start": 19.72,
+      "end": 19.92
+    },
+    {
+      "w": "Then",
+      "start": 20.818,
+      "end": 20.94
+    },
+    {
+      "w": "the",
+      "start": 20.94,
+      "end": 21.06
+    },
+    {
+      "w": "store.",
+      "start": 21.06,
+      "end": 21.32
+    },
+    {
+      "w": "Prime",
+      "start": 21.82,
+      "end": 21.98
+    },
+    {
+      "w": "rent,",
+      "start": 21.98,
+      "end": 22.32
+    },
+    {
+      "w": "marble",
+      "start": 22.52,
+      "end": 22.72
+    },
+    {
+      "w": "floors,",
+      "start": 22.72,
+      "end": 23.12
+    },
+    {
+      "w": "a",
+      "start": 23.36,
+      "end": 23.41
+    },
+    {
+      "w": "guy",
+      "start": 23.4,
+      "end": 23.6
+    },
+    {
+      "w": "at",
+      "start": 23.6,
+      "end": 23.76
+    },
+    {
+      "w": "the",
+      "start": 23.76,
+      "end": 23.86
+    },
+    {
+      "w": "door.",
+      "start": 23.86,
+      "end": 24.08
+    },
+    {
+      "w": "Another",
+      "start": 24.54,
+      "end": 24.76
+    },
+    {
+      "w": "twelve",
+      "start": 24.76,
+      "end": 25.21
+    },
+    {
+      "w": "hundred.",
+      "start": 25.21,
+      "end": 25.36
+    },
+    {
+      "w": "By",
+      "start": 26.151,
+      "end": 26.26
+    },
+    {
+      "w": "the",
+      "start": 26.26,
+      "end": 26.4
+    },
+    {
+      "w": "time",
+      "start": 26.4,
+      "end": 26.58
+    },
+    {
+      "w": "it",
+      "start": 26.58,
+      "end": 26.74
+    },
+    {
+      "w": "reaches",
+      "start": 26.74,
+      "end": 27.02
+    },
+    {
+      "w": "you,",
+      "start": 27.02,
+      "end": 27.32
+    },
+    {
+      "w": "it's",
+      "start": 27.62,
+      "end": 27.78
+    },
+    {
+      "w": "three",
+      "start": 27.78,
+      "end": 28.163
+    },
+    {
+      "w": "thousand",
+      "start": 28.163,
+      "end": 28.547
+    },
+    {
+      "w": "dollars,",
+      "start": 28.547,
+      "end": 28.93
+    },
+    {
+      "w": "and",
+      "start": 29.12,
+      "end": 29.28
+    },
+    {
+      "w": "you",
+      "start": 29.28,
+      "end": 29.42
+    },
+    {
+      "w": "paid",
+      "start": 29.42,
+      "end": 29.62
+    },
+    {
+      "w": "for",
+      "start": 29.62,
+      "end": 29.86
+    },
+    {
+      "w": "every",
+      "start": 29.86,
+      "end": 30.18
+    },
+    {
+      "w": "billboard.",
+      "start": 30.18,
+      "end": 30.58
+    },
+    {
+      "w": "Now",
+      "start": 31.355,
+      "end": 31.58
+    },
+    {
+      "w": "the",
+      "start": 31.58,
+      "end": 31.74
+    },
+    {
+      "w": "replica.",
+      "start": 31.74,
+      "end": 32.04
+    },
+    {
+      "w": "Similar",
+      "start": 32.72,
+      "end": 33.1
+    },
+    {
+      "w": "design,",
+      "start": 33.1,
+      "end": 33.64
+    },
+    {
+      "w": "cheaper",
+      "start": 33.96,
+      "end": 34.1
+    },
+    {
+      "w": "materials,",
+      "start": 34.1,
+      "end": 34.68
+    },
+    {
+      "w": "no",
+      "start": 35.0,
+      "end": 35.12
+    },
+    {
+      "w": "logo",
+      "start": 35.12,
+      "end": 35.46
+    },
+    {
+      "w": "tax,",
+      "start": 35.46,
+      "end": 35.8
+    },
+    {
+      "w": "no",
+      "start": 36.04,
+      "end": 36.16
+    },
+    {
+      "w": "billboards,",
+      "start": 36.16,
+      "end": 36.54
+    },
+    {
+      "w": "no",
+      "start": 36.78,
+      "end": 36.94
+    },
+    {
+      "w": "marble",
+      "start": 36.94,
+      "end": 37.24
+    },
+    {
+      "w": "floors.",
+      "start": 37.24,
+      "end": 37.64
+    },
+    {
+      "w": "It",
+      "start": 38.28,
+      "end": 38.38
+    },
+    {
+      "w": "ships",
+      "start": 38.38,
+      "end": 38.62
+    },
+    {
+      "w": "straight",
+      "start": 38.62,
+      "end": 38.9
+    },
+    {
+      "w": "to",
+      "start": 38.9,
+      "end": 39.12
+    },
+    {
+      "w": "you,",
+      "start": 39.12,
+      "end": 39.32
+    },
+    {
+      "w": "for",
+      "start": 39.32,
+      "end": 39.62
+    },
+    {
+      "w": "about",
+      "start": 39.62,
+      "end": 39.84
+    },
+    {
+      "w": "a",
+      "start": 39.84,
+      "end": 40.123
+    },
+    {
+      "w": "hundred",
+      "start": 40.123,
+      "end": 40.407
+    },
+    {
+      "w": "dollars.",
+      "start": 40.407,
+      "end": 40.69
+    },
+    {
+      "w": "Same",
+      "start": 41.338,
+      "end": 41.6
+    },
+    {
+      "w": "look",
+      "start": 41.6,
+      "end": 41.78
+    },
+    {
+      "w": "on",
+      "start": 41.78,
+      "end": 41.94
+    },
+    {
+      "w": "your",
+      "start": 41.94,
+      "end": 42.08
+    },
+    {
+      "w": "arm.",
+      "start": 42.08,
+      "end": 42.34
+    },
+    {
+      "w": "The",
+      "start": 42.64,
+      "end": 42.82
+    },
+    {
+      "w": "difference",
+      "start": 42.82,
+      "end": 43.08
+    },
+    {
+      "w": "is",
+      "start": 43.08,
+      "end": 43.32
+    },
+    {
+      "w": "everything",
+      "start": 43.32,
+      "end": 43.7
+    },
+    {
+      "w": "you",
+      "start": 43.7,
+      "end": 43.94
+    },
+    {
+      "w": "never",
+      "start": 43.94,
+      "end": 44.16
+    },
+    {
+      "w": "see.",
+      "start": 44.16,
+      "end": 44.48
+    },
+    {
+      "w": "So,",
+      "start": 44.98,
+      "end": 45.22
+    },
+    {
+      "w": "which",
+      "start": 45.4,
+      "end": 45.54
+    },
+    {
+      "w": "one",
+      "start": 45.54,
+      "end": 45.74
+    },
+    {
+      "w": "are",
+      "start": 45.74,
+      "end": 45.84
+    },
+    {
+      "w": "you",
+      "start": 45.84,
+      "end": 45.96
+    },
+    {
+      "w": "paying",
+      "start": 45.96,
+      "end": 46.2
+    },
+    {
+      "w": "for?",
+      "start": 46.2,
+      "end": 46.54
+    }
+  ]
+}

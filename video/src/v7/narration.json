@@ -1,0 +1,830 @@
+{
+  "voice": "af_heart",
+  "speed": 1.08,
+  "sampleRate": 24000,
+  "duration": 49.679,
+  "lines": [
+    {
+      "key": "hook",
+      "text": "Real or fake? Here's why the fake might actually win.",
+      "start": 0.35,
+      "end": 3.282
+    },
+    {
+      "key": "price",
+      "text": "A designer bag can cost three thousand dollars. A good replica? About a hundred.",
+      "start": 3.832,
+      "end": 8.451
+    },
+    {
+      "key": "closet",
+      "text": "But a bag you're scared to use just sits in the closet.",
+      "start": 9.001,
+      "end": 11.385
+    },
+    {
+      "key": "wear",
+      "text": "Think cost per wear. Carry the replica every day for a year, and it's less than thirty cents a wear.",
+      "start": 11.885,
+      "end": 17.182
+    },
+    {
+      "key": "fearless",
+      "text": "Concerts. Airports. Rainy days. It goes everywhere, with zero stress.",
+      "start": 17.732,
+      "end": 21.862
+    },
+    {
+      "key": "test",
+      "text": "It's also the cheapest way to test a style. Try the look for a hundred, before you ever commit three thousand.",
+      "start": 22.412,
+      "end": 28.524
+    },
+    {
+      "key": "lost",
+      "text": "And if it's stolen, or lost on a trip? You're out a hundred dollars, not a month's pay.",
+      "start": 29.074,
+      "end": 33.366
+    },
+    {
+      "key": "resale",
+      "text": "People call designer bags an investment. But most resell for less than you paid.",
+      "start": 33.916,
+      "end": 38.557
+    },
+    {
+      "key": "seen",
+      "text": "And at the end of the day, nobody sees the receipt. They just see how you carry it.",
+      "start": 39.107,
+      "end": 43.196
+    },
+    {
+      "key": "end",
+      "text": "So keep the look, and keep the money. Real or fake: which would you pick?",
+      "start": 43.796,
+      "end": 47.479
+    }
+  ],
+  "words": [
+    {
+      "w": "Real",
+      "start": 0.35,
+      "end": 0.66
+    },
+    {
+      "w": "or",
+      "start": 0.66,
+      "end": 0.92
+    },
+    {
+      "w": "fake?",
+      "start": 0.92,
+      "end": 1.24
+    },
+    {
+      "w": "Here's",
+      "start": 1.64,
+      "end": 1.82
+    },
+    {
+      "w": "why",
+      "start": 1.82,
+      "end": 1.94
+    },
+    {
+      "w": "the",
+      "start": 1.94,
+      "end": 2.04
+    },
+    {
+      "w": "fake",
+      "start": 2.04,
+      "end": 2.26
+    },
+    {
+      "w": "might",
+      "start": 2.26,
+      "end": 2.46
+    },
+    {
+      "w": "actually",
+      "start": 2.46,
+      "end": 2.84
+    },
+    {
+      "w": "win.",
+      "start": 2.84,
+      "end": 3.14
+    },
+    {
+      "w": "A",
+      "start": 3.832,
+      "end": 3.94
+    },
+    {
+      "w": "designer",
+      "start": 3.94,
+      "end": 4.24
+    },
+    {
+      "w": "bag",
+      "start": 4.24,
+      "end": 4.56
+    },
+    {
+      "w": "can",
+      "start": 4.56,
+      "end": 4.74
+    },
+    {
+      "w": "cost",
+      "start": 4.74,
+      "end": 4.98
+    },
+    {
+      "w": "three",
+      "start": 4.98,
+      "end": 5.38
+    },
+    {
+      "w": "thousand",
+      "start": 5.38,
+      "end": 5.78
+    },
+    {
+      "w": "dollars.",
+      "start": 5.78,
+      "end": 6.18
+    },
+    {
+      "w": "A",
+      "start": 6.4,
+      "end": 6.66
+    },
+    {
+      "w": "good",
+      "start": 6.66,
+      "end": 6.84
+    },
+    {
+      "w": "replica?",
+      "start": 6.84,
+      "end": 7.3
+    },
+    {
+      "w": "About",
+      "start": 7.66,
+      "end": 7.84
+    },
+    {
+      "w": "a",
+      "start": 7.84,
+      "end": 8.007
+    },
+    {
+      "w": "hundred.",
+      "start": 8.007,
+      "end": 8.173
+    },
+    {
+      "w": "But",
+      "start": 9.001,
+      "end": 9.1
+    },
+    {
+      "w": "a",
+      "start": 9.1,
+      "end": 9.2
+    },
+    {
+      "w": "bag",
+      "start": 9.2,
+      "end": 9.38
+    },
+    {
+      "w": "you're",
+      "start": 9.38,
+      "end": 9.6
+    },
+    {
+      "w": "scared",
+      "start": 9.6,
+      "end": 9.74
+    },
+    {
+      "w": "to",
+      "start": 9.74,
+      "end": 9.98
+    },
+    {
+      "w": "use",
+      "start": 9.98,
+      "end": 10.16
+    },
+    {
+      "w": "just",
+      "start": 10.16,
+      "end": 10.32
+    },
+    {
+      "w": "sits",
+      "start": 10.32,
+      "end": 10.58
+    },
+    {
+      "w": "in",
+      "start": 10.58,
+      "end": 10.76
+    },
+    {
+      "w": "the",
+      "start": 10.76,
+      "end": 10.86
+    },
+    {
+      "w": "closet.",
+      "start": 10.86,
+      "end": 11.16
+    },
+    {
+      "w": "Think",
+      "start": 11.885,
+      "end": 12.06
+    },
+    {
+      "w": "cost",
+      "start": 12.06,
+      "end": 12.36
+    },
+    {
+      "w": "per",
+      "start": 12.36,
+      "end": 12.6
+    },
+    {
+      "w": "wear.",
+      "start": 12.6,
+      "end": 12.84
+    },
+    {
+      "w": "Carry",
+      "start": 13.38,
+      "end": 13.54
+    },
+    {
+      "w": "the",
+      "start": 13.54,
+      "end": 13.72
+    },
+    {
+      "w": "replica",
+      "start": 13.72,
+      "end": 14.1
+    },
+    {
+      "w": "every",
+      "start": 14.1,
+      "end": 14.46
+    },
+    {
+      "w": "day",
+      "start": 14.46,
+      "end": 14.68
+    },
+    {
+      "w": "for",
+      "start": 14.68,
+      "end": 14.88
+    },
+    {
+      "w": "a",
+      "start": 14.88,
+      "end": 15.02
+    },
+    {
+      "w": "year,",
+      "start": 15.02,
+      "end": 15.28
+    },
+    {
+      "w": "and",
+      "start": 15.28,
+      "end": 15.68
+    },
+    {
+      "w": "it's",
+      "start": 15.68,
+      "end": 15.88
+    },
+    {
+      "w": "less",
+      "start": 15.88,
+      "end": 16.02
+    },
+    {
+      "w": "than",
+      "start": 16.02,
+      "end": 16.28
+    },
+    {
+      "w": "thirty",
+      "start": 16.28,
+      "end": 16.52
+    },
+    {
+      "w": "cents",
+      "start": 16.52,
+      "end": 16.72
+    },
+    {
+      "w": "a",
+      "start": 16.72,
+      "end": 16.92
+    },
+    {
+      "w": "wear.",
+      "start": 16.92,
+      "end": 17.08
+    },
+    {
+      "w": "Concerts.",
+      "start": 17.732,
+      "end": 18.3
+    },
+    {
+      "w": "Airports.",
+      "start": 18.34,
+      "end": 18.64
+    },
+    {
+      "w": "Rainy",
+      "start": 19.0,
+      "end": 19.16
+    },
+    {
+      "w": "days.",
+      "start": 19.16,
+      "end": 19.5
+    },
+    {
+      "w": "It",
+      "start": 20.0,
+      "end": 20.08
+    },
+    {
+      "w": "goes",
+      "start": 20.08,
+      "end": 20.22
+    },
+    {
+      "w": "everywhere,",
+      "start": 20.22,
+      "end": 20.68
+    },
+    {
+      "w": "with",
+      "start": 20.68,
+      "end": 20.94
+    },
+    {
+      "w": "zero",
+      "start": 20.94,
+      "end": 21.26
+    },
+    {
+      "w": "stress.",
+      "start": 21.26,
+      "end": 21.64
+    },
+    {
+      "w": "It's",
+      "start": 22.412,
+      "end": 22.6
+    },
+    {
+      "w": "also",
+      "start": 22.6,
+      "end": 22.88
+    },
+    {
+      "w": "the",
+      "start": 22.88,
+      "end": 23.1
+    },
+    {
+      "w": "cheapest",
+      "start": 23.1,
+      "end": 23.44
+    },
+    {
+      "w": "way",
+      "start": 23.44,
+      "end": 23.78
+    },
+    {
+      "w": "to",
+      "start": 23.78,
+      "end": 24.0
+    },
+    {
+      "w": "test",
+      "start": 24.0,
+      "end": 24.18
+    },
+    {
+      "w": "a",
+      "start": 24.18,
+      "end": 24.34
+    },
+    {
+      "w": "style.",
+      "start": 24.34,
+      "end": 24.64
+    },
+    {
+      "w": "Try",
+      "start": 25.18,
+      "end": 25.34
+    },
+    {
+      "w": "the",
+      "start": 25.34,
+      "end": 25.5
+    },
+    {
+      "w": "look",
+      "start": 25.5,
+      "end": 25.64
+    },
+    {
+      "w": "for",
+      "start": 25.64,
+      "end": 25.84
+    },
+    {
+      "w": "a",
+      "start": 25.84,
+      "end": 25.98
+    },
+    {
+      "w": "hundred,",
+      "start": 25.98,
+      "end": 26.12
+    },
+    {
+      "w": "before",
+      "start": 26.26,
+      "end": 26.82
+    },
+    {
+      "w": "you",
+      "start": 26.82,
+      "end": 27.02
+    },
+    {
+      "w": "ever",
+      "start": 27.02,
+      "end": 27.26
+    },
+    {
+      "w": "commit",
+      "start": 27.26,
+      "end": 27.54
+    },
+    {
+      "w": "three",
+      "start": 27.54,
+      "end": 27.857
+    },
+    {
+      "w": "thousand.",
+      "start": 27.857,
+      "end": 28.173
+    },
+    {
+      "w": "And",
+      "start": 29.074,
+      "end": 29.16
+    },
+    {
+      "w": "if",
+      "start": 29.16,
+      "end": 29.26
+    },
+    {
+      "w": "it's",
+      "start": 29.26,
+      "end": 29.48
+    },
+    {
+      "w": "stolen,",
+      "start": 29.48,
+      "end": 29.7
+    },
+    {
+      "w": "or",
+      "start": 29.7,
+      "end": 30.14
+    },
+    {
+      "w": "lost",
+      "start": 30.14,
+      "end": 30.42
+    },
+    {
+      "w": "on",
+      "start": 30.42,
+      "end": 30.62
+    },
+    {
+      "w": "a",
+      "start": 30.62,
+      "end": 30.72
+    },
+    {
+      "w": "trip?",
+      "start": 30.72,
+      "end": 30.94
+    },
+    {
+      "w": "You're",
+      "start": 31.32,
+      "end": 31.46
+    },
+    {
+      "w": "out",
+      "start": 31.46,
+      "end": 31.62
+    },
+    {
+      "w": "a",
+      "start": 31.62,
+      "end": 31.92
+    },
+    {
+      "w": "hundred",
+      "start": 31.92,
+      "end": 32.22
+    },
+    {
+      "w": "dollars,",
+      "start": 32.22,
+      "end": 32.52
+    },
+    {
+      "w": "not",
+      "start": 32.52,
+      "end": 32.66
+    },
+    {
+      "w": "a",
+      "start": 32.66,
+      "end": 32.78
+    },
+    {
+      "w": "month's",
+      "start": 32.78,
+      "end": 33.04
+    },
+    {
+      "w": "pay.",
+      "start": 33.04,
+      "end": 33.26
+    },
+    {
+      "w": "People",
+      "start": 33.916,
+      "end": 34.2
+    },
+    {
+      "w": "call",
+      "start": 34.2,
+      "end": 34.5
+    },
+    {
+      "w": "designer",
+      "start": 34.5,
+      "end": 35.0
+    },
+    {
+      "w": "bags",
+      "start": 35.0,
+      "end": 35.38
+    },
+    {
+      "w": "an",
+      "start": 35.38,
+      "end": 35.56
+    },
+    {
+      "w": "investment.",
+      "start": 35.56,
+      "end": 36.0
+    },
+    {
+      "w": "But",
+      "start": 36.46,
+      "end": 36.68
+    },
+    {
+      "w": "most",
+      "start": 36.68,
+      "end": 36.92
+    },
+    {
+      "w": "resell",
+      "start": 36.92,
+      "end": 37.44
+    },
+    {
+      "w": "for",
+      "start": 37.44,
+      "end": 37.62
+    },
+    {
+      "w": "less",
+      "start": 37.62,
+      "end": 37.82
+    },
+    {
+      "w": "than",
+      "start": 37.82,
+      "end": 38.04
+    },
+    {
+      "w": "you",
+      "start": 38.04,
+      "end": 38.16
+    },
+    {
+      "w": "paid.",
+      "start": 38.16,
+      "end": 38.44
+    },
+    {
+      "w": "And",
+      "start": 39.107,
+      "end": 39.2
+    },
+    {
+      "w": "at",
+      "start": 39.2,
+      "end": 39.28
+    },
+    {
+      "w": "the",
+      "start": 39.28,
+      "end": 39.4
+    },
+    {
+      "w": "end",
+      "start": 39.4,
+      "end": 39.54
+    },
+    {
+      "w": "of",
+      "start": 39.54,
+      "end": 39.66
+    },
+    {
+      "w": "the",
+      "start": 39.66,
+      "end": 39.78
+    },
+    {
+      "w": "day,",
+      "start": 39.78,
+      "end": 40.0
+    },
+    {
+      "w": "nobody",
+      "start": 40.24,
+      "end": 40.48
+    },
+    {
+      "w": "sees",
+      "start": 40.48,
+      "end": 40.82
+    },
+    {
+      "w": "the",
+      "start": 40.82,
+      "end": 41.04
+    },
+    {
+      "w": "receipt.",
+      "start": 41.04,
+      "end": 41.36
+    },
+    {
+      "w": "They",
+      "start": 41.82,
+      "end": 41.94
+    },
+    {
+      "w": "just",
+      "start": 41.94,
+      "end": 42.08
+    },
+    {
+      "w": "see",
+      "start": 42.08,
+      "end": 42.28
+    },
+    {
+      "w": "how",
+      "start": 42.28,
+      "end": 42.48
+    },
+    {
+      "w": "you",
+      "start": 42.48,
+      "end": 42.66
+    },
+    {
+      "w": "carry",
+      "start": 42.66,
+      "end": 42.9
+    },
+    {
+      "w": "it.",
+      "start": 42.9,
+      "end": 43.18
+    },
+    {
+      "w": "So",
+      "start": 43.796,
+      "end": 43.96
+    },
+    {
+      "w": "keep",
+      "start": 43.96,
+      "end": 44.1
+    },
+    {
+      "w": "the",
+      "start": 44.1,
+      "end": 44.26
+    },
+    {
+      "w": "look,",
+      "start": 44.26,
+      "end": 44.4
+    },
+    {
+      "w": "and",
+      "start": 44.4,
+      "end": 44.6
+    },
+    {
+      "w": "keep",
+      "start": 44.6,
+      "end": 44.74
+    },
+    {
+      "w": "the",
+      "start": 44.74,
+      "end": 44.88
+    },
+    {
+      "w": "money.",
+      "start": 44.88,
+      "end": 45.1
+    },
+    {
+      "w": "Real",
+      "start": 45.74,
+      "end": 45.92
+    },
+    {
+      "w": "or",
+      "start": 45.92,
+      "end": 46.18
+    },
+    {
+      "w": "fake:",
+      "start": 46.18,
+      "end": 46.48
+    },
+    {
+      "w": "which",
+      "start": 46.76,
+      "end": 46.86
+    },
+    {
+      "w": "would",
+      "start": 46.86,
+      "end": 46.98
+    },
+    {
+      "w": "you",
+      "start": 46.98,
+      "end": 47.1
+    },
+    {
+      "w": "pick?",
+      "start": 47.1,
+      "end": 47.32
+    }
+  ]
+}

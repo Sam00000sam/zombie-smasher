@@ -1,0 +1,612 @@
+{
+  "voice": "af_heart",
+  "speed": 1.08,
+  "sampleRate": 24000,
+  "duration": 40.717,
+  "lines": [
+    {
+      "key": "hook",
+      "text": "Five reasons the fake bag beats the real one. Stay for number one.",
+      "start": 0.35,
+      "end": 4.149
+    },
+    {
+      "key": "r5",
+      "text": "Number five: the price. Three thousand dollars, or about a hundred. Same look, thirty times cheaper.",
+      "start": 4.749,
+      "end": 10.482
+    },
+    {
+      "key": "r4",
+      "text": "Number four: you'll actually use it. No babying it, no dust bag, no panic when it rains.",
+      "start": 11.082,
+      "end": 16.188
+    },
+    {
+      "key": "r3",
+      "text": "Number three: nobody can tell. From across the room, a good replica looks just like the real thing.",
+      "start": 16.788,
+      "end": 22.271
+    },
+    {
+      "key": "r2",
+      "text": "Number two: trends move fast. When the hype dies, you've lost a hundred dollars, not three thousand.",
+      "start": 22.871,
+      "end": 28.502
+    },
+    {
+      "key": "r1",
+      "text": "And number one: the money you keep. Invest the difference, and in ten years it could grow to over five thousand dollars.",
+      "start": 29.102,
+      "end": 35.653
+    },
+    {
+      "key": "end",
+      "text": "So, real or fake? Tell me in the comments.",
+      "start": 36.253,
+      "end": 38.717
+    }
+  ],
+  "words": [
+    {
+      "w": "Five",
+      "start": 0.35,
+      "end": 0.64
+    },
+    {
+      "w": "reasons",
+      "start": 0.64,
+      "end": 0.94
+    },
+    {
+      "w": "the",
+      "start": 0.94,
+      "end": 1.26
+    },
+    {
+      "w": "fake",
+      "start": 1.26,
+      "end": 1.5
+    },
+    {
+      "w": "bag",
+      "start": 1.5,
+      "end": 1.82
+    },
+    {
+      "w": "beats",
+      "start": 1.82,
+      "end": 2.1
+    },
+    {
+      "w": "the",
+      "start": 2.1,
+      "end": 2.32
+    },
+    {
+      "w": "real",
+      "start": 2.32,
+      "end": 2.52
+    },
+    {
+      "w": "one.",
+      "start": 2.52,
+      "end": 2.78
+    },
+    {
+      "w": "Stay",
+      "start": 3.24,
+      "end": 3.36
+    },
+    {
+      "w": "for",
+      "start": 3.36,
+      "end": 3.58
+    },
+    {
+      "w": "number",
+      "start": 3.58,
+      "end": 3.7
+    },
+    {
+      "w": "one.",
+      "start": 3.7,
+      "end": 4.12
+    },
+    {
+      "w": "Number",
+      "start": 4.749,
+      "end": 4.98
+    },
+    {
+      "w": "five:",
+      "start": 4.98,
+      "end": 5.32
+    },
+    {
+      "w": "the",
+      "start": 5.6,
+      "end": 5.65
+    },
+    {
+      "w": "price.",
+      "start": 5.64,
+      "end": 5.94
+    },
+    {
+      "w": "Three",
+      "start": 6.4,
+      "end": 6.607
+    },
+    {
+      "w": "thousand",
+      "start": 6.607,
+      "end": 6.813
+    },
+    {
+      "w": "dollars,",
+      "start": 6.813,
+      "end": 7.02
+    },
+    {
+      "w": "or",
+      "start": 7.02,
+      "end": 7.54
+    },
+    {
+      "w": "about",
+      "start": 7.54,
+      "end": 7.76
+    },
+    {
+      "w": "a",
+      "start": 7.76,
+      "end": 7.943
+    },
+    {
+      "w": "hundred.",
+      "start": 7.943,
+      "end": 8.127
+    },
+    {
+      "w": "Same",
+      "start": 8.62,
+      "end": 8.96
+    },
+    {
+      "w": "look,",
+      "start": 8.96,
+      "end": 9.2
+    },
+    {
+      "w": "thirty",
+      "start": 9.34,
+      "end": 9.6
+    },
+    {
+      "w": "times",
+      "start": 9.6,
+      "end": 9.94
+    },
+    {
+      "w": "cheaper.",
+      "start": 9.94,
+      "end": 10.26
+    },
+    {
+      "w": "Number",
+      "start": 11.082,
+      "end": 11.26
+    },
+    {
+      "w": "four:",
+      "start": 11.26,
+      "end": 11.6
+    },
+    {
+      "w": "you'll",
+      "start": 11.78,
+      "end": 11.88
+    },
+    {
+      "w": "actually",
+      "start": 11.88,
+      "end": 12.16
+    },
+    {
+      "w": "use",
+      "start": 12.16,
+      "end": 12.42
+    },
+    {
+      "w": "it.",
+      "start": 12.42,
+      "end": 12.66
+    },
+    {
+      "w": "No",
+      "start": 13.08,
+      "end": 13.28
+    },
+    {
+      "w": "babying",
+      "start": 13.28,
+      "end": 13.68
+    },
+    {
+      "w": "it,",
+      "start": 13.68,
+      "end": 13.9
+    },
+    {
+      "w": "no",
+      "start": 14.06,
+      "end": 14.18
+    },
+    {
+      "w": "dust",
+      "start": 14.18,
+      "end": 14.42
+    },
+    {
+      "w": "bag,",
+      "start": 14.42,
+      "end": 14.76
+    },
+    {
+      "w": "no",
+      "start": 15.02,
+      "end": 15.14
+    },
+    {
+      "w": "panic",
+      "start": 15.14,
+      "end": 15.42
+    },
+    {
+      "w": "when",
+      "start": 15.42,
+      "end": 15.6
+    },
+    {
+      "w": "it",
+      "start": 15.6,
+      "end": 15.72
+    },
+    {
+      "w": "rains.",
+      "start": 15.72,
+      "end": 15.92
+    },
+    {
+      "w": "Number",
+      "start": 16.788,
+      "end": 16.98
+    },
+    {
+      "w": "three:",
+      "start": 16.98,
+      "end": 17.34
+    },
+    {
+      "w": "nobody",
+      "start": 17.64,
+      "end": 17.82
+    },
+    {
+      "w": "can",
+      "start": 17.82,
+      "end": 18.14
+    },
+    {
+      "w": "tell.",
+      "start": 18.14,
+      "end": 18.38
+    },
+    {
+      "w": "From",
+      "start": 18.94,
+      "end": 19.04
+    },
+    {
+      "w": "across",
+      "start": 19.04,
+      "end": 19.3
+    },
+    {
+      "w": "the",
+      "start": 19.3,
+      "end": 19.5
+    },
+    {
+      "w": "room,",
+      "start": 19.5,
+      "end": 19.74
+    },
+    {
+      "w": "a",
+      "start": 19.98,
+      "end": 20.1
+    },
+    {
+      "w": "good",
+      "start": 20.1,
+      "end": 20.28
+    },
+    {
+      "w": "replica",
+      "start": 20.28,
+      "end": 20.66
+    },
+    {
+      "w": "looks",
+      "start": 20.66,
+      "end": 20.98
+    },
+    {
+      "w": "just",
+      "start": 20.98,
+      "end": 21.24
+    },
+    {
+      "w": "like",
+      "start": 21.24,
+      "end": 21.42
+    },
+    {
+      "w": "the",
+      "start": 21.42,
+      "end": 21.6
+    },
+    {
+      "w": "real",
+      "start": 21.6,
+      "end": 21.82
+    },
+    {
+      "w": "thing.",
+      "start": 21.82,
+      "end": 22.14
+    },
+    {
+      "w": "Number",
+      "start": 22.871,
+      "end": 23.08
+    },
+    {
+      "w": "two:",
+      "start": 23.08,
+      "end": 23.4
+    },
+    {
+      "w": "trends",
+      "start": 23.68,
+      "end": 23.84
+    },
+    {
+      "w": "move",
+      "start": 23.84,
+      "end": 24.12
+    },
+    {
+      "w": "fast.",
+      "start": 24.12,
+      "end": 24.5
+    },
+    {
+      "w": "When",
+      "start": 25.08,
+      "end": 25.22
+    },
+    {
+      "w": "the",
+      "start": 25.22,
+      "end": 25.32
+    },
+    {
+      "w": "hype",
+      "start": 25.32,
+      "end": 25.52
+    },
+    {
+      "w": "dies,",
+      "start": 25.52,
+      "end": 25.84
+    },
+    {
+      "w": "you've",
+      "start": 26.12,
+      "end": 26.34
+    },
+    {
+      "w": "lost",
+      "start": 26.34,
+      "end": 26.5
+    },
+    {
+      "w": "a",
+      "start": 26.5,
+      "end": 26.767
+    },
+    {
+      "w": "hundred",
+      "start": 26.767,
+      "end": 27.033
+    },
+    {
+      "w": "dollars,",
+      "start": 27.033,
+      "end": 27.3
+    },
+    {
+      "w": "not",
+      "start": 27.3,
+      "end": 27.6
+    },
+    {
+      "w": "three",
+      "start": 27.6,
+      "end": 27.883
+    },
+    {
+      "w": "thousand.",
+      "start": 27.883,
+      "end": 28.167
+    },
+    {
+      "w": "And",
+      "start": 29.102,
+      "end": 29.22
+    },
+    {
+      "w": "number",
+      "start": 29.22,
+      "end": 29.44
+    },
+    {
+      "w": "one:",
+      "start": 29.44,
+      "end": 29.78
+    },
+    {
+      "w": "the",
+      "start": 30.14,
+      "end": 30.2
+    },
+    {
+      "w": "money",
+      "start": 30.2,
+      "end": 30.4
+    },
+    {
+      "w": "you",
+      "start": 30.4,
+      "end": 30.62
+    },
+    {
+      "w": "keep.",
+      "start": 30.62,
+      "end": 30.88
+    },
+    {
+      "w": "Invest",
+      "start": 31.42,
+      "end": 31.66
+    },
+    {
+      "w": "the",
+      "start": 31.66,
+      "end": 31.9
+    },
+    {
+      "w": "difference,",
+      "start": 31.9,
+      "end": 32.24
+    },
+    {
+      "w": "and",
+      "start": 32.6,
+      "end": 32.72
+    },
+    {
+      "w": "in",
+      "start": 32.72,
+      "end": 32.86
+    },
+    {
+      "w": "ten",
+      "start": 32.86,
+      "end": 33.1
+    },
+    {
+      "w": "years",
+      "start": 33.1,
+      "end": 33.4
+    },
+    {
+      "w": "it",
+      "start": 33.4,
+      "end": 33.58
+    },
+    {
+      "w": "could",
+      "start": 33.58,
+      "end": 33.72
+    },
+    {
+      "w": "grow",
+      "start": 33.72,
+      "end": 33.92
+    },
+    {
+      "w": "to",
+      "start": 33.92,
+      "end": 34.12
+    },
+    {
+      "w": "over",
+      "start": 34.12,
+      "end": 34.34
+    },
+    {
+      "w": "five",
+      "start": 34.34,
+      "end": 34.773
+    },
+    {
+      "w": "thousand",
+      "start": 34.773,
+      "end": 35.207
+    },
+    {
+      "w": "dollars.",
+      "start": 35.207,
+      "end": 35.64
+    },
+    {
+      "w": "So,",
+      "start": 36.253,
+      "end": 36.5
+    },
+    {
+      "w": "real",
+      "start": 36.5,
+      "end": 36.82
+    },
+    {
+      "w": "or",
+      "start": 36.82,
+      "end": 37.1
+    },
+    {
+      "w": "fake?",
+      "start": 37.1,
+      "end": 37.38
+    },
+    {
+      "w": "Tell",
+      "start": 37.78,
+      "end": 37.88
+    },
+    {
+      "w": "me",
+      "start": 37.88,
+      "end": 38.0
+    },
+    {
+      "w": "in",
+      "start": 38.0,
+      "end": 38.08
+    },
+    {
+      "w": "the",
+      "start": 38.08,
+      "end": 38.18
+    },
+    {
+      "w": "comments.",
+      "start": 38.18,
+      "end": 38.46
+    }
+  ]
+}

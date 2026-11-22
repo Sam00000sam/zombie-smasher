@@ -1,0 +1,79 @@
+import React from "react";
+import { Composition } from "remotion";
+import { WhyFakeProducts } from "./Video";
+import { FPS, HEIGHT, TOTAL, WIDTH } from "./lib/theme";
+import { ValueExplainer } from "./v2/Explainer";
+import { TOTAL_FRAMES } from "./v2/timing";
+import { FakeBetter } from "./v3/Explainer";
+import { TOTAL_FRAMES as FAKE_FRAMES } from "./v3/timing";
+import { LabelOrProduct } from "./v4/Explainer";
+import { TOTAL_FRAMES as LABEL_FRAMES } from "./v4/timing";
+import { LabelOrProduct60 } from "./v5/Explainer";
+import { TOTAL_FRAMES as LABEL60_FRAMES } from "./v5/timing";
+import { NeonLabel } from "./v6/Neon";
+import { RealOrFake, REALFAKE_FRAMES } from "./v7/RealOrFake";
+import { Top5, TOP5_FRAMES } from "./v8/Top5";
+import { Neon5, NEON5_FRAMES } from "./v9/Neon5";
+import { Journey, JOURNEY_FRAMES } from "./v10/Journey";
+import { Hours, HOURS_FRAMES } from "./v11/Hours";
+import { Spot, SPOT_FRAMES } from "./v12/Spot";
+import { Thirty, THIRTY_FRAMES } from "./v13/Thirty";
+import { Reel, REEL_FRAMES, FPS60 } from "./v14/Reel";
+import { Court, COURT_FRAMES } from "./v15/Court";
+
+export const RemotionRoot: React.FC = () => {
+  return (
+    <>
+      <Composition
+        id="WhyFakeProducts"
+        component={WhyFakeProducts}
+        durationInFrames={TOTAL}
+        fps={FPS}
+        width={WIDTH}
+        height={HEIGHT}
+      />
+      <Composition
+        id="ValueExplainer30"
+        component={ValueExplainer}
+        durationInFrames={TOTAL_FRAMES}
+        fps={FPS}
+        width={WIDTH}
+        height={HEIGHT}
+      />
+      <Composition
+        id="FakeBetter"
+        component={FakeBetter}
+        durationInFrames={FAKE_FRAMES}
+        fps={FPS}
+        width={WIDTH}
+        height={HEIGHT}
+      />
+      <Composition
+        id="LabelOrProduct"
+        component={LabelOrProduct}
+        durationInFrames={LABEL_FRAMES}
+        fps={FPS}
+        width={WIDTH}
+        height={HEIGHT}
+      />
+      <Composition
+        id="LabelOrProduct60"
+        component={LabelOrProduct60}
+        durationInFrames={LABEL60_FRAMES}
+        fps={FPS}
+        width={WIDTH}
+        height={HEIGHT}
+      />
+      <Composition id="TheTrial" component={Court} durationInFrames={COURT_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="LookReel" component={Reel} durationInFrames={REEL_FRAMES} fps={FPS60} width={1080} height={1920} />
+      <Composition id="OneOrThirty" component={Thirty} durationInFrames={THIRTY_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="SpotTheFake" component={Spot} durationInFrames={SPOT_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="RealCost" component={Hours} durationInFrames={HOURS_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="FollowTheMoney" component={Journey} durationInFrames={JOURNEY_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="Neon5Reasons" component={Neon5} durationInFrames={NEON5_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="Top5Reasons" component={Top5} durationInFrames={TOP5_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="RealOrFake" component={RealOrFake} durationInFrames={REALFAKE_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="NeonLabel60" component={NeonLabel} durationInFrames={LABEL60_FRAMES} fps={FPS} width={1080} height={1920} />
+    </>
+  );
+};

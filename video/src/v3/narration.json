@@ -1,0 +1,646 @@
+{
+  "voice": "af_heart",
+  "speed": 1.2,
+  "sampleRate": 24000,
+  "duration": 36.135,
+  "lines": [
+    {
+      "key": "hook",
+      "text": "Fake products might not be perfect, but sometimes they offer surprising advantages over the real thing.",
+      "start": 0.35,
+      "end": 5.648
+    },
+    {
+      "key": "price",
+      "text": "The biggest advantage is price. You can often get a similar look and basic function, without spending nearly as much.",
+      "start": 6.048,
+      "end": 12.165
+    },
+    {
+      "key": "choice",
+      "text": "Fake products can also give you access to styles and designs that might otherwise be too expensive, or difficult to find.",
+      "start": 12.565,
+      "end": 19.043
+    },
+    {
+      "key": "everyday",
+      "text": "For some everyday items, the cheaper alternative may do the job well enough, especially when premium features aren't important.",
+      "start": 19.443,
+      "end": 26.225
+    },
+    {
+      "key": "end",
+      "text": "Of course, quality and safety still matter. But when the risks are low, and the price difference is huge, fake can sometimes make more sense.",
+      "start": 26.625,
+      "end": 33.935
+    }
+  ],
+  "words": [
+    {
+      "w": "Fake",
+      "start": 0.0,
+      "end": 0.54,
+      "p": 0.497
+    },
+    {
+      "w": "products",
+      "start": 0.54,
+      "end": 0.96,
+      "p": 0.988
+    },
+    {
+      "w": "might",
+      "start": 0.96,
+      "end": 1.26,
+      "p": 0.958
+    },
+    {
+      "w": "not",
+      "start": 1.26,
+      "end": 1.46,
+      "p": 0.998
+    },
+    {
+      "w": "be",
+      "start": 1.46,
+      "end": 1.64,
+      "p": 0.999
+    },
+    {
+      "w": "perfect,",
+      "start": 1.64,
+      "end": 1.98,
+      "p": 0.997
+    },
+    {
+      "w": "but",
+      "start": 2.5,
+      "end": 2.58,
+      "p": 0.997
+    },
+    {
+      "w": "sometimes",
+      "start": 2.58,
+      "end": 3.0,
+      "p": 0.997
+    },
+    {
+      "w": "they",
+      "start": 3.0,
+      "end": 3.24,
+      "p": 0.895
+    },
+    {
+      "w": "offer",
+      "start": 3.24,
+      "end": 3.48,
+      "p": 0.997
+    },
+    {
+      "w": "surprising",
+      "start": 3.48,
+      "end": 4.02,
+      "p": 0.997
+    },
+    {
+      "w": "advantages",
+      "start": 4.02,
+      "end": 4.66,
+      "p": 0.997
+    },
+    {
+      "w": "over",
+      "start": 4.66,
+      "end": 4.96,
+      "p": 0.997
+    },
+    {
+      "w": "the",
+      "start": 4.96,
+      "end": 5.08,
+      "p": 0.999
+    },
+    {
+      "w": "real",
+      "start": 5.08,
+      "end": 5.28,
+      "p": 0.997
+    },
+    {
+      "w": "thing.",
+      "start": 5.28,
+      "end": 5.54,
+      "p": 0.997
+    },
+    {
+      "w": "The",
+      "start": 6.12,
+      "end": 6.16,
+      "p": 0.961
+    },
+    {
+      "w": "biggest",
+      "start": 6.16,
+      "end": 6.4,
+      "p": 0.999
+    },
+    {
+      "w": "advantage",
+      "start": 6.4,
+      "end": 6.92,
+      "p": 0.999
+    },
+    {
+      "w": "is",
+      "start": 6.92,
+      "end": 7.2,
+      "p": 0.999
+    },
+    {
+      "w": "price.",
+      "start": 7.2,
+      "end": 7.46,
+      "p": 0.998
+    },
+    {
+      "w": "You",
+      "start": 8.04,
+      "end": 8.1,
+      "p": 0.994
+    },
+    {
+      "w": "can",
+      "start": 8.1,
+      "end": 8.22,
+      "p": 0.993
+    },
+    {
+      "w": "often",
+      "start": 8.22,
+      "end": 8.5,
+      "p": 0.998
+    },
+    {
+      "w": "get",
+      "start": 8.5,
+      "end": 8.68,
+      "p": 0.999
+    },
+    {
+      "w": "a",
+      "start": 8.68,
+      "end": 8.84,
+      "p": 0.999
+    },
+    {
+      "w": "similar",
+      "start": 8.84,
+      "end": 9.1,
+      "p": 0.997
+    },
+    {
+      "w": "look",
+      "start": 9.1,
+      "end": 9.38,
+      "p": 0.998
+    },
+    {
+      "w": "and",
+      "start": 9.38,
+      "end": 9.58,
+      "p": 0.996
+    },
+    {
+      "w": "basic",
+      "start": 9.58,
+      "end": 9.88,
+      "p": 0.996
+    },
+    {
+      "w": "function",
+      "start": 9.88,
+      "end": 10.32,
+      "p": 0.998
+    },
+    {
+      "w": "without",
+      "start": 10.32,
+      "end": 10.84,
+      "p": 0.808
+    },
+    {
+      "w": "spending",
+      "start": 10.84,
+      "end": 11.22,
+      "p": 0.999
+    },
+    {
+      "w": "nearly",
+      "start": 11.22,
+      "end": 11.52,
+      "p": 0.999
+    },
+    {
+      "w": "as",
+      "start": 11.52,
+      "end": 11.78,
+      "p": 1.0
+    },
+    {
+      "w": "much.",
+      "start": 11.78,
+      "end": 12.06,
+      "p": 1.0
+    },
+    {
+      "w": "Fake",
+      "start": 12.62,
+      "end": 12.76,
+      "p": 0.976
+    },
+    {
+      "w": "products",
+      "start": 12.76,
+      "end": 13.14,
+      "p": 0.998
+    },
+    {
+      "w": "can",
+      "start": 13.14,
+      "end": 13.38,
+      "p": 0.998
+    },
+    {
+      "w": "also",
+      "start": 13.38,
+      "end": 13.62,
+      "p": 0.999
+    },
+    {
+      "w": "give",
+      "start": 13.62,
+      "end": 13.88,
+      "p": 0.998
+    },
+    {
+      "w": "you",
+      "start": 13.88,
+      "end": 14.02,
+      "p": 0.999
+    },
+    {
+      "w": "access",
+      "start": 14.02,
+      "end": 14.32,
+      "p": 0.999
+    },
+    {
+      "w": "to",
+      "start": 14.32,
+      "end": 14.56,
+      "p": 0.999
+    },
+    {
+      "w": "styles",
+      "start": 14.56,
+      "end": 14.9,
+      "p": 0.996
+    },
+    {
+      "w": "and",
+      "start": 14.9,
+      "end": 15.1,
+      "p": 0.997
+    },
+    {
+      "w": "designs",
+      "start": 15.1,
+      "end": 15.46,
+      "p": 0.999
+    },
+    {
+      "w": "that",
+      "start": 15.46,
+      "end": 16.0,
+      "p": 0.991
+    },
+    {
+      "w": "might",
+      "start": 16.0,
+      "end": 16.16,
+      "p": 0.997
+    },
+    {
+      "w": "otherwise",
+      "start": 16.16,
+      "end": 16.5,
+      "p": 0.999
+    },
+    {
+      "w": "be",
+      "start": 16.5,
+      "end": 16.78,
+      "p": 0.999
+    },
+    {
+      "w": "too",
+      "start": 16.78,
+      "end": 16.92,
+      "p": 0.998
+    },
+    {
+      "w": "expensive",
+      "start": 16.92,
+      "end": 17.44,
+      "p": 0.999
+    },
+    {
+      "w": "or",
+      "start": 17.44,
+      "end": 18.04,
+      "p": 0.729
+    },
+    {
+      "w": "difficult",
+      "start": 18.04,
+      "end": 18.36,
+      "p": 0.999
+    },
+    {
+      "w": "to",
+      "start": 18.36,
+      "end": 18.64,
+      "p": 0.999
+    },
+    {
+      "w": "find.",
+      "start": 18.64,
+      "end": 18.92,
+      "p": 1.0
+    },
+    {
+      "w": "For",
+      "start": 19.46,
+      "end": 19.54,
+      "p": 0.994
+    },
+    {
+      "w": "some",
+      "start": 19.54,
+      "end": 19.76,
+      "p": 1.0
+    },
+    {
+      "w": "everyday",
+      "start": 19.76,
+      "end": 20.1,
+      "p": 0.926
+    },
+    {
+      "w": "items,",
+      "start": 20.1,
+      "end": 20.64,
+      "p": 0.999
+    },
+    {
+      "w": "the",
+      "start": 20.98,
+      "end": 21.06,
+      "p": 0.998
+    },
+    {
+      "w": "cheaper",
+      "start": 21.06,
+      "end": 21.32,
+      "p": 0.997
+    },
+    {
+      "w": "alternative",
+      "start": 21.32,
+      "end": 21.94,
+      "p": 0.997
+    },
+    {
+      "w": "may",
+      "start": 21.94,
+      "end": 22.24,
+      "p": 0.996
+    },
+    {
+      "w": "do",
+      "start": 22.24,
+      "end": 22.4,
+      "p": 0.999
+    },
+    {
+      "w": "the",
+      "start": 22.4,
+      "end": 22.52,
+      "p": 0.999
+    },
+    {
+      "w": "job",
+      "start": 22.52,
+      "end": 22.78,
+      "p": 1.0
+    },
+    {
+      "w": "well",
+      "start": 22.78,
+      "end": 23.02,
+      "p": 0.999
+    },
+    {
+      "w": "enough,",
+      "start": 23.02,
+      "end": 23.32,
+      "p": 0.999
+    },
+    {
+      "w": "especially",
+      "start": 23.74,
+      "end": 24.16,
+      "p": 0.997
+    },
+    {
+      "w": "when",
+      "start": 24.16,
+      "end": 24.48,
+      "p": 0.998
+    },
+    {
+      "w": "premium",
+      "start": 24.48,
+      "end": 24.86,
+      "p": 0.997
+    },
+    {
+      "w": "features",
+      "start": 24.86,
+      "end": 25.34,
+      "p": 0.999
+    },
+    {
+      "w": "aren't",
+      "start": 25.34,
+      "end": 25.62,
+      "p": 0.992
+    },
+    {
+      "w": "important.",
+      "start": 25.62,
+      "end": 26.04,
+      "p": 0.999
+    },
+    {
+      "w": "Of",
+      "start": 26.46,
+      "end": 26.72,
+      "p": 0.931
+    },
+    {
+      "w": "course,",
+      "start": 26.72,
+      "end": 27.02,
+      "p": 0.999
+    },
+    {
+      "w": "quality",
+      "start": 27.26,
+      "end": 27.46,
+      "p": 0.991
+    },
+    {
+      "w": "and",
+      "start": 27.46,
+      "end": 27.72,
+      "p": 0.998
+    },
+    {
+      "w": "safety",
+      "start": 27.72,
+      "end": 27.96,
+      "p": 0.999
+    },
+    {
+      "w": "still",
+      "start": 27.96,
+      "end": 28.32,
+      "p": 0.998
+    },
+    {
+      "w": "matter.",
+      "start": 28.32,
+      "end": 28.66,
+      "p": 0.999
+    },
+    {
+      "w": "But",
+      "start": 29.14,
+      "end": 29.24,
+      "p": 0.994
+    },
+    {
+      "w": "when",
+      "start": 29.24,
+      "end": 29.34,
+      "p": 0.962
+    },
+    {
+      "w": "the",
+      "start": 29.34,
+      "end": 29.44,
+      "p": 0.995
+    },
+    {
+      "w": "risks",
+      "start": 29.44,
+      "end": 29.62,
+      "p": 0.993
+    },
+    {
+      "w": "are",
+      "start": 29.62,
+      "end": 29.9,
+      "p": 0.999
+    },
+    {
+      "w": "low",
+      "start": 29.9,
+      "end": 30.18,
+      "p": 0.997
+    },
+    {
+      "w": "and",
+      "start": 30.18,
+      "end": 30.52,
+      "p": 0.648
+    },
+    {
+      "w": "the",
+      "start": 30.52,
+      "end": 30.64,
+      "p": 0.978
+    },
+    {
+      "w": "price",
+      "start": 30.64,
+      "end": 30.88,
+      "p": 0.999
+    },
+    {
+      "w": "difference",
+      "start": 30.88,
+      "end": 31.2,
+      "p": 0.977
+    },
+    {
+      "w": "is",
+      "start": 31.2,
+      "end": 31.44,
+      "p": 0.999
+    },
+    {
+      "w": "huge,",
+      "start": 31.44,
+      "end": 31.7,
+      "p": 0.999
+    },
+    {
+      "w": "fake",
+      "start": 32.2,
+      "end": 32.3,
+      "p": 0.817
+    },
+    {
+      "w": "can",
+      "start": 32.3,
+      "end": 32.52,
+      "p": 0.996
+    },
+    {
+      "w": "sometimes",
+      "start": 32.52,
+      "end": 32.88,
+      "p": 0.997
+    },
+    {
+      "w": "make",
+      "start": 32.88,
+      "end": 33.2,
+      "p": 0.998
+    },
+    {
+      "w": "more",
+      "start": 33.2,
+      "end": 33.44,
+      "p": 0.999
+    },
+    {
+      "w": "sense.",
+      "start": 33.44,
+      "end": 33.72,
+      "p": 1.0
+    }
+  ]
+}

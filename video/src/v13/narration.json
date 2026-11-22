@@ -1,0 +1,421 @@
+{
+  "voice": "af_heart",
+  "speed": 1.08,
+  "sampleRate": 24000,
+  "duration": 26.665,
+  "lines": [
+    {
+      "key": "hook",
+      "text": "Three thousand dollars buys you one designer bag. Or thirty replicas.",
+      "start": 0.35,
+      "end": 4.449
+    },
+    {
+      "key": "math",
+      "text": "At about a hundred dollars each, that's a new style every month, for two and a half years.",
+      "start": 5.049,
+      "end": 9.541
+    },
+    {
+      "key": "match",
+      "text": "One bag matches some of your outfits. Thirty match all of them.",
+      "start": 10.141,
+      "end": 13.439
+    },
+    {
+      "key": "plans",
+      "text": "Work, the gym, date night, a weekend away. There's a bag for every plan.",
+      "start": 13.989,
+      "end": 18.069
+    },
+    {
+      "key": "scuff",
+      "text": "And if one gets scuffed or lost, you've still got twenty-nine.",
+      "start": 18.669,
+      "end": 21.736
+    },
+    {
+      "key": "end",
+      "text": "One logo, or thirty looks? Which would you pick?",
+      "start": 22.336,
+      "end": 24.865
+    }
+  ],
+  "words": [
+    {
+      "w": "Three",
+      "start": 0.35,
+      "end": 0.42
+    },
+    {
+      "w": "thousand",
+      "start": 0.42,
+      "end": 0.84
+    },
+    {
+      "w": "dollars",
+      "start": 0.84,
+      "end": 1.26
+    },
+    {
+      "w": "buys",
+      "start": 1.26,
+      "end": 1.56
+    },
+    {
+      "w": "you",
+      "start": 1.56,
+      "end": 1.92
+    },
+    {
+      "w": "one",
+      "start": 1.92,
+      "end": 2.16
+    },
+    {
+      "w": "designer",
+      "start": 2.16,
+      "end": 2.5
+    },
+    {
+      "w": "bag.",
+      "start": 2.5,
+      "end": 2.86
+    },
+    {
+      "w": "Or",
+      "start": 3.22,
+      "end": 3.4
+    },
+    {
+      "w": "thirty",
+      "start": 3.4,
+      "end": 3.76
+    },
+    {
+      "w": "replicas.",
+      "start": 3.76,
+      "end": 4.28
+    },
+    {
+      "w": "At",
+      "start": 5.049,
+      "end": 5.16
+    },
+    {
+      "w": "about",
+      "start": 5.16,
+      "end": 5.34
+    },
+    {
+      "w": "a",
+      "start": 5.34,
+      "end": 5.467
+    },
+    {
+      "w": "hundred",
+      "start": 5.467,
+      "end": 5.593
+    },
+    {
+      "w": "dollars",
+      "start": 5.593,
+      "end": 5.72
+    },
+    {
+      "w": "each,",
+      "start": 5.72,
+      "end": 6.34
+    },
+    {
+      "w": "that's",
+      "start": 6.74,
+      "end": 7.0
+    },
+    {
+      "w": "a",
+      "start": 7.0,
+      "end": 7.08
+    },
+    {
+      "w": "new",
+      "start": 7.08,
+      "end": 7.22
+    },
+    {
+      "w": "style",
+      "start": 7.22,
+      "end": 7.52
+    },
+    {
+      "w": "every",
+      "start": 7.52,
+      "end": 7.86
+    },
+    {
+      "w": "month,",
+      "start": 7.86,
+      "end": 8.14
+    },
+    {
+      "w": "for",
+      "start": 8.32,
+      "end": 8.5
+    },
+    {
+      "w": "two",
+      "start": 8.5,
+      "end": 8.7
+    },
+    {
+      "w": "and",
+      "start": 8.7,
+      "end": 8.82
+    },
+    {
+      "w": "a",
+      "start": 8.82,
+      "end": 8.92
+    },
+    {
+      "w": "half",
+      "start": 8.92,
+      "end": 9.08
+    },
+    {
+      "w": "years.",
+      "start": 9.08,
+      "end": 9.34
+    },
+    {
+      "w": "One",
+      "start": 10.141,
+      "end": 10.38
+    },
+    {
+      "w": "bag",
+      "start": 10.38,
+      "end": 10.66
+    },
+    {
+      "w": "matches",
+      "start": 10.66,
+      "end": 11.06
+    },
+    {
+      "w": "some",
+      "start": 11.06,
+      "end": 11.24
+    },
+    {
+      "w": "of",
+      "start": 11.24,
+      "end": 11.34
+    },
+    {
+      "w": "your",
+      "start": 11.34,
+      "end": 11.44
+    },
+    {
+      "w": "outfits.",
+      "start": 11.44,
+      "end": 11.86
+    },
+    {
+      "w": "Thirty",
+      "start": 12.4,
+      "end": 12.56
+    },
+    {
+      "w": "match",
+      "start": 12.56,
+      "end": 12.84
+    },
+    {
+      "w": "all",
+      "start": 12.84,
+      "end": 13.12
+    },
+    {
+      "w": "of",
+      "start": 13.12,
+      "end": 13.22
+    },
+    {
+      "w": "them.",
+      "start": 13.22,
+      "end": 13.439
+    },
+    {
+      "w": "Work,",
+      "start": 13.989,
+      "end": 14.22
+    },
+    {
+      "w": "the",
+      "start": 14.22,
+      "end": 14.44
+    },
+    {
+      "w": "gym,",
+      "start": 14.44,
+      "end": 14.7
+    },
+    {
+      "w": "date",
+      "start": 14.7,
+      "end": 15.0
+    },
+    {
+      "w": "night,",
+      "start": 15.0,
+      "end": 15.26
+    },
+    {
+      "w": "a",
+      "start": 15.26,
+      "end": 15.5
+    },
+    {
+      "w": "weekend",
+      "start": 15.5,
+      "end": 15.76
+    },
+    {
+      "w": "away.",
+      "start": 15.76,
+      "end": 16.14
+    },
+    {
+      "w": "There's",
+      "start": 16.58,
+      "end": 16.8
+    },
+    {
+      "w": "a",
+      "start": 16.8,
+      "end": 16.88
+    },
+    {
+      "w": "bag",
+      "start": 16.88,
+      "end": 17.1
+    },
+    {
+      "w": "for",
+      "start": 17.1,
+      "end": 17.3
+    },
+    {
+      "w": "every",
+      "start": 17.3,
+      "end": 17.6
+    },
+    {
+      "w": "plan.",
+      "start": 17.6,
+      "end": 17.94
+    },
+    {
+      "w": "And",
+      "start": 18.669,
+      "end": 18.78
+    },
+    {
+      "w": "if",
+      "start": 18.78,
+      "end": 18.86
+    },
+    {
+      "w": "one",
+      "start": 18.86,
+      "end": 19.0
+    },
+    {
+      "w": "gets",
+      "start": 19.0,
+      "end": 19.18
+    },
+    {
+      "w": "scuffed",
+      "start": 19.18,
+      "end": 19.52
+    },
+    {
+      "w": "or",
+      "start": 19.52,
+      "end": 19.76
+    },
+    {
+      "w": "lost,",
+      "start": 19.76,
+      "end": 20.08
+    },
+    {
+      "w": "you've",
+      "start": 20.46,
+      "end": 20.62
+    },
+    {
+      "w": "still",
+      "start": 20.62,
+      "end": 20.84
+    },
+    {
+      "w": "got",
+      "start": 20.84,
+      "end": 21.06
+    },
+    {
+      "w": "twenty-nine.",
+      "start": 21.06,
+      "end": 21.736
+    },
+    {
+      "w": "One",
+      "start": 22.336,
+      "end": 22.56
+    },
+    {
+      "w": "logo,",
+      "start": 22.56,
+      "end": 22.92
+    },
+    {
+      "w": "or",
+      "start": 22.92,
+      "end": 23.18
+    },
+    {
+      "w": "thirty",
+      "start": 23.18,
+      "end": 23.48
+    },
+    {
+      "w": "looks?",
+      "start": 23.48,
+      "end": 23.74
+    },
+    {
+      "w": "Which",
+      "start": 24.16,
+      "end": 24.24
+    },
+    {
+      "w": "would",
+      "start": 24.24,
+      "end": 24.38
+    },
+    {
+      "w": "you",
+      "start": 24.38,
+      "end": 24.48
+    },
+    {
+      "w": "pick?",
+      "start": 24.48,
+      "end": 24.7
+    }
+  ]
+}

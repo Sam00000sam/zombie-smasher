@@ -1,0 +1,14 @@
+{
+  "wav": "public/voice/hours-narration.wav",
+  "json": "src/v11/narration.json",
+  "lead_in": 0.35,
+  "tail": 2.0,
+  "lines": [
+    ["hook", "A designer bag costs three thousand dollars. But what does it really cost you?", 0.6],
+    ["hours", "If you earn twenty dollars an hour, that's a hundred and fifty hours of work. Almost a full month on the clock.", 0.6],
+    ["replica", "The replica? About a hundred dollars. That's five hours. Less than one shift.", 0.6],
+    ["gap", "That leaves a hundred and forty-five hours, and twenty-nine hundred dollars, back in your pocket.", 0.6],
+    ["spend", "That's a weekend trip, a new phone, and a fully stocked emergency fund.", 0.6],
+    ["end", "Same look either way. So how many hours is a logo worth to you?", 0.0]
+  ]
+}

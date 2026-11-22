@@ -1,0 +1,15 @@
+{
+  "wav": "public/voice/spot-narration.wav",
+  "json": "src/v12/narration.json",
+  "lead_in": 0.35,
+  "tail": 1.8,
+  "lines": [
+    ["hook", "One of these bags is fake. Can you spot it?", 0.6],
+    ["stitch", "Check the stitching. Even, tight, no loose threads on either one.", 0.55],
+    ["hardware", "Look at the hardware. Same gold finish, same weight in your hand.", 0.55],
+    ["shape", "And the shape holds up exactly the same.", 0.6],
+    ["give", "Give up? Here's the only real difference.", 0.55],
+    ["reveal", "This one costs three thousand dollars. This one, about a hundred. Same bag on your arm.", 0.6],
+    ["end", "So which one did you pick? Tell me in the comments.", 0.0]
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "wav": "public/voice/label-narration.wav",
+  "json": "src/v4/narration.json",
+  "lead_in": 0.3,
+  "tail": 2.4,
+  "lines": [
+    ["hook", "Unpopular opinion: sometimes, the fake is the smarter buy.", 0.4],
+    ["price", "Most of a luxury price isn't the product. It's the logo, the ads, and the fancy store.", 0.4],
+    ["copy", "Take that away, and a good copy can look almost identical, for a fraction of the cost.", 0.4],
+    ["trend", "Trends also change fast. Why spend a month's rent on something you'll stop wearing next season?", 0.4],
+    ["save", "The money you save could buy five styles, instead of one.", 0.4],
+    ["end", "So before you pay for the name, ask yourself: are you buying the product, or the label?", 0.0]
+  ]
+}

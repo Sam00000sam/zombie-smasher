@@ -1,0 +1,501 @@
+{
+  "voice": "af_heart",
+  "speed": 1.08,
+  "sampleRate": 24000,
+  "duration": 31.8,
+  "lines": [
+    {
+      "key": "hook",
+      "text": "A designer bag costs three thousand dollars. But what does it really cost you?",
+      "start": 0.35,
+      "end": 4.388
+    },
+    {
+      "key": "hours",
+      "text": "If you earn twenty dollars an hour, that's a hundred and fifty hours of work. Almost a full month on the clock.",
+      "start": 4.988,
+      "end": 10.8
+    },
+    {
+      "key": "replica",
+      "text": "The replica? About a hundred dollars. That's five hours. Less than one shift.",
+      "start": 11.4,
+      "end": 15.58
+    },
+    {
+      "key": "gap",
+      "text": "That leaves a hundred and forty-five hours, and twenty-nine hundred dollars, back in your pocket.",
+      "start": 16.18,
+      "end": 21.222
+    },
+    {
+      "key": "spend",
+      "text": "That's a weekend trip, a new phone, and a fully stocked emergency fund.",
+      "start": 21.822,
+      "end": 25.739
+    },
+    {
+      "key": "end",
+      "text": "Same look either way. So how many hours is a logo worth to you?",
+      "start": 26.339,
+      "end": 29.8
+    }
+  ],
+  "words": [
+    {
+      "w": "A",
+      "start": 0.35,
+      "end": 0.46
+    },
+    {
+      "w": "designer",
+      "start": 0.46,
+      "end": 0.78
+    },
+    {
+      "w": "bag",
+      "start": 0.78,
+      "end": 1.12
+    },
+    {
+      "w": "costs",
+      "start": 1.12,
+      "end": 1.44
+    },
+    {
+      "w": "three",
+      "start": 1.44,
+      "end": 1.873
+    },
+    {
+      "w": "thousand",
+      "start": 1.873,
+      "end": 2.307
+    },
+    {
+      "w": "dollars.",
+      "start": 2.307,
+      "end": 2.74
+    },
+    {
+      "w": "But",
+      "start": 3.0,
+      "end": 3.2
+    },
+    {
+      "w": "what",
+      "start": 3.2,
+      "end": 3.34
+    },
+    {
+      "w": "does",
+      "start": 3.34,
+      "end": 3.46
+    },
+    {
+      "w": "it",
+      "start": 3.46,
+      "end": 3.56
+    },
+    {
+      "w": "really",
+      "start": 3.56,
+      "end": 3.78
+    },
+    {
+      "w": "cost",
+      "start": 3.78,
+      "end": 4.06
+    },
+    {
+      "w": "you?",
+      "start": 4.06,
+      "end": 4.32
+    },
+    {
+      "w": "If",
+      "start": 4.988,
+      "end": 5.1
+    },
+    {
+      "w": "you",
+      "start": 5.1,
+      "end": 5.24
+    },
+    {
+      "w": "earn",
+      "start": 5.24,
+      "end": 5.42
+    },
+    {
+      "w": "twenty",
+      "start": 5.42,
+      "end": 5.63
+    },
+    {
+      "w": "dollars",
+      "start": 5.63,
+      "end": 5.84
+    },
+    {
+      "w": "an",
+      "start": 5.84,
+      "end": 6.26
+    },
+    {
+      "w": "hour,",
+      "start": 6.26,
+      "end": 6.56
+    },
+    {
+      "w": "that's",
+      "start": 6.86,
+      "end": 7.06
+    },
+    {
+      "w": "a",
+      "start": 7.06,
+      "end": 7.273
+    },
+    {
+      "w": "hundred",
+      "start": 7.273,
+      "end": 7.487
+    },
+    {
+      "w": "and",
+      "start": 7.38,
+      "end": 7.49
+    },
+    {
+      "w": "fifty",
+      "start": 7.487,
+      "end": 7.7
+    },
+    {
+      "w": "hours",
+      "start": 7.7,
+      "end": 8.16
+    },
+    {
+      "w": "of",
+      "start": 8.16,
+      "end": 8.38
+    },
+    {
+      "w": "work.",
+      "start": 8.38,
+      "end": 8.6
+    },
+    {
+      "w": "Almost",
+      "start": 9.12,
+      "end": 9.38
+    },
+    {
+      "w": "a",
+      "start": 9.38,
+      "end": 9.6
+    },
+    {
+      "w": "full",
+      "start": 9.6,
+      "end": 9.8
+    },
+    {
+      "w": "month",
+      "start": 9.8,
+      "end": 10.04
+    },
+    {
+      "w": "on",
+      "start": 10.04,
+      "end": 10.26
+    },
+    {
+      "w": "the",
+      "start": 10.26,
+      "end": 10.38
+    },
+    {
+      "w": "clock.",
+      "start": 10.38,
+      "end": 10.62
+    },
+    {
+      "w": "The",
+      "start": 11.4,
+      "end": 11.52
+    },
+    {
+      "w": "replica?",
+      "start": 11.52,
+      "end": 11.86
+    },
+    {
+      "w": "About",
+      "start": 12.14,
+      "end": 12.32
+    },
+    {
+      "w": "a",
+      "start": 12.32,
+      "end": 12.587
+    },
+    {
+      "w": "hundred",
+      "start": 12.587,
+      "end": 12.853
+    },
+    {
+      "w": "dollars.",
+      "start": 12.853,
+      "end": 13.12
+    },
+    {
+      "w": "That's",
+      "start": 13.22,
+      "end": 13.64
+    },
+    {
+      "w": "five",
+      "start": 13.64,
+      "end": 13.88
+    },
+    {
+      "w": "hours.",
+      "start": 13.88,
+      "end": 14.28
+    },
+    {
+      "w": "Less",
+      "start": 14.52,
+      "end": 14.68
+    },
+    {
+      "w": "than",
+      "start": 14.68,
+      "end": 14.9
+    },
+    {
+      "w": "one",
+      "start": 14.9,
+      "end": 15.12
+    },
+    {
+      "w": "shift.",
+      "start": 15.12,
+      "end": 15.4
+    },
+    {
+      "w": "That",
+      "start": 16.18,
+      "end": 16.34
+    },
+    {
+      "w": "leaves",
+      "start": 16.34,
+      "end": 16.58
+    },
+    {
+      "w": "a",
+      "start": 16.58,
+      "end": 16.795
+    },
+    {
+      "w": "hundred",
+      "start": 16.795,
+      "end": 17.01
+    },
+    {
+      "w": "and",
+      "start": 17.01,
+      "end": 17.44
+    },
+    {
+      "w": "forty-five",
+      "start": 17.12,
+      "end": 17.44
+    },
+    {
+      "w": "hours,",
+      "start": 17.44,
+      "end": 18.22
+    },
+    {
+      "w": "and",
+      "start": 18.64,
+      "end": 18.84
+    },
+    {
+      "w": "twenty-nine",
+      "start": 18.84,
+      "end": 19.548
+    },
+    {
+      "w": "hundred",
+      "start": 19.548,
+      "end": 19.784
+    },
+    {
+      "w": "dollars,",
+      "start": 19.784,
+      "end": 20.02
+    },
+    {
+      "w": "back",
+      "start": 20.02,
+      "end": 20.48
+    },
+    {
+      "w": "in",
+      "start": 20.48,
+      "end": 20.64
+    },
+    {
+      "w": "your",
+      "start": 20.64,
+      "end": 20.74
+    },
+    {
+      "w": "pocket.",
+      "start": 20.74,
+      "end": 21.02
+    },
+    {
+      "w": "That's",
+      "start": 21.822,
+      "end": 22.06
+    },
+    {
+      "w": "a",
+      "start": 22.06,
+      "end": 22.12
+    },
+    {
+      "w": "weekend",
+      "start": 22.12,
+      "end": 22.36
+    },
+    {
+      "w": "trip,",
+      "start": 22.36,
+      "end": 22.68
+    },
+    {
+      "w": "a",
+      "start": 22.96,
+      "end": 23.1
+    },
+    {
+      "w": "new",
+      "start": 23.1,
+      "end": 23.26
+    },
+    {
+      "w": "phone,",
+      "start": 23.26,
+      "end": 23.6
+    },
+    {
+      "w": "and",
+      "start": 23.78,
+      "end": 23.92
+    },
+    {
+      "w": "a",
+      "start": 23.92,
+      "end": 24.04
+    },
+    {
+      "w": "fully",
+      "start": 24.04,
+      "end": 24.28
+    },
+    {
+      "w": "stocked",
+      "start": 24.28,
+      "end": 24.68
+    },
+    {
+      "w": "emergency",
+      "start": 24.68,
+      "end": 25.14
+    },
+    {
+      "w": "fund.",
+      "start": 25.14,
+      "end": 25.58
+    },
+    {
+      "w": "Same",
+      "start": 26.339,
+      "end": 26.6
+    },
+    {
+      "w": "look",
+      "start": 26.6,
+      "end": 26.84
+    },
+    {
+      "w": "either",
+      "start": 26.84,
+      "end": 27.0
+    },
+    {
+      "w": "way.",
+      "start": 27.0,
+      "end": 27.38
+    },
+    {
+      "w": "So",
+      "start": 27.68,
+      "end": 27.84
+    },
+    {
+      "w": "how",
+      "start": 27.84,
+      "end": 28.02
+    },
+    {
+      "w": "many",
+      "start": 28.02,
+      "end": 28.22
+    },
+    {
+      "w": "hours",
+      "start": 28.22,
+      "end": 28.5
+    },
+    {
+      "w": "is",
+      "start": 28.5,
+      "end": 28.74
+    },
+    {
+      "w": "a",
+      "start": 28.74,
+      "end": 28.84
+    },
+    {
+      "w": "logo",
+      "start": 28.84,
+      "end": 29.06
+    },
+    {
+      "w": "worth",
+      "start": 29.06,
+      "end": 29.36
+    },
+    {
+      "w": "to",
+      "start": 29.36,
+      "end": 29.6
+    },
+    {
+      "w": "you?",
+      "start": 29.6,
+      "end": 29.8
+    }
+  ]
+}
