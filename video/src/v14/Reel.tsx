@@ -2,19 +2,19 @@ import React from "react";
 import { AbsoluteFill, Audio, Sequence, staticFile, useCurrentFrame } from "remotion";
 import { lerp } from "../v2/anim";
 import { io } from "../v5/smooth";
-import { burst, Cam, floor, GOLD, GREEN, INK, Item, motes, RED, setView, spot, toCam, V3, VIEW } from "../v6/engine";
-import { BAG_S, PAWN_S, pedestalS, shelfS } from "../v12/models";
+import { burst, Cam, floor, GOLD, GREEN, INK, Item, motes, pawn, RED, setView, spot, toCam, V3, VIEW } from "../v6/engine";
+import { BAG_S, pedestalS } from "../v12/models";
 import { solid } from "../v12/solid";
 import { Big, Face, lineSlab, Small, VIEW_TT } from "../v12/ui";
 import { slab } from "../v11/three";
 
 /**
- * Look-development reel: five short cuts showing the upgraded finish — bloom, neon-tube edges, a
- * moving light with specular glints, a richer background, lens streaks, and 60 fps motion.
+ * Look-development reel: five short cuts showing the finish — bloom, neon-tube edges, a moving
+ * light with specular glints, lens streaks — in the original palette (gold + white; red/green only
+ * for prices), with the original glossy pawns. 30 fps.
  */
-export const FPS60 = 60;
+export const FPS60 = 30; // the user wants 30 fps
 const Z0 = 1200;
-const PALETTE = ["#ffd04d", "#36e3a3", "#ff6fb1", "#5ab8ff", "#ffffff", "#ff9f43", "#b48cff", "#ff4a5a"];
 
 /** eased 0→1 between a and a+d seconds */
 const e = (t: number, a: number, d: number) => io(Math.max(0, Math.min(1, (t - a) / d)));
@@ -61,7 +61,7 @@ const price: Cut = {
       it.push(...solid(c, `bag${i}`, { m: BAG_S, xf: { p: [o.x, 46, Z0], yaw: c.yaw + (i ? -0.35 : 0.35) }, color: o.bag, accent: i ? "#ffffff" : GOLD, opacity: 1, light: L, tube: true }));
       const a = e(t, o.at, 0.55);
       it.push(slab(c, `tag${i}`, { p: [o.x, lerp(760, 440, a), Z0 - 20], w: 300, h: 124, yaw: c.yaw - 0.22, opacity: Math.min(1, a * 3), depth: 22, layers: 9, children: <Face col={o.col}><Small>{o.label}</Small><Big s={62}>{o.val}</Big></Face> }));
-      it.push(burst(c, `b${i}`, { p: [o.x, 440, Z0 - 40], t: Math.max(0, Math.min(1, (t - o.at - 0.5) / 0.6)), color: o.col, n: 26, spread: 260 }));
+      it.push(burst(c, `b${i}`, { p: [o.x, 440, Z0 + 30], t: Math.max(0, Math.min(1, (t - o.at - 0.5) / 0.6)), color: o.col, n: 26, spread: 260 }));
       const fl = Math.max(0, 1 - Math.abs(t - o.at - 0.55) / 0.3) * 0.8;
       if (fl > 0) flares.push({ p: [o.x, 368, Z0 - 30], col: o.col, a: fl });
     });
@@ -69,22 +69,21 @@ const price: Cut = {
   },
 };
 
-/* ---- 3: the shelf fills ------------------------------------------------------------------- */
-const shelf: Cut = {
+/* ---- 3: a clean line-up the camera glides along --------------------------------------- */
+const lineup: Cut = {
   from: 6.15,
   to: 9.4,
   render: (t) => {
-    const c = cam(mixO({ tx: -40, ty: 260, tz: Z0, R: 950, th: -34, y: 260 }, { tx: 40, ty: 270, tz: Z0, R: 980, th: 28, y: 400 }, e(t, 0, 3.25)));
-    const L = sweep(t, 1.4);
+    const c = cam(mixO({ tx: -150, ty: 200, tz: Z0, R: 960, th: -22, y: 330 }, { tx: 150, ty: 200, tz: Z0, R: 940, th: 20, y: 350 }, e(t, 0, 3.25)));
+    const L = sweep(t, 1.2);
     const it: (Item | null)[] = [];
-    it.push(...solid(c, "sh", { m: shelfS(5, 6, 86, 8, 92), xf: { p: [0, 0, Z0 + 4] }, color: GOLD, opacity: 1, reflect: 0.14, width: 1.5, glow: 5, light: L, tube: true }));
-    for (let k = 0; k < 30; k++) {
-      const col = k % 5;
-      const row = Math.floor(k / 5);
-      const a = e(t, 0.05 + k * 0.035, 0.28);
-      if (a <= 0) continue;
-      it.push(...solid(c, `b${k}`, { m: BAG_S, xf: { p: [-219 + 4 + 43 + col * 86, row * 86 + 8, Z0], yaw: c.yaw + Math.sin(t * 1.4 + k) * 0.15, s: 0.27 * lerp(0.4, 1, a) }, color: PALETTE[(k * 3 + row) % PALETTE.length], opacity: a, reflect: 0, width: 1.3, glow: 4, light: L, tube: true, reg: false }));
-    }
+    [-300, 0, 300].forEach((x, i) => {
+      const col = i === 1 ? GOLD : INK;
+      const on = e(t, 0.15 + i * 0.55, 0.4);
+      it.push(spot(c, `sp${i}`, { p: [x, 0, Z0], r: 140, color: col, opacity: 0.85 * on }));
+      it.push(...solid(c, `pd${i}`, { m: pedestalS(115, 44), xf: { p: [x, 0, Z0] }, color: INK, opacity: 1, shadow: 140, width: 1.6, light: L, tube: on > 0.5 }));
+      it.push(...solid(c, `bag${i}`, { m: BAG_S, xf: { p: [x, 44, Z0], yaw: c.yaw + 0.3 }, color: col, accent: col === GOLD ? "#ffffff" : GOLD, opacity: lerp(0.35, 1, on), light: L, tube: true }));
+    });
     return { c, items: it, flares: [] };
   },
 };
@@ -94,14 +93,13 @@ const figures: Cut = {
   from: 9.15,
   to: 12.4,
   render: (t) => {
-    const c = cam(mixO({ tx: 0, ty: 120, tz: Z0, R: 820, th: 22, y: 110 }, { tx: 0, ty: 160, tz: Z0, R: 900, th: -18, y: 560 }, e(t, 0, 3.25)));
-    const L = sweep(t, 0.9);
+    const c = cam(mixO({ tx: 0, ty: 150, tz: Z0, R: 700, th: 18, y: 250 }, { tx: 0, ty: 160, tz: Z0, R: 740, th: -14, y: 420 }, e(t, 0, 3.25)));
     const it: (Item | null)[] = [];
-    ["#ff6fb1", "#5ab8ff", "#ffd04d", "#36e3a3", "#b48cff"].forEach((col, i) => {
+    [0, 1, 2, 3, 4].forEach((i) => {
       const x = (i - 2) * 150;
       const on = e(t, 0.3 + i * 0.32, 0.35);
-      it.push(spot(c, `sp${i}`, { p: [x, 0, Z0], r: 80, color: col, opacity: on }));
-      it.push(...solid(c, `p${i}`, { m: PAWN_S, xf: { p: [x, 0, Z0], s: 0.85 }, color: col, opacity: lerp(0.25, 1, on), shadow: 70, reflect: 0.2, width: 1.7, glow: 6, light: L, tube: on > 0.5 }));
+      it.push(spot(c, `sp${i}`, { p: [x, 0, Z0], r: 80, color: i % 2 ? GOLD : INK, opacity: on * 0.9 }));
+      it.push(pawn(c, `p${i}`, { p: [x, 0, Z0], h: 250, opacity: lerp(0.3, 1, on) }));
     });
     return { c, items: it, flares: [] };
   },
@@ -146,14 +144,14 @@ const closer: Cut = {
   },
 };
 
-const CUTS = [hero, price, shelf, figures, closer];
+const CUTS = [hero, price, lineup, figures, closer];
 export const REEL_FRAMES = Math.round(15.5 * FPS60);
 
 /** One cut, drawn twice more as bloom (a tight glow and a wide soft one). */
 const CutLayer: React.FC<{ cut: Cut; t: number; fr: number; opacity: number }> = ({ cut, t, fr, opacity }) => {
   const lt = t - cut.from;
   const { c, items, flares } = cut.render(lt);
-  const all = [floor(c, [], 0.8, true), ...motes(c, fr / 2), ...(items.filter(Boolean) as Item[])];
+  const all = [floor(c, [], 0.8, true), ...motes(c, fr), ...(items.filter(Boolean) as Item[])];
   all.sort((a, b) => b.z - a.z);
   const nodes = all.map((i) => i.node);
   const fl = flares
@@ -180,8 +178,7 @@ const SFX = [
   { at: 3.6, file: "chime", vol: 0.22 },
   { at: 4.8, file: "chime", vol: 0.22 },
   { at: 6.1, file: "whoosh", vol: 0.26 },
-  { at: 6.4, file: "shimmer", vol: 0.28 },
-  { at: 9.1, file: "whoosh", vol: 0.24 },
+    { at: 9.1, file: "whoosh", vol: 0.24 },
   { at: 12.1, file: "whoosh", vol: 0.26 },
   { at: 12.5, file: "pop", vol: 0.24 },
 ];
@@ -194,8 +191,7 @@ export const Reel: React.FC = () => {
   const live = CUTS.filter((cu) => t >= cu.from && t < cu.to + 0.001);
   return (
     <AbsoluteFill style={{ background: "#000", overflow: "hidden" }}>
-      <AbsoluteFill style={{ background: "radial-gradient(ellipse 90% 55% at 46% 38%, #1a1238 0%, #0a0818 45%, #000 78%)" }} />
-      <AbsoluteFill style={{ background: "linear-gradient(180deg, transparent 34%, rgba(120,90,255,0.10) 42%, transparent 52%)" }} />
+      <AbsoluteFill style={{ background: "radial-gradient(ellipse 85% 60% at 46% 38%, #121216 0%, #000 72%)" }} />
       {live.map((cu) => {
         // soft crossfade where cuts overlap
         const fadeIn = cu.from === 0 ? 1 : Math.min(1, (t - cu.from) / 0.25);
@@ -204,7 +200,7 @@ export const Reel: React.FC = () => {
       })}
       <AbsoluteFill style={{ background: "radial-gradient(ellipse 80% 72% at 46% 42%, transparent 55%, rgba(0,0,0,0.8) 100%)", pointerEvents: "none" }} />
       {SFX.map((s, i) => (
-        <Sequence key={i} from={Math.round(s.at * FPS60)} durationInFrames={110} layout="none">
+        <Sequence key={i} from={Math.round(s.at * FPS60)} durationInFrames={60} layout="none">
           <Audio src={staticFile(`sfx/${s.file}.wav`)} volume={s.vol} />
         </Sequence>
       ))}

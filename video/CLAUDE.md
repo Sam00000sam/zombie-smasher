@@ -11,6 +11,11 @@ glossy white pawns with gold ties, one-word captions. The user's standing prefer
 - **Visuals must match the narration** word-for-word; key words get a visual beat.
 - **Clean motion**: one easing, fade + small settle, draw-on line art. No bounce, jitter or hopping.
 - **The camera orbits** (360°-style arcs around each set), not just front-on dollies.
+- **30 fps** (not 60). **Original palette only**: gold, white, black; red/green only on prices. No
+  rainbow colours. **People are the original glossy white pawns with gold ties** (`pawn()` in the engine),
+  not lathe/chess-piece figures. No bag-filled shelves or busy grids — keep every shot clean and simple.
+- Finish: bloom (two blurred screen-blend copies of the scene layer), neon-tube edges (`tube: true`)
+  and a moving light (`light: sweep(t)`) on `solid()` meshes — see `src/v14/Reel.tsx`.
 - **TikTok-safe framing**: nothing important under the top tabs, the right-hand buttons or the
   bottom caption area. Don't add safety disclaimers about fakes; "illustrative" notes on prices are fine.
 
