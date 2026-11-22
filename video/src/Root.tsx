@@ -19,6 +19,7 @@ import { Hours, HOURS_FRAMES } from "./v11/Hours";
 import { Spot, SPOT_FRAMES } from "./v12/Spot";
 import { Thirty, THIRTY_FRAMES } from "./v13/Thirty";
 import { Reel, REEL_FRAMES, FPS60 } from "./v14/Reel";
+import { Court, COURT_FRAMES } from "./v15/Court";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -63,6 +64,7 @@ export const RemotionRoot: React.FC = () => {
         width={WIDTH}
         height={HEIGHT}
       />
+      <Composition id="TheTrial" component={Court} durationInFrames={COURT_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="LookReel" component={Reel} durationInFrames={REEL_FRAMES} fps={FPS60} width={1080} height={1920} />
       <Composition id="OneOrThirty" component={Thirty} durationInFrames={THIRTY_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="SpotTheFake" component={Spot} durationInFrames={SPOT_FRAMES} fps={30} width={1080} height={1920} />

@@ -6,6 +6,7 @@ whoosh  - airy filtered-noise swell for camera moves
 pop     - soft rounded blip for a reveal
 chime   - two-note bell (coin / price moment)
 shimmer - short rising sparkle for a "fill up" moment
+knock   - gavel: two woody knocks
 All are peak-normalised to -6 dBFS; set the per-use volume in the composition.
 """
 from pathlib import Path
@@ -86,4 +87,19 @@ for i, f0 in enumerate([880, 1108.7, 1318.5, 1760, 2217.5, 2637]):
     on = np.clip(tt - st, 0, None)
     s += (tt >= st) * np.sin(2 * np.pi * f0 * on) * np.exp(-on * 6) * 0.6
 sf.write(OUT / "shimmer.wav", norm(fade(s, 3), -8), SR)
+# knock: a gavel on a sound block — a short woody thump (low sine + filtered click), struck twice
+d = 0.55
+tt = t(d)
+
+
+def hit(start, amp):
+    s0 = np.clip(tt - start, 0, None)
+    on = (tt >= start).astype(float)
+    body = np.sin(2 * np.pi * 150 * s0) * np.exp(-s0 * 38) + 0.5 * np.sin(2 * np.pi * 410 * s0) * np.exp(-s0 * 60)
+    click = onepole_lp(rng.standard_normal(len(tt)), 2400) * np.exp(-s0 * 140) * 0.6
+    return on * amp * (body + click)
+
+
+k = hit(0.0, 1.0) + hit(0.17, 0.8)
+sf.write(OUT / "knock.wav", norm(fade(k, 2), -5), SR)
 print("wrote", sorted(p.name for p in OUT.glob("*.wav")))

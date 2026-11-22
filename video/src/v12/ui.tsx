@@ -48,7 +48,7 @@ export const lineSlab = (c: Cam, key: string, p: V3, w: number, h: number, op: n
   slab(c, key, { p, w, h, yaw: Y(c), opacity: op, depth: 20, layers: 8, children: <Face col={col} solid={solid}><Big s={s}>{text}</Big></Face> });
 
 /** Sparse sound effects: each cue plays one file from public/sfx at a frame. */
-export type Sfx = { at: number; file: "whoosh" | "pop" | "chime" | "shimmer"; vol: number };
+export type Sfx = { at: number; file: "whoosh" | "pop" | "chime" | "shimmer" | "knock"; vol: number };
 export const SfxTrack: React.FC<{ cues: Sfx[] }> = ({ cues }) => (
   <>
     {cues.map((s, i) => (
