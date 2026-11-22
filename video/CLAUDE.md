@@ -4,7 +4,10 @@ Vertical (1080×1920, 30 fps) narrated explainers in Remotion, in the **neon-3D 
 TikTok references: black world, floor grid, neon line-art props on wireframe pedestals, light cones,
 glossy white pawns with gold ties, one-word captions. The user's standing preferences:
 
-- **No music, no SFX.** Female narration only (Kokoro `af_heart`, speed 1.08), also exported as a WAV.
+- **No music.** Female narration (Kokoro `af_heart`, speed 1.08), also exported as a WAV. **A few clean
+  SFX** (from `scripts/make_sfx.py`: whoosh on camera moves, pop on a key reveal, chime on a price,
+  shimmer on a fill) via `SfxTrack` in `src/v12/ui.tsx` — about one every 3 s, ~15 dB under the voice.
+- **No "illustrative" labels** on screen.
 - **Visuals must match the narration** word-for-word; key words get a visual beat.
 - **Clean motion**: one easing, fade + small settle, draw-on line art. No bounce, jitter or hopping.
 - **The camera orbits** (360°-style arcs around each set), not just front-on dollies.
@@ -36,7 +39,14 @@ glossy white pawns with gold ties, one-word captions. The user's standing prefer
    around the worst frame — look at it before re-rendering.
 8. Copy the narration WAV into `deliverables/`, commit, push, send.
 
-## Full 3D (src/v11/three.tsx)
+## Full 3D — use the solid renderer (src/v12/solid.tsx)
+
+`solid()` draws meshes with culled back faces, lit fills, crease/silhouette outlines, a contact shadow
+and a floor reflection; builders `extrudeS`, `latheS` (figures, pedestals), `cylS`, `boxS`, `thicken`
+(handles, rings), models in `src/v12/models.ts`; orbit rig `src/v12/rig.ts`; slabs, SFX and lens in
+`src/v12/ui.tsx`. Close-up pans between two subjects need ~30 frames, not 16.
+
+## Older 3D (src/v11/three.tsx)
 
 Use real 3D for everything: `extrude` / `box` / `cylinder` meshes (lit translucent faces + glowing
 edges, `decal` lines on the front face) and `slab` text — an HTML panel mapped onto a 3D plane with
@@ -56,7 +66,8 @@ show their depth; props sway around `c.yaw` instead of spinning (never edge-on).
 - **Layout collisions**: chips under signs, labels on top of other labels, text wider than ~860 px.
   Check every station on the contact sheet; keep side content within x ±420 at 1000 units away.
 - **Right edge**: TikTok's buttons cover x > ~940 from y 600–1500; keep pop-ups and panels in.
-- **Captions** sit at `top 1255`, centred at x 500. Content must stay above ~y 1200 on screen.
+- **Captions** sit in their own band below the scene: `CAPTION_TOP = 1400`, centred at x 500, with the
+  lens `VIEW_TT` (cy 720) keeping the 3D content above ~y 1330. Never let captions cover the scene.
 - **Bright floor-level lines near the camera** (belts, paths) streak through the caption area: fade
   them by near distance.
 - `card` billboards only when `VIEW.billboard` is on; an explicit `yaw` on a card fights an orbit.

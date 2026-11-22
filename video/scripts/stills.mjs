@@ -33,6 +33,6 @@ for (const fr of frames) {
 }
 const cols = Math.min(11, frames.length);
 execFileSync("ffmpeg", ["-loglevel", "error", "-y", "-pattern_type", "glob", "-i", path.join(out, "s[0-9]*.png"),
-  "-vf", `drawbox=x=0:y=0:w=540:h=75:color=red@0.3:t=fill,drawbox=x=470:y=300:w=70:h=450:color=red@0.3:t=fill,drawbox=x=0:y=730:w=540:h=230:color=red@0.3:t=fill,scale=240:-1,tile=${cols}x${Math.ceil(frames.length / cols)}`,
+  "-vf", `drawbox=x=0:y=0:w=540:h=75:color=red@0.3:t=fill,drawbox=x=470:y=300:w=70:h=450:color=red@0.3:t=fill,drawbox=x=0:y=780:w=540:h=180:color=red@0.3:t=fill,scale=240:-1,tile=${cols}x${Math.ceil(frames.length / cols)}`,
   "-update", "1", path.join(out, "contact.png")]);
 console.log(`frames: ${frames.join(" ")}\ncontact sheet: ${path.join(out, "contact.png")}`);

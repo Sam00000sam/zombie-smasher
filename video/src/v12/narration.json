@@ -1,0 +1,427 @@
+{
+  "voice": "af_heart",
+  "speed": 1.08,
+  "sampleRate": 24000,
+  "duration": 26.071,
+  "lines": [
+    {
+      "key": "hook",
+      "text": "One of these bags is fake. Can you spot it?",
+      "start": 0.35,
+      "end": 2.581
+    },
+    {
+      "key": "stitch",
+      "text": "Check the stitching. Even, tight, no loose threads on either one.",
+      "start": 3.181,
+      "end": 6.76
+    },
+    {
+      "key": "hardware",
+      "text": "Look at the hardware. Same gold finish, same weight in your hand.",
+      "start": 7.31,
+      "end": 10.765
+    },
+    {
+      "key": "shape",
+      "text": "And the shape holds up exactly the same.",
+      "start": 11.315,
+      "end": 13.343
+    },
+    {
+      "key": "give",
+      "text": "Give up? Here's the only real difference.",
+      "start": 13.943,
+      "end": 15.928
+    },
+    {
+      "key": "reveal",
+      "text": "This one costs three thousand dollars. This one, about a hundred. Same bag on your arm.",
+      "start": 16.477,
+      "end": 21.361
+    },
+    {
+      "key": "end",
+      "text": "So which one did you pick? Tell me in the comments.",
+      "start": 21.961,
+      "end": 24.271
+    }
+  ],
+  "words": [
+    {
+      "w": "One",
+      "start": 0.35,
+      "end": 0.48
+    },
+    {
+      "w": "of",
+      "start": 0.48,
+      "end": 0.58
+    },
+    {
+      "w": "these",
+      "start": 0.58,
+      "end": 0.74
+    },
+    {
+      "w": "bags",
+      "start": 0.74,
+      "end": 1.02
+    },
+    {
+      "w": "is",
+      "start": 1.02,
+      "end": 1.22
+    },
+    {
+      "w": "fake.",
+      "start": 1.22,
+      "end": 1.46
+    },
+    {
+      "w": "Can",
+      "start": 1.86,
+      "end": 1.92
+    },
+    {
+      "w": "you",
+      "start": 1.92,
+      "end": 2.02
+    },
+    {
+      "w": "spot",
+      "start": 2.02,
+      "end": 2.28
+    },
+    {
+      "w": "it?",
+      "start": 2.28,
+      "end": 2.56
+    },
+    {
+      "w": "Check",
+      "start": 3.181,
+      "end": 3.38
+    },
+    {
+      "w": "the",
+      "start": 3.38,
+      "end": 3.54
+    },
+    {
+      "w": "stitching.",
+      "start": 3.54,
+      "end": 3.9
+    },
+    {
+      "w": "Even,",
+      "start": 4.4,
+      "end": 4.64
+    },
+    {
+      "w": "tight,",
+      "start": 4.64,
+      "end": 4.96
+    },
+    {
+      "w": "no",
+      "start": 5.22,
+      "end": 5.4
+    },
+    {
+      "w": "loose",
+      "start": 5.4,
+      "end": 5.62
+    },
+    {
+      "w": "threads",
+      "start": 5.62,
+      "end": 5.96
+    },
+    {
+      "w": "on",
+      "start": 5.96,
+      "end": 6.16
+    },
+    {
+      "w": "either",
+      "start": 6.16,
+      "end": 6.32
+    },
+    {
+      "w": "one.",
+      "start": 6.32,
+      "end": 6.7
+    },
+    {
+      "w": "Look",
+      "start": 7.31,
+      "end": 7.44
+    },
+    {
+      "w": "at",
+      "start": 7.44,
+      "end": 7.54
+    },
+    {
+      "w": "the",
+      "start": 7.54,
+      "end": 7.66
+    },
+    {
+      "w": "hardware.",
+      "start": 7.66,
+      "end": 8.02
+    },
+    {
+      "w": "Same",
+      "start": 8.58,
+      "end": 8.74
+    },
+    {
+      "w": "gold",
+      "start": 8.74,
+      "end": 9.0
+    },
+    {
+      "w": "finish,",
+      "start": 9.0,
+      "end": 9.34
+    },
+    {
+      "w": "same",
+      "start": 9.66,
+      "end": 9.78
+    },
+    {
+      "w": "weight",
+      "start": 9.78,
+      "end": 10.06
+    },
+    {
+      "w": "in",
+      "start": 10.06,
+      "end": 10.22
+    },
+    {
+      "w": "your",
+      "start": 10.22,
+      "end": 10.32
+    },
+    {
+      "w": "hand.",
+      "start": 10.32,
+      "end": 10.64
+    },
+    {
+      "w": "And",
+      "start": 11.315,
+      "end": 11.42
+    },
+    {
+      "w": "the",
+      "start": 11.42,
+      "end": 11.54
+    },
+    {
+      "w": "shape",
+      "start": 11.54,
+      "end": 11.74
+    },
+    {
+      "w": "holds",
+      "start": 11.74,
+      "end": 12.04
+    },
+    {
+      "w": "up",
+      "start": 12.04,
+      "end": 12.26
+    },
+    {
+      "w": "exactly",
+      "start": 12.26,
+      "end": 12.66
+    },
+    {
+      "w": "the",
+      "start": 12.66,
+      "end": 12.94
+    },
+    {
+      "w": "same.",
+      "start": 12.94,
+      "end": 13.22
+    },
+    {
+      "w": "Give",
+      "start": 13.943,
+      "end": 14.1
+    },
+    {
+      "w": "up?",
+      "start": 14.1,
+      "end": 14.28
+    },
+    {
+      "w": "Here's",
+      "start": 14.52,
+      "end": 14.7
+    },
+    {
+      "w": "the",
+      "start": 14.7,
+      "end": 14.82
+    },
+    {
+      "w": "only",
+      "start": 14.82,
+      "end": 15.06
+    },
+    {
+      "w": "real",
+      "start": 15.06,
+      "end": 15.36
+    },
+    {
+      "w": "difference.",
+      "start": 15.36,
+      "end": 15.7
+    },
+    {
+      "w": "This",
+      "start": 16.477,
+      "end": 16.62
+    },
+    {
+      "w": "one",
+      "start": 16.62,
+      "end": 16.82
+    },
+    {
+      "w": "costs",
+      "start": 16.82,
+      "end": 17.14
+    },
+    {
+      "w": "three",
+      "start": 17.14,
+      "end": 17.557
+    },
+    {
+      "w": "thousand",
+      "start": 17.557,
+      "end": 17.973
+    },
+    {
+      "w": "dollars.",
+      "start": 17.973,
+      "end": 18.39
+    },
+    {
+      "w": "This",
+      "start": 18.58,
+      "end": 18.86
+    },
+    {
+      "w": "one,",
+      "start": 18.86,
+      "end": 19.12
+    },
+    {
+      "w": "about",
+      "start": 19.2,
+      "end": 19.38
+    },
+    {
+      "w": "a",
+      "start": 19.38,
+      "end": 19.563
+    },
+    {
+      "w": "hundred.",
+      "start": 19.563,
+      "end": 19.747
+    },
+    {
+      "w": "Same",
+      "start": 20.14,
+      "end": 20.42
+    },
+    {
+      "w": "bag",
+      "start": 20.42,
+      "end": 20.7
+    },
+    {
+      "w": "on",
+      "start": 20.7,
+      "end": 20.86
+    },
+    {
+      "w": "your",
+      "start": 20.86,
+      "end": 20.98
+    },
+    {
+      "w": "arm.",
+      "start": 20.98,
+      "end": 21.26
+    },
+    {
+      "w": "So",
+      "start": 21.961,
+      "end": 22.12
+    },
+    {
+      "w": "which",
+      "start": 22.12,
+      "end": 22.24
+    },
+    {
+      "w": "one",
+      "start": 22.24,
+      "end": 22.4
+    },
+    {
+      "w": "did",
+      "start": 22.4,
+      "end": 22.52
+    },
+    {
+      "w": "you",
+      "start": 22.52,
+      "end": 22.64
+    },
+    {
+      "w": "pick?",
+      "start": 22.64,
+      "end": 22.84
+    },
+    {
+      "w": "Tell",
+      "start": 23.26,
+      "end": 23.38
+    },
+    {
+      "w": "me",
+      "start": 23.38,
+      "end": 23.52
+    },
+    {
+      "w": "in",
+      "start": 23.52,
+      "end": 23.62
+    },
+    {
+      "w": "the",
+      "start": 23.62,
+      "end": 23.72
+    },
+    {
+      "w": "comments.",
+      "start": 23.72,
+      "end": 24.0
+    }
+  ]
+}

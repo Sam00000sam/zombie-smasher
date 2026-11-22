@@ -16,6 +16,8 @@ import { Top5, TOP5_FRAMES } from "./v8/Top5";
 import { Neon5, NEON5_FRAMES } from "./v9/Neon5";
 import { Journey, JOURNEY_FRAMES } from "./v10/Journey";
 import { Hours, HOURS_FRAMES } from "./v11/Hours";
+import { Spot, SPOT_FRAMES } from "./v12/Spot";
+import { Thirty, THIRTY_FRAMES } from "./v13/Thirty";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -60,6 +62,8 @@ export const RemotionRoot: React.FC = () => {
         width={WIDTH}
         height={HEIGHT}
       />
+      <Composition id="OneOrThirty" component={Thirty} durationInFrames={THIRTY_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="SpotTheFake" component={Spot} durationInFrames={SPOT_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="RealCost" component={Hours} durationInFrames={HOURS_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="FollowTheMoney" component={Journey} durationInFrames={JOURNEY_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="Neon5Reasons" component={Neon5} durationInFrames={NEON5_FRAMES} fps={30} width={1080} height={1920} />

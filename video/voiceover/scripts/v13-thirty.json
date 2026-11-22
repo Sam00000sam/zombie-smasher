@@ -1,0 +1,14 @@
+{
+  "wav": "public/voice/thirty-narration.wav",
+  "json": "src/v13/narration.json",
+  "lead_in": 0.35,
+  "tail": 1.8,
+  "lines": [
+    ["hook", "Three thousand dollars buys you one designer bag. Or thirty replicas.", 0.6],
+    ["math", "At about a hundred dollars each, that's a new style every month, for two and a half years.", 0.6],
+    ["match", "One bag matches some of your outfits. Thirty match all of them.", 0.55],
+    ["plans", "Work, the gym, date night, a weekend away. There's a bag for every plan.", 0.6],
+    ["scuff", "And if one gets scuffed or lost, you've still got twenty-nine.", 0.6],
+    ["end", "One logo, or thirty looks? Which would you pick?", 0.0]
+  ]
+}

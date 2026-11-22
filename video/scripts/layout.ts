@@ -18,10 +18,10 @@ const total: number = Object.entries(mod).find(([k]) => k.endsWith("_FRAMES"))?.
 const step = Number(stepArg ?? 2);
 
 const ZONES = [
-  { key: "CAPTIONS", x0: 60, y0: 1240, x1: 940, y1: 1400 },
+  { key: "CAPTIONS", x0: 60, y0: Number(process.env.CAPTION_TOP ?? 1385), x1: 940, y1: Number(process.env.CAPTION_TOP ?? 1385) + 150 },
   { key: "TIKTOK-TOP", x0: 0, y0: 0, x1: 1080, y1: 150 },
   { key: "TIKTOK-BUTTONS", x0: 945, y0: 600, x1: 1080, y1: 1500 },
-  { key: "TIKTOK-BOTTOM", x0: 0, y0: 1460, x1: 1080, y1: 1920 },
+  { key: "TIKTOK-BOTTOM", x0: 0, y0: 1560, x1: 1080, y1: 1920 },
 ];
 const inter = (a: { x0: number; y0: number; x1: number; y1: number }, b: typeof a) => Math.max(0, Math.min(a.x1, b.x1) - Math.max(a.x0, b.x0)) * Math.max(0, Math.min(a.y1, b.y1) - Math.max(a.y0, b.y0));
 const area = (a: { x0: number; y0: number; x1: number; y1: number }) => (a.x1 - a.x0) * (a.y1 - a.y0);
